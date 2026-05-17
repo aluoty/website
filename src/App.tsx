@@ -1,122 +1,105 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+// Type definitions for our portfolio projects
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  link?: string;
+  status: 'active' | 'completed' | 'in-progress';
 }
 
-export default App
+function App() {
+  const [copied, setCopied] = useState(false);
+
+  const projects: Project[] = [
+    {
+      title: "Bitwise Trainer",
+      description: "A Python application featuring a custom question-generation engine and JSON data persistence layer designed to drill advanced bitwise logic operations.",
+      tags: ["Python", "Logic Gates", "JSON"],
+      status: "completed"
+    },
+    {
+      title: "Path Finder (v5.8.4)",
+      description: "Network analysis and visualizer tool calculating degrees of separation. Implements advanced logic mapping rendered via 2D and 3D data frames.",
+      tags: ["Python", "NetworkX", "Plotly"],
+      status: "completed"
+    },
+    {
+      title: "Nebulance Engine",
+      description: "A 2D space canvas physics engine running on its own decoupled subdomain layer.",
+      tags: ["TypeScript", "Canvas", "HTML5"],
+      link: "https://nebulance.alexanderluo.com",
+      status: "active"
+    }
+  ];
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('alexanderluo0910@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="container">
+      {/* Top System Navigation Bar */}
+      <nav className="navbar">
+        <div className="nav-logo">ALEXANDER_LUO // SYSTEM</div>
+        <div className="nav-links">
+          <a href="#projects">.projects()</a>
+          <a href="https://github.com/alexanderluo0910/FishingGame" target="_blank" rel="noreferrer">.github()</a>
+          <a href="https://nebulance.alexanderluo.com" className="nav-accent">.launch_game()</a>
+        </div>
+      </nav>
+
+      {/* Main Container Hero */}
+      <main className="hero-section">
+        <div className="terminal-badge">SYS_STATUS: ACTIVE</div>
+        <h1 className="hero-title">Computer Science & Competitive Programming</h1>
+        <p className="hero-subtitle">
+          Building high-performance utilities, exploring discrete logic configurations, and optimizing code complexities. Running on an Arch Linux ecosystem.
+        </p>
+        <div className="cta-group">
+          <button onClick={handleCopyEmail} className="btn-primary">
+            {copied ? "» COPIED_TO_CLIPBOARD" : "» COPY_CONTACT_EMAIL"}
+          </button>
+        </div>
+      </main>
+
+      {/* Projects Component Layout */}
+      <section id="projects" className="projects-section">
+        <h2 className="section-title">&gt; active_modules</h2>
+        <div className="projects-grid">
+          {projects.map((project, idx) => (
+            <div key={idx} className="project-card">
+              <div className="card-header">
+                <span className={`status-indicator ${project.status}`}></span>
+                <span className="status-text">{project.status.toUpperCase()}</span>
+              </div>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <div className="tag-row">
+                {project.tags.map((tag, tIdx) => (
+                  <span key={tIdx} className="tag">{tag}</span>
+                ))}
+              </div>
+              {project.link && (
+                <a href={project.link} className="card-link" target="_blank" rel="noreferrer">
+                  Execute Resource &raquo;
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Environment Footer */}
+      <footer className="footer">
+        <p>Built with React + Vite + TypeScript // Hosted via Cloudflare Edge Network</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
