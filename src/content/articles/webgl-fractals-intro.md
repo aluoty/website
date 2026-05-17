@@ -1,7 +1,7 @@
 ---
 title: A Gentle Introduction to WebGL Fractals
 description: How drawing fractals in the browser taught me shaders, precision, and patience.
-date: 2026-05-01
+date: 2026-05-17
 tags:
   - webgl
   - typescript

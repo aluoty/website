@@ -1,7 +1,7 @@
 ---
 title: Why I Build Games on Linux
 description: A short essay on learning programming by shipping small games and tools on Fedora.
-date: 2026-04-12
+date: 2026-05-17
 tags:
   - gamedev
   - linux
