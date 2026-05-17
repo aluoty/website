@@ -1,4 +1,4 @@
-@import "tailwindcss" theme(reference); /* Only keep if using Tailwind v4 */
+
 
 :root {
   --bg-primary: #0a0a0c;
