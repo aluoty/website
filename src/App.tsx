@@ -106,49 +106,62 @@ function App() {
         id="page-root"
       >
         <nav className={`navbar${menuOpen ? ' navbar--hidden' : ''}`}>
-          <button
-            type="button"
-            className="nav-logo"
-            onClick={openMenu}
-          >
-            Alexander Luo
-          </button>
-          <div className="nav-links">
-            <button
-              type="button"
-              className={activeSection === 'projects' ? 'nav-active' : ''}
-              onClick={() => handleNavigate('projects')}
-            >
-              Projects
+          <div className="navbar__inner">
+            <button type="button" className="nav-logo" onClick={openMenu}>
+              <span className="nav-logo__mark" aria-hidden="true">
+                ✦
+              </span>
+              Alexander Luo
             </button>
-            <button
-              type="button"
-              className={activeSection === 'contact' ? 'nav-active' : ''}
-              onClick={() => handleNavigate('contact')}
-            >
-              Contact
-            </button>
-            <button
-              type="button"
-              className={activeSection === 'articles' ? 'nav-active' : ''}
-              onClick={() => handleNavigate('articles')}
-            >
-              Articles
-            </button>
-            <button
-              type="button"
-              className={activeSection === 'values' ? 'nav-active' : ''}
-              onClick={() => handleNavigate('values')}
-            >
-              Values
-            </button>
-            <a
-              href="https://github.com/alexanderluo666"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
+
+            <div className="nav-links">
+              <div className="nav-links__group" role="tablist" aria-label="Sections">
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeSection === 'projects'}
+                  className={activeSection === 'projects' ? 'nav-active' : ''}
+                  onClick={() => handleNavigate('projects')}
+                >
+                  Projects
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeSection === 'contact'}
+                  className={activeSection === 'contact' ? 'nav-active' : ''}
+                  onClick={() => handleNavigate('contact')}
+                >
+                  Contact
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeSection === 'articles'}
+                  className={activeSection === 'articles' ? 'nav-active' : ''}
+                  onClick={() => handleNavigate('articles')}
+                >
+                  Articles
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeSection === 'values'}
+                  className={activeSection === 'values' ? 'nav-active' : ''}
+                  onClick={() => handleNavigate('values')}
+                >
+                  Values
+                </button>
+              </div>
+              <a
+                className="nav-github"
+                href="https://github.com/alexanderluo666"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+            </div>
           </div>
         </nav>
 
@@ -166,14 +179,6 @@ function App() {
               <button onClick={handleCopyEmail} className="btn-primary">
                 {copied ? 'Copied To ClipBoard!' : 'Contact me via Gmail'}
               </button>
-              <a
-                href="https://nebulance.alexanderluo.com"
-                className="btn-secondary"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Play Nebulance
-              </a>
             </div>
           </section>
           )}
