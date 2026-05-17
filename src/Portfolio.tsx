@@ -157,6 +157,14 @@ export function Portfolio() {
                 <button onClick={handleCopyEmail} className="btn-primary">
                   {copied ? 'Copied To ClipBoard!' : 'Contact me via Gmail'}
                 </button>
+                <a
+                  href="https://wa.me/6583380910"
+                  className="btn-whatsapp"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Contact me via WhatsApp
+                </a>
               </div>
             </section>
           )}
