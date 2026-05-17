@@ -15,21 +15,21 @@ function App() {
 
   const projects: Project[] = [
     {
-      title: "Bitwise Trainer",
-      description: "A Python application featuring a custom question-generation engine and JSON data persistence layer designed to drill advanced bitwise logic operations.",
-      tags: ["Python", "Logic Gates", "JSON"],
+      title: "Playground",
+      description: "A playground for me to experiment with Python, it has an application featuring a custom question-generation engine and JSON data persistence layer designed to drill advanced bitwise logic operations, as well as applications featuring the visualization of connections between the objects.",
+      tags: ["Python", "Tools", "JSON"],
       status: "completed"
     },
     {
-      title: "Path Finder (v5.8.4)",
-      description: "Network analysis and visualizer tool calculating degrees of separation. Implements advanced logic mapping rendered via 2D and 3D data frames.",
-      tags: ["Python", "NetworkX", "Plotly"],
+      title: "AetherScope",
+      description: "A website featuring some cool fractals using WebGL using Typescript.",
+      tags: ["Typescript", "Fractal", "Website"],
       status: "completed"
     },
     {
-      title: "Nebulance Engine",
-      description: "A 2D space canvas physics engine running on its own decoupled subdomain layer.",
-      tags: ["TypeScript", "Canvas", "HTML5"],
+      title: "Nebulance",
+      description: "A 3D space game with cool gameplay, using Three.js and React, go check it out in the link below!",
+      tags: ["TypeScript", "Game", "3D"],
       link: "https://nebulance.alexanderluo.com",
       status: "active"
     }
@@ -45,31 +45,31 @@ function App() {
     <div className="container">
       {/* Top System Navigation Bar */}
       <nav className="navbar">
-        <div className="nav-logo">ALEXANDER_LUO // SYSTEM</div>
+        <div className="nav-logo">Alexander Luo</div>
         <div className="nav-links">
-          <a href="#projects">.projects()</a>
-          <a href="https://github.com/alexanderluo0910/FishingGame" target="_blank" rel="noreferrer">.github()</a>
-          <a href="https://nebulance.alexanderluo.com" className="nav-accent">.launch_game()</a>
+          <a href="#projects">Projects</a>
+          <a href="https://github.com/alexanderluo666" target="_blank" rel="noreferrer">My Github Account</a>
+          <a href="https://nebulance.alexanderluo.com" className="nav-accent">Play Nebulance</a>
         </div>
       </nav>
 
       {/* Main Container Hero */}
       <main className="hero-section">
-        <div className="terminal-badge">SYS_STATUS: ACTIVE</div>
-        <h1 className="hero-title">Computer Science & Competitive Programming</h1>
+        <div className="terminal-badge">Hi! It's me Alexander Luo.</div>
+        <h1 className="hero-title">Computer Science & Applied Programming</h1>
         <p className="hero-subtitle">
-          Building high-performance utilities, exploring discrete logic configurations, and optimizing code complexities. Running on an Arch Linux ecosystem.
+          I'm a primary school student designing games and tools on my Fedora Linux machine.
         </p>
         <div className="cta-group">
           <button onClick={handleCopyEmail} className="btn-primary">
-            {copied ? "» COPIED_TO_CLIPBOARD" : "» COPY_CONTACT_EMAIL"}
+            {copied ? "Copied To ClipBoard!" : "Contact me via Gmail"}
           </button>
         </div>
       </main>
 
       {/* Projects Component Layout */}
       <section id="projects" className="projects-section">
-        <h2 className="section-title">&gt; active_modules</h2>
+        <h2 className="section-title">Major Projects</h2>
         <div className="projects-grid">
           {projects.map((project, idx) => (
             <div key={idx} className="project-card">
@@ -86,7 +86,7 @@ function App() {
               </div>
               {project.link && (
                 <a href={project.link} className="card-link" target="_blank" rel="noreferrer">
-                  Execute Resource &raquo;
+                  Launch &raquo;
                 </a>
               )}
             </div>
