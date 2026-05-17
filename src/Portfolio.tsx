@@ -42,6 +42,7 @@ export function Portfolio() {
       description:
         'A website featuring some cool fractals using WebGL using Typescript.',
       tags: ['Typescript', 'Fractal', 'Website'],
+      link: 'https://aetherscope.alexanderluo.com',
       status: 'completed',
     },
     {
@@ -52,6 +53,30 @@ export function Portfolio() {
       link: 'https://nebulance.alexanderluo.com',
       status: 'active',
     },
+    {
+      title: 'Neon-Drift',
+      description:
+        'A 2D simple driving simulator with a futurstic feel, you can play by yourself, play with your freinds and even play with a bot!',
+      tags: ['Typescript', 'Web-Game', '2D'],
+      link: 'https://neon-drift.alexanderluo.com',
+      status: 'completed',
+    },
+    {
+      title: 'Velora-React',
+      description:
+        'A simple planner made by me, contains features like focus, priorities and interests',
+      tags: ['Typescript','Planner','Useful'],
+      link: 'https://velora-react.alexanderluo.com',
+      status: 'completed',
+    },
+    {
+      title: 'AxionPlot',
+      description:
+        'A 2D Desmos-like graphing engine, supports multiple equations and up to three constants',
+      tags: ['Typescript','Graphing','Math'],
+      link: 'https://axionplot.alexanderluo.com',
+      status: 'completed',
+    }
   ];
 
   const values = [
