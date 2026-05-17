@@ -42,7 +42,7 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className="container" id="page-root">
       {/* Top System Navigation Bar */}
       <nav className="navbar">
         <div className="nav-logo">Alexander Luo</div>
