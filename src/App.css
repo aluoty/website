@@ -373,6 +373,31 @@ html {
   flex-direction: column;
 }
 
+.content-view--article {
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.articles-intro {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 52ch;
+  margin: -1rem 0 2rem;
+  line-height: 1.6;
+}
+
+.articles-intro code {
+  font-size: 0.8em;
+  color: #c4b5fd;
+}
+
+.article-card__date {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
 .content-section {
   flex: 1;
   animation: section-enter 0.45s ease forwards;

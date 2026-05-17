@@ -1,4 +1,4 @@
-type SectionId = 'contact' | 'projects' | 'articles' | 'values';
+import type { SectionId } from './types/sections';
 
 interface OrbitMenuProps {
   open: boolean;
