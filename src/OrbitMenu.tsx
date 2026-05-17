@@ -1,6 +1,8 @@
+type SectionId = 'contact' | 'projects' | 'articles' | 'values';
+
 interface OrbitMenuProps {
   open: boolean;
-  onNavigate: (sectionId: string) => void;
+  onNavigate: (sectionId: SectionId) => void;
 }
 
 const MENU_ITEMS = [

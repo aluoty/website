@@ -203,10 +203,16 @@ html {
   transition: filter 0.45s ease;
 }
 
-.page--menu-open {
+.page--menu-open:not(.page--has-section) {
   filter: blur(4px) brightness(0.65);
   pointer-events: none;
   user-select: none;
+}
+
+.page--has-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Navbar */
@@ -221,6 +227,14 @@ html {
   z-index: 50;
   background: rgba(5, 6, 18, 0.75);
   backdrop-filter: blur(12px);
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.navbar--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
 }
 
 .nav-logo {
@@ -263,6 +277,33 @@ html {
 .nav-links button:hover,
 .nav-links a:hover {
   color: var(--accent);
+}
+
+.nav-links button.nav-active {
+  color: var(--accent-secondary);
+  text-shadow: 0 0 12px rgba(167, 139, 250, 0.5);
+}
+
+.content-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-section {
+  flex: 1;
+  animation: section-enter 0.45s ease forwards;
+}
+
+@keyframes section-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Sections */
@@ -355,10 +396,10 @@ html {
 /* Projects */
 .projects-section,
 .articles-section,
-.values-section {
-  padding: 4rem 0;
-  border-top: 1px solid var(--border-color);
-  scroll-margin-top: 5rem;
+.values-section,
+.content-section.hero-section {
+  padding: 3rem 0 4rem;
+  border-top: none;
 }
 
 .section-title {

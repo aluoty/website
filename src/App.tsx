@@ -3,6 +3,8 @@ import { OrbitMenu } from './OrbitMenu';
 import { Starfield } from './Starfield';
 import './App.css';
 
+type SectionId = 'contact' | 'projects' | 'articles' | 'values';
+
 interface Project {
   title: string;
   description: string;
@@ -13,6 +15,7 @@ interface Project {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(true);
+  const [activeSection, setActiveSection] = useState<SectionId | null>(null);
   const [copied, setCopied] = useState(false);
 
   const projects: Project[] = [
@@ -79,11 +82,15 @@ function App() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleNavigate = useCallback((sectionId: string) => {
+  const handleNavigate = useCallback((sectionId: SectionId) => {
+    setActiveSection(sectionId);
     setMenuOpen(false);
-    requestAnimationFrame(() => {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  const openMenu = useCallback(() => {
+    setMenuOpen(true);
+    setActiveSection(null);
   }, []);
 
   return (
@@ -94,26 +101,45 @@ function App() {
 
       <OrbitMenu open={menuOpen} onNavigate={handleNavigate} />
 
-      <div className={`page${menuOpen ? ' page--menu-open' : ''}`} id="page-root">
-        <nav className="navbar">
+      <div
+        className={`page${menuOpen ? ' page--menu-open' : ''}${activeSection ? ' page--has-section' : ''}`}
+        id="page-root"
+      >
+        <nav className={`navbar${menuOpen ? ' navbar--hidden' : ''}`}>
           <button
             type="button"
             className="nav-logo"
-            onClick={() => setMenuOpen(true)}
+            onClick={openMenu}
           >
             Alexander Luo
           </button>
           <div className="nav-links">
-            <button type="button" onClick={() => handleNavigate('projects')}>
+            <button
+              type="button"
+              className={activeSection === 'projects' ? 'nav-active' : ''}
+              onClick={() => handleNavigate('projects')}
+            >
               Projects
             </button>
-            <button type="button" onClick={() => handleNavigate('contact')}>
+            <button
+              type="button"
+              className={activeSection === 'contact' ? 'nav-active' : ''}
+              onClick={() => handleNavigate('contact')}
+            >
               Contact
             </button>
-            <button type="button" onClick={() => handleNavigate('articles')}>
+            <button
+              type="button"
+              className={activeSection === 'articles' ? 'nav-active' : ''}
+              onClick={() => handleNavigate('articles')}
+            >
               Articles
             </button>
-            <button type="button" onClick={() => handleNavigate('values')}>
+            <button
+              type="button"
+              className={activeSection === 'values' ? 'nav-active' : ''}
+              onClick={() => handleNavigate('values')}
+            >
               Values
             </button>
             <a
@@ -126,8 +152,9 @@ function App() {
           </div>
         </nav>
 
-        <main>
-          <section id="contact" className="hero-section">
+        <main className="content-view">
+          {activeSection === 'contact' && (
+          <section id="contact" className="hero-section content-section">
             <div className="section-label">Contact</div>
             <div className="terminal-badge">Hi! It&apos;s me Alexander Luo.</div>
             <h1 className="hero-title">Computer Science &amp; Applied Programming</h1>
@@ -149,8 +176,10 @@ function App() {
               </a>
             </div>
           </section>
+          )}
 
-          <section id="projects" className="projects-section">
+          {activeSection === 'projects' && (
+          <section id="projects" className="projects-section content-section">
             <h2 className="section-title">Major Projects</h2>
             <div className="projects-grid">
               {projects.map((project, idx) => (
@@ -186,8 +215,10 @@ function App() {
               ))}
             </div>
           </section>
+          )}
 
-          <section id="articles" className="articles-section">
+          {activeSection === 'articles' && (
+          <section id="articles" className="articles-section content-section">
             <h2 className="section-title">Articles &amp; Highlights</h2>
             <div className="articles-grid">
               {articles.map((article, idx) => (
@@ -210,8 +241,10 @@ function App() {
               ))}
             </div>
           </section>
+          )}
 
-          <section id="values" className="values-section">
+          {activeSection === 'values' && (
+          <section id="values" className="values-section content-section">
             <h2 className="section-title">Values</h2>
             <div className="values-grid">
               {values.map((value, idx) => (
@@ -222,14 +255,17 @@ function App() {
               ))}
             </div>
           </section>
+          )}
         </main>
 
+        {activeSection && (
         <footer className="footer">
           <p>
             Built with React + Vite + TypeScript // Hosted via Cloudflare Edge
             Network
           </p>
         </footer>
+        )}
       </div>
     </>
   );
