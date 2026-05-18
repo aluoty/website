@@ -101,7 +101,7 @@ But Linux is fun **if you try in a healthy way**:
   + If you like MacOS, go with ElementaryOS or ZorinOS core.
   + If you want security, go with Tails.
   + If you like Windows and traditional OS, go with Linux Mint.
-  + If you want support for NVIDIA, go with Pop!_OS
+  + If you want support for NVIDIA, go with Pop!_OS.
 + Here are also some desktop environments:
   + If you want most customization, go with Hyprland.
   + If you want keyboard-driven, go with Tiling Managers:
