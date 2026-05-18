@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation, useSearch } from 'wouter';
 import type { Project } from './App';
 import { Navbar } from './components/Navbar';
+import { ProjectVideoPlayer } from './components/ProjectVideoPlayer';
 import { OrbitMenu } from './OrbitMenu';
 import { getAllArticles } from './lib/articles';
 import type { SectionId } from './types/sections';
@@ -136,20 +137,7 @@ export function Portfolio({ projects }: PortfolioProps) {
                       </span>
                     </div>
                     {project.videoSrc && (
-                      <div className="project-card__media">
-                        <video
-                          className="project-card__video"
-                          src={project.videoSrc}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          preload="metadata"
-                          onLoadedData={(event) => {
-                            event.currentTarget.classList.add('is-loaded');
-                          }}
-                        />
-                      </div>
+                      <ProjectVideoPlayer src={project.videoSrc} />
                     )}
                     <h3>{project.title}</h3>
                     <p>{project.description}</p>
