@@ -65,7 +65,7 @@ Have you wanted to try an OS that let's you customize everything?
 
 Linux is going to be your cup of tea.
 
-Linux can be very itimidating for a beginner, there are **so** many distrubutions(distro) of Linux.
+Linux can be very itimidating for a beginner, there are **so** many distributions(distro) of Linux.
 
 But Linux is fun **if you try in a healthy way**:
 
