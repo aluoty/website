@@ -38,11 +38,11 @@ export const projects: Project[] = [
     status: 'in-progress',
   },
   {
-    title: 'Nebulance-Core',
+    title: 'AstraCore',
     description:
       'A space simulation made using Rust, the initial plan of Nebulance.',
     tags: ['Rust','Simulation','Useful'],
-    link: 'https://github.com/alexanderluo666/nebulance-core',
+    link: 'https://github.com/alexanderluo666/Astracore',
     status: 'active',
   },
   {
