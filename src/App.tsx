@@ -35,6 +35,14 @@ export const projects: Project[] = [
     tags: ['TypeScript', 'Game', '3D'],
     link: 'https://nebulance.alexanderluo.com',
     videoSrc: '/videos/nebulance-preview.mp4',
+    status: 'in-progress',
+  },
+  {
+    title: 'Nebulance-Core',
+    description:
+      'A space simulation made using Rust, the initial plan of Nebulance.',
+    tags: ['Rust','Simulation','Useful'],
+    link: 'https://github.com/alexanderluo666/nebulance-core',
     status: 'active',
   },
   {
