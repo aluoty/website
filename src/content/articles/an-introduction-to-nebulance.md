@@ -1,6 +1,6 @@
 ---
 title: An Introduction To Nebulance 
-description: A short essay on my project "Nebulance"
+description: A short essay on my project "Nebulance".
 date: 2026-05-18
 tags:
   - gamedev
@@ -14,7 +14,7 @@ And after some time, I tried to use Unreal, but it took at least 4 hours to comp
 
 ## Inspiration
 
-I got my inspiration from **World**, **No Man's Sky**, **Minecraft** and **Myself**. 
+I got my inspiration from **The World**, **No Man's Sky**, **Minecraft** and **Myself**. 
 
 I am sure that if you have been in the gaming community, you have heard about Minecraft. I used to play ***a ton of*** minecraft, many hours a day. 
 
