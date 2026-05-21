@@ -18,6 +18,7 @@ export const projects: Project[] = [
     description:
       'A terminal-based information and hardware display based on Rust.',
     tags:['Rust','CLI','Tools'],
+    link:'https://github.com/alexanderluo666/speedfetch',
     status: 'active',
   },
   {
