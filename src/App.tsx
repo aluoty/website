@@ -14,6 +14,13 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'Speedfetch',
+    description:
+      'A terminal-based information and hardware display based on Rust.',
+    tags:['Rust','CLI','Tools'],
+    status: 'active',
+  },
+  {
     title: 'Playground',
     description:
       'A playground for me to experiment with Python, it has an application featuring a custom question-generation engine and JSON data persistence layer designed to drill advanced bitwise logic operations, as well as applications featuring the visualization of connections between the objects.',
