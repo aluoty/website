@@ -62,11 +62,11 @@ export const projects: Project[] = [
     status: 'completed',
   },
   {
-    title: 'Velora-React',
+    title: 'Velora',
     description:
       'A simple planner made by me, contains features like focus, priorities and interests',
     tags: ['Typescript', 'Planner', 'Useful'],
-    link: 'https://velora-react.alexanderluo.com',
+    link: 'https://velora.alexanderluo.com',
     status: 'completed',
   },
   {
