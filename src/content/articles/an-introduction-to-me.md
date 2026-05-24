@@ -9,7 +9,7 @@ tags:
 ---
 
 > "Hello World!"
-## Information of Myself
+## Information To Me
 
 I am Alexander Luo, also known by:
 + Luo Tingyou
@@ -58,7 +58,7 @@ Sometimes, it is just a wonder, have I experienced enough, is it not?
 
 Are we at the start or at the end.
 
-> Should today be the last day, you would appreciated it.
+> Should today be the last day, what will you do for the final dance?
 
 Sometimes, do we squeeze ourselves out or rest?
 
