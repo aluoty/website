@@ -104,7 +104,7 @@ export function Portfolio({ projects }: PortfolioProps) {
               <h1 className="hero-title">Computer Science &amp; Applied Programming</h1>
               <p className="hero-subtitle">
                 I&apos;m a primary school student designing games and tools on my
-                Fedora Linux machine.
+                Linux machine.
               </p>
               <div className="cta-group">
                 <button onClick={handleCopyEmail} className="btn-primary">

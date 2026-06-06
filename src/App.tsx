@@ -14,6 +14,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'Nodus',
+    description:
+      'A terminal-based file manager based on Rust.',
+    tags: ['Rust','CLI','File Manager'],
+    link: 'https://github.com/aluoty/nodus',
+    status: 'active',
+  }
+  {
     title: 'Speedfetch',
     description:
       'A terminal-based information and hardware display based on Rust.',
@@ -50,7 +58,7 @@ export const projects: Project[] = [
     description:
       'A space simulation made using Rust, the initial plan of Nebulance.',
     tags: ['Rust','Simulation','Useful'],
-    link: 'https://github.com/alexanderluo666/Astracore',
+    link: 'https://github.com/aluoty/Astracore',
     status: 'active',
   },
   {
