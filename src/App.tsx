@@ -20,7 +20,7 @@ export const projects: Project[] = [
     tags: ['Rust','CLI','File Manager'],
     link: 'https://github.com/aluoty/nodus',
     status: 'active',
-  }
+  },
   {
     title: 'Speedfetch',
     description:
@@ -52,14 +52,6 @@ export const projects: Project[] = [
     link: 'https://nebulance.alexanderluo.com',
     videoSrc: '/videos/nebulance-preview.mp4',
     status: 'in-progress',
-  },
-  {
-    title: 'AstraCore',
-    description:
-      'A space simulation made using Rust, the initial plan of Nebulance.',
-    tags: ['Rust','Simulation','Useful'],
-    link: 'https://github.com/aluoty/Astracore',
-    status: 'active',
   },
   {
     title: 'Neon-Drift',
