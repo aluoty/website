@@ -64,7 +64,7 @@ export function Navbar({
           </div>
           <a
             className="nav-github"
-            href="https://github.com/alexanderluo666"
+            href="https://github.com/aluoty"
             target="_blank"
             rel="noreferrer"
           >
