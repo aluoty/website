@@ -16,10 +16,10 @@ export const projects: Project[] = [
   {
     title: 'Nodus',
     description:
-      'A terminal-based file manager based on Rust.',
-    tags: ['Rust','CLI','File Manager'],
+      'An lightweight terminal-based file manager based on C.',
+    tags: ['C','CLI','File Manager'],
     link: 'https://github.com/aluoty/nodus',
-    status: 'active',
+    status: 'completed',
   },
   {
     title: 'Speedfetch',
@@ -27,7 +27,7 @@ export const projects: Project[] = [
       'A terminal-based information and hardware display based on Rust.',
     tags:['Rust','CLI','Tools'],
     link:'https://github.com/aluoty/speedfetch',
-    status: 'active',
+    status: 'completed',
   },
   {
     title: 'Playground',
