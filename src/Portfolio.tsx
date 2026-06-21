@@ -31,7 +31,7 @@ export function Portfolio({ projects }: PortfolioProps) {
     {
       title: 'Build to learn',
       description:
-        'I learn best by making things — games, tools, and experiments on my Linux/BSD machine.',
+        'I learn best by making things — games, tools, and experiments on my Linux machine.',
     },
     {
       title: 'Curiosity first',
