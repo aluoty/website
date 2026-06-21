@@ -78,7 +78,7 @@ But Linux is fun **if you try in a healthy way**:
 
 ### You don't have to pick a single 'best' desktop environment that early.
 
-+ For me, I daily drive Fedora + GNOME, one of the best GNOME-supported distros.
++ For me, I daily drive NixOS + GNOME, one of the best GNOME-supported distros.
 + You can try Hyprland and KDE before choosing you 'best' desktop environment.
 
 ### Common Mistakes
@@ -92,6 +92,7 @@ But Linux is fun **if you try in a healthy way**:
 + My recommendation is to start with Ubuntu for 1-6 weeks, and then switch to Fedora. 
 + You can try **'super hard distros'** like Arch, Gentoo, even Linux From Scratch.
 + But you have to know what you want from a distro:
+  + If you want maximum power and benefits, go with NixOS.
   + If you want best reliability, go with Debian.
   + If you want most and fastest updates(it might break your system), go with Arch.
   + If you want maximum customization, go with Gentoo.
@@ -111,9 +112,9 @@ But Linux is fun **if you try in a healthy way**:
   + If you want something that just works, go with KDE.
   + If you want lightweight, go with XCFE.
   + If you want something that is most modern go with these:
-    + GNOME
-    + Deepin
-    + Budgie
+    + GNOME for its design
+    + ~Deepin~ I no longer recommend Deepin, you can do research, but mainly because it might contain spyware
+    + Budgie for its lightweight design
 + However, these are just some examples of distros and desktop environments, and people's opinions differ.
 
 Yea, try linux!

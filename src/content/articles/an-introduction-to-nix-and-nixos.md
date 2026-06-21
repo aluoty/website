@@ -9,7 +9,7 @@ tags:
 ---  
 
 # Introduction
-Nix and NixOS are 2 exceptional tools that I use daily.
+Nix and NixOS are 2 exceptional tools that I use daily. It allows declarative environments and reproducibility that most of the users praise, favour and want.
 
 Let me provide you with materials of them first: [Nix Wiki](https://en.wikipedia.org/wiki/Nix_(package_manager)), [Nix Source](https://github.com/NixOS/nix), [Nix and NixOS website](https://nixos.org), [NixOS Wiki](https://en.wikipedia.org/wiki/NixOS), [NixOS Source](https://github.com/NixOS/nixpkgs), [Nix and NixOS group on Github](https://github.com/NixOS), these are the websites you may be interested to visit. 
 
