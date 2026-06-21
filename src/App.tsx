@@ -14,6 +14,30 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'integra',
+    description:
+        'A calculator with algebra solving with a graphical interface',
+    tags: ['Haskell', 'GUI', 'Math'],
+    link: 'https://github.com/aluoty/integra',
+    status: 'in-progress'
+  },
+  {
+    title: 'fnv64sum',
+    description:
+        'A lightweight hashing software that utilizes the fnv algorithm.',
+    tags: ['C', 'CLI', 'Hash'],
+    link: 'https://github.com/aluoty/fnv64sum',
+    status: 'completed'
+  },
+  {
+    title: 'Relay',
+    description:
+        'A lightweight chat with a text based interface',
+    tags: ['Golang', 'TUI', 'Chat'],
+    link: 'https://github.com/aluoty/relay',
+    status: 'completed',
+  },
+  {
     title: 'Nodus',
     description:
       'An lightweight terminal-based file manager based on C.',
@@ -51,7 +75,7 @@ export const projects: Project[] = [
     tags: ['TypeScript', 'Game', '3D'],
     link: 'https://nebulance.alexanderluo.com',
     videoSrc: '/videos/nebulance-preview.mp4',
-    status: 'in-progress',
+    status: 'active',
   },
   {
     title: 'Neon-Drift',
