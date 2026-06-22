@@ -1,6 +1,6 @@
-# alexanderluo.com
+# website
 
-Personal portfolio site built with [Astro](https://astro.build) + React.
+Personal portfolio site built with [Astro](https://astro.build) + React @ [website](https://alexanderluo.com)
 
 ## Commands
 
