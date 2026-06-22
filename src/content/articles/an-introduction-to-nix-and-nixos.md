@@ -76,7 +76,7 @@ And now once you try to open the terminal again and try fastfetch, it is not via
 Now, you can try to inspect some simple /etc/nixos/configuration.nix config that online users or AI have to consider for the final time. If yes, then proceed onto the installer and install. You will be guided through Timezone, Locales(Best to set US English as primary locale for system, excluding Dates, etc.), your DE(XFCE, KDE, GNOME, or No Desktop for WM installation later on), then your users, and disk configuration(use entire disk) and in that choose BTRFS filesystem, it is crucial and you can have Swap. Then just proceed, and shortly, after <10min, you can reboot.
 
 # Closure
-Now with a new system, you can try edit /etc/nixos/configuration.nix briefly, for more guides, please take a look at [my second article regarding NixOS](intermediate-nix-and-nixos-skills.md).
+Now with a new system, you can try edit /etc/nixos/configuration.nix briefly, for more guides, please take a look at [my second article regarding NixOS](https://alexanderluo.com/articles/intermediate-nix-and-nixos-skills.md).
 
 
 
