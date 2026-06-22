@@ -2,10 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import { Starfield } from '../components/Starfield';
+import { Planets } from '../components/Planets';
 ---
 
 <Layout>
   <Starfield client:visible />
+  <Planets />
   <div class="nebula nebula--one" aria-hidden="true" />
   <div class="nebula nebula--two" aria-hidden="true" />
 

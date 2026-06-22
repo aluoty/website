@@ -10,57 +10,55 @@ export function Starfield() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationId = 0;
-    let stars: { x: number; y: number; r: number; speed: number; phase: number }[] = [];
+    let id = 0;
+    let stars: { x: number; y: number; r: number; s: number; p: number }[] = [];
 
     const init = () => {
-      const dpr = 1;
       const w = window.innerWidth;
       const h = window.innerHeight;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
+      canvas.width = w;
+      canvas.height = h;
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const count = Math.floor((w * h) / 16000);
-      stars = Array.from({ length: count }, () => ({
+      const n = Math.floor((w * h) / 14000);
+      stars = Array.from({ length: n }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        r: Math.random() * 1.1 + 0.3,
-        speed: Math.random() * 0.002 + 0.001,
-        phase: Math.random() * Math.PI * 2,
+        r: Math.random() * 1.3 + 0.2,
+        s: Math.random() * 0.002 + 0.0005,
+        p: Math.random() * Math.PI * 2,
       }));
     };
 
-    const draw = (time: number) => {
-      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    const draw = (t: number) => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       ctx.beginPath();
       for (const star of stars) {
-        const twinkle = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(time * star.speed + star.phase));
-        const radius = star.r * (0.6 + 0.4 * twinkle);
+        const twinkle = 0.5 + 0.5 * Math.sin(t * star.s + star.p);
+        const radius = star.r * (0.4 + 0.6 * twinkle);
         ctx.moveTo(star.x + radius, star.y);
         ctx.arc(star.x, star.y, radius, 0, Math.PI * 2);
       }
-      ctx.fillStyle = 'rgba(210, 222, 255, 0.5)';
+      ctx.fillStyle = 'rgba(220, 235, 255, 0.6)';
       ctx.fill();
 
-      animationId = requestAnimationFrame(draw);
+      id = requestAnimationFrame(draw);
     };
 
     init();
-    animationId = requestAnimationFrame(draw);
+    id = requestAnimationFrame(draw);
 
     const onResize = () => {
-      cancelAnimationFrame(animationId);
+      cancelAnimationFrame(id);
       init();
-      animationId = requestAnimationFrame(draw);
+      id = requestAnimationFrame(draw);
     };
     window.addEventListener('resize', onResize);
 
     return () => {
-      cancelAnimationFrame(animationId);
+      cancelAnimationFrame(id);
       window.removeEventListener('resize', onResize);
     };
   }, []);

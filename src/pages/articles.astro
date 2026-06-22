@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import { Starfield } from '../components/Starfield';
+import { Planets } from '../components/Planets';
 import { getCollection } from 'astro:content';
 
 const articleEntries = await getCollection('articles');
@@ -24,6 +25,7 @@ const articles = articleEntries
 
 <Layout title="Articles — Alexander Luo">
   <Starfield client:visible />
+  <Planets />
   <div class="nebula nebula--one" aria-hidden="true" />
   <div class="nebula nebula--two" aria-hidden="true" />
 
