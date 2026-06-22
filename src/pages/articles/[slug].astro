@@ -1,0 +1,87 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((entry) => ({
+    params: { slug: entry.id.replace(/\.md$/, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const slug = entry.id.replace(/\.md$/, '');
+const words = entry.body?.trim().split(/\s+/).filter(Boolean).length ?? 0;
+const readingTimeMinutes = Math.max(1, Math.ceil(words / 200));
+
+function formatDate(isoDate: string): string {
+  return new Date(isoDate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+<Layout title={`${entry.data.title} — Alexander Luo`}>
+  <div class="nebula nebula--one" aria-hidden="true" />
+  <div class="nebula nebula--two" aria-hidden="true" />
+
+  <div class="page page--has-section" id="page-root">
+    <nav class="navbar">
+      <div class="navbar__inner">
+        <a href="/?section=articles" class="nav-logo" style="text-decoration:none">
+          <span class="nav-logo__mark" aria-hidden="true">✦</span>
+          Alexander Luo
+        </a>
+        <div class="nav-links">
+          <a class="nav-github" href="https://github.com/aluoty" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="content-view content-view--article">
+      <article class="article-layout">
+        <header class="article-layout__header">
+          <a href="/?section=articles" class="article-layout__back">
+            ← Back to articles
+          </a>
+          <p class="article-layout__meta">
+            <time datetime={entry.data.date}>{formatDate(entry.data.date)}</time>
+            <span class="article-layout__sep" aria-hidden="true">·</span>
+            <span>{readingTimeMinutes} min read</span>
+          </p>
+          <h1 class="article-layout__title">{entry.data.title}</h1>
+          <p class="article-layout__description">{entry.data.description}</p>
+          {entry.data.tags && entry.data.tags.length > 0 && (
+            <ul class="article-layout__tags">
+              {entry.data.tags.map((tag: string) => <li>{tag}</li>)}
+            </ul>
+          )}
+        </header>
+
+        <div class="article-layout__body">
+          <Content />
+        </div>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Built with Astro + React + TypeScript // Hosted via Cloudflare Edge Network
+      </p>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  .starfield {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+</style>
