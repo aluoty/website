@@ -19,7 +19,7 @@ export const projects: Project[] = [
         'A calculator with algebra solving with a graphical interface',
     tags: ['Haskell', 'GUI', 'Math'],
     link: 'https://github.com/aluoty/integra',
-    status: 'in-progress'
+    status: 'active',
   },
   {
     title: 'fnv64sum',
@@ -27,7 +27,7 @@ export const projects: Project[] = [
         'A lightweight hashing software that utilizes the fnv algorithm.',
     tags: ['C', 'CLI', 'Hash'],
     link: 'https://github.com/aluoty/fnv64sum',
-    status: 'completed'
+    status: 'completed',
   },
   {
     title: 'Relay',
