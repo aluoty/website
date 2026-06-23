@@ -4,6 +4,7 @@
   --text-dim: #6b8ba0;
   --accent: #38bdf8;
   --accent2: #2dd4bf;
+  --steel: #64748b;
   --border: rgba(56, 189, 248, 0.1);
   --font: 'JetBrains Mono', 'Fira Code', monospace;
 }
@@ -20,6 +21,10 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   overflow-x: hidden;
+  background-image:
+    linear-gradient(rgba(100,116,139,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100,116,139,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
 ::-webkit-scrollbar { width: 5px }
@@ -50,8 +55,8 @@ body {
 }
 
 @keyframes planet-float {
-  from { transform: translateY(-6px) }
-  to   { transform: translateY(6px) }
+  from { transform: translateY(calc(var(--float, 6px) * -1)) }
+  to   { transform: translateY(calc(var(--float, 6px))) }
 }
 
 /* Nebulas */
@@ -300,6 +305,7 @@ body {
   display: flex;
   flex-direction: column;
   transition: border-color 0.15s;
+  border-top-color: rgba(100, 116, 139, 0.15);
 }
 
 .project-card:hover,

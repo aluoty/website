@@ -1,38 +1,93 @@
+const STEEL = ['#64748b','#767f92','#858b9d','#6e7d95','#546379','#94a3b8','#7c8aa3','#5a6b7f','#8b9dc3','#9ca3af','#718096','#a0aabf'];
+const TEAL = '#2dd4bf';
+const BLUE = '#38bdf8';
+const WHITE = '#e2e8f0';
+
+function mulberry32(a: number) {
+  return () => {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const rng = mulberry32(42);
+
+interface P {
+  cx: number; cy: number; r: number;
+  fill: string; ring: boolean;
+  dur: number; del: number; float: number;
+}
+
+function buildPlanets(): P[] {
+  const out: P[] = [];
+  for (let i = 0; i < 28; i++) {
+    const cx = rng() * 1440;
+    const cy = rng() * 900;
+    const r = rng() * 24 + 5;
+    const steel = STEEL[Math.floor(rng() * STEEL.length)];
+    const accent = rng() > 0.7;
+    const fill = accent ? (rng() > 0.5 ? TEAL : BLUE) : steel;
+    const ring = rng() > 0.65;
+    const dur = rng() * 18 + 8;
+    const del = rng() * -20;
+    const float = rng() * 8 + 3;
+    out.push({ cx, cy, r, fill, ring, dur, del, float });
+  }
+  out.sort((a, b) => a.r - b.r);
+  return out;
+}
+
 export function Planets() {
+  const planets = buildPlanets();
   return (
     <svg className="planets" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
       <defs>
-        <radialGradient id="planet1" cx="40%" cy="35%" r="50%">
-          <stop offset="0" stopColor="#7dd3fc" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#0284c7" stopOpacity="0.15" />
-        </radialGradient>
-        <radialGradient id="planet2" cx="40%" cy="35%" r="50%">
-          <stop offset="0" stopColor="#5eead4" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#0d9488" stopOpacity="0.1" />
-        </radialGradient>
-        <radialGradient id="planet3" cx="40%" cy="35%" r="50%">
-          <stop offset="0" stopColor="#a5b4fc" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#4338ca" stopOpacity="0.08" />
-        </radialGradient>
+        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor={WHITE} stopOpacity="0.03" />
+          <stop offset="100%" stopColor={WHITE} stopOpacity="0" />
+        </linearGradient>
       </defs>
 
-      <g className="planet-group" style={{ transformOrigin: '1080px 180px' }}>
-        <ellipse cx={1080} cy={180} rx={48} ry={10} fill="none" stroke="rgba(56,189,248,0.1)" strokeWidth={1} />
-        <circle cx={1080} cy={180} r={26} fill="url(#planet1)" />
-      </g>
+      {planets.map((p, i) => {
+        const gradId = `pg${i}`;
+        return (
+          <g
+            key={i}
+            className="planet-group"
+            style={{
+              transformOrigin: `${p.cx}px ${p.cy}px`,
+              animationDuration: `${p.dur}s`,
+              animationDelay: `${p.del}s`,
+              '--float': `${p.float}px`,
+            } as React.CSSProperties}
+          >
+            {p.ring && (
+              <ellipse
+                cx={p.cx}
+                cy={p.cy}
+                rx={p.r * (rng() * 0.8 + 1.8)}
+                ry={p.r * (rng() * 0.15 + 0.2)}
+                fill="none"
+                stroke={p.fill}
+                strokeOpacity={0.08 + rng() * 0.08}
+                strokeWidth={0.5 + rng() * 0.5}
+                transform={`rotate(${rng() * 360}, ${p.cx}, ${p.cy})`}
+              />
+            )}
+            <defs>
+              <radialGradient id={gradId} cx="38%" cy="32%" r="55%">
+                <stop offset="0" stopColor={WHITE} stopOpacity="0.15" />
+                <stop offset="100%" stopColor={p.fill} stopOpacity="0.15" />
+              </radialGradient>
+            </defs>
+            <circle cx={p.cx} cy={p.cy} r={p.r} fill={`url(#${gradId})`} stroke={p.fill} strokeWidth={0.3} strokeOpacity={0.3} />
+          </g>
+        );
+      })}
 
-      <g className="planet-group" style={{ transformOrigin: '170px 630px', animationDuration: '20s' }}>
-        <circle cx={170} cy={630} r={14} fill="url(#planet2)" />
-      </g>
-
-      <g className="planet-group" style={{ transformOrigin: '1040px 540px', animationDuration: '25s' }}>
-        <circle cx={1040} cy={540} r={10} fill="url(#planet3)" />
-      </g>
-
-      <g className="planet-group" style={{ transformOrigin: '320px 200px', animationDuration: '18s' }}>
-        <ellipse cx={320} cy={200} rx={22} ry={4} fill="none" stroke="rgba(45,212,191,0.08)" strokeWidth={1} />
-        <circle cx={320} cy={200} r={10} fill="url(#planet2)" />
-      </g>
+      <rect x="0" y="0" width="1440" height="900" fill="url(#g1)" />
     </svg>
   );
 }
