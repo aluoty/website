@@ -1,6 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import { Starfield } from '../../components/Starfield';
+import { Planets } from '../../components/Planets';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -25,28 +28,17 @@ function formatDate(isoDate: string): string {
 }
 ---
 <Layout title={`${entry.data.title} — Alexander Luo`}>
+  <Starfield client:visible />
+  <Planets />
 
-
-  <div class="page page--has-section" id="page-root">
-    <nav class="navbar">
-      <div class="navbar__inner">
-        <a href="/" class="nav-logo">
-          <span class="nav-logo__mark" aria-hidden="true">✦</span>
-          Alexander Luo
-        </a>
-        <div class="nav-links">
-          <a class="nav-github" href="https://github.com/aluoty" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-        </div>
-      </div>
-    </nav>
+  <div class="page" id="page-root">
+    <Navbar active="articles" />
 
     <main class="content-view content-view--article">
       <article class="article-layout">
         <header class="article-layout__header">
           <a href="/articles" class="article-layout__back">
-            ← Back to articles
+            &larr; Back to articles
           </a>
           <p class="article-layout__meta">
             <time datetime={entry.data.date}>{formatDate(entry.data.date)}</time>
@@ -69,18 +61,7 @@ function formatDate(isoDate: string): string {
     </main>
 
     <footer class="footer">
-      <p>
-        Built with Astro + React + TypeScript // Hosted via Cloudflare Edge Network
-      </p>
+      <p>Built with Astro + React + TypeScript // Hosted via Cloudflare Edge Network</p>
     </footer>
   </div>
 </Layout>
-
-<style>
-  .starfield {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-</style>
