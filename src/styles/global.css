@@ -47,25 +47,25 @@ body {
 /* Page */
 #page-root {
   position: relative; z-index: 1;
-  max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+  max-width: 1140px; margin: 0 auto; padding: 0 2rem;
   min-height: 100vh; display: flex; flex-direction: column;
 }
 
 /* Navbar */
 .navbar {
-  position: sticky; top: 0; z-index: 50; padding: 1rem 0 1.25rem;
+  position: sticky; top: 0; z-index: 50; padding: 1.25rem 0 1.5rem;
 }
 
 .navbar__inner {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 0.75rem; padding: 0.5rem 0.5rem 0.5rem 1rem;
+  gap: 0.75rem; padding: 0.45rem 0.45rem 0.45rem 1.1rem;
   border: 1px solid var(--border);
-  background: rgba(3, 6, 18, 0.7);
+  background: rgba(3, 6, 18, 0.65);
 }
 
 .nav-logo {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.9rem; font-weight: 600;
+  font-size: 0.85rem; font-weight: 600;
   text-decoration: none; font-family: var(--font);
   color: var(--text);
 }
@@ -74,6 +74,8 @@ body {
   display: inline-flex; align-items: center; justify-content: center;
   width: 1.25rem; height: 1.25rem;
   border: 1px solid var(--border); flex-shrink: 0;
+  font-size: 0.55rem;
+  color: var(--accent2);
 }
 
 .nav-links {
@@ -88,7 +90,7 @@ body {
 
 .nav-links__group a {
   color: var(--text-dim);
-  font-size: 0.75rem; font-family: var(--font);
+  font-size: 0.7rem; font-family: var(--font);
   text-decoration: none; padding: 0.3rem 0.6rem;
   transition: color 0.15s, background 0.15s;
 }
@@ -100,7 +102,7 @@ body {
 .nav-github {
   display: inline-flex; align-items: center;
   padding: 0.3rem 0.6rem;
-  font-size: 0.75rem; font-family: var(--font);
+  font-size: 0.7rem; font-family: var(--font);
   color: var(--accent2); text-decoration: none;
   border: 1px solid rgba(45, 212, 191, 0.15);
   transition: color 0.15s, background 0.15s;
@@ -109,37 +111,40 @@ body {
 .nav-github:hover { color: #fff; background: rgba(56, 189, 248, 0.15) }
 
 /* Content */
-.content-view { flex: 1; display: flex; flex-direction: column }
-.content-view--article { align-items: center; padding: 0 0.5rem }
+.content-view { flex: 1; display: flex; flex-direction: column; gap: 2.5rem }
+.content-view--article { align-items: center; gap: 0; padding: 0 0.5rem }
 
 /* Hero */
 .hero-section {
-  padding: 5rem 0 4rem; min-height: 70vh;
+  padding: 6rem 0 4rem; min-height: 80vh;
   display: flex; flex-direction: column; justify-content: center;
 }
 
 .section-label {
-  font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--accent2); margin-bottom: 0.75rem;
-}
-
-.terminal-badge {
-  display: inline-block;
-  font-size: 0.7rem; color: var(--accent);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  margin-bottom: 1.5rem; padding: 0.15rem 0.5rem;
+  font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent2); margin-bottom: 1rem;
 }
 
 .hero-title {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 700; line-height: 1.15; margin-bottom: 1rem;
-  letter-spacing: -0.5px;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 700; line-height: 1.1; margin-bottom: 1.25rem;
   color: var(--text);
 }
 
 .hero-subtitle {
   color: var(--text-dim); max-width: 600px;
-  margin-bottom: 2rem; font-size: 0.9rem;
+  margin-bottom: 1.5rem; font-size: 0.9rem; line-height: 1.65;
+}
+
+.skill-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem;
+}
+
+.skill-tag {
+  font-size: 0.6rem; padding: 0.2rem 0.55rem;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
 }
 
 /* Buttons */
@@ -147,7 +152,7 @@ body {
 
 .btn-primary, .btn-whatsapp {
   font-family: var(--font);
-  padding: 0.35rem 0.9rem; font-size: 0.8rem;
+  padding: 0.4rem 1rem; font-size: 0.78rem;
   cursor: pointer; background: transparent;
   border: 1px solid var(--accent); color: var(--accent);
   text-decoration: none; display: inline-flex; align-items: center;
@@ -160,29 +165,35 @@ body {
 .btn-whatsapp:hover { background: #25d366; color: #052e16 }
 
 /* Sections */
-.projects-section, .articles-section, .values-section { padding: 3rem 0 4rem }
+.projects-section, .articles-section, .values-section { padding: 3.5rem 0 4rem }
 
 .section-title {
-  font-size: 1.1rem; font-weight: 600; color: var(--text);
-  margin-bottom: 2rem; letter-spacing: -0.3px;
+  font-size: 1.05rem; font-weight: 600; color: var(--accent2);
+  margin-bottom: 2rem; letter-spacing: -0.2px;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+
+.section-title::after {
+  content: ''; flex: 1; height: 0; border-top: 1px solid var(--border);
 }
 
 /* Grids */
 .projects-grid, .articles-grid, .values-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 /* Cards */
 .project-card, .article-card, .value-card {
-  border: 1px solid rgba(56, 189, 248, 0.15);
-  padding: 1rem; display: flex; flex-direction: column;
-  transition: border-color 0.15s;
+  border: 1px solid var(--border);
+  padding: 1.5rem; display: flex; flex-direction: column;
+  transition: border-color 0.15s, background 0.15s;
 }
 
 .project-card:hover, .article-card:hover, .value-card:hover {
-  border-color: rgba(56, 189, 248, 0.35);
+  border-color: rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.02);
 }
 
 .project-card h3, .article-card h3, .value-card h3 {
@@ -192,11 +203,11 @@ body {
 
 .project-card p, .article-card p, .value-card p {
   color: var(--text-dim); font-size: 0.8rem;
-  flex-grow: 1; margin-bottom: 1rem; line-height: 1.5;
+  flex-grow: 1; margin-bottom: 1rem; line-height: 1.6;
 }
 
 .card-header {
-  display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;
 }
 
 .status-indicator { width: 5px; height: 5px }
@@ -205,7 +216,7 @@ body {
 .status-indicator.completed { background: var(--accent) }
 
 .status-text {
-  font-size: 0.6rem; color: var(--text-dim); letter-spacing: 0.3px;
+  font-size: 0.55rem; color: var(--text-dim); letter-spacing: 0.25em;
 }
 
 .tag-row {
@@ -213,35 +224,42 @@ body {
 }
 
 .tag {
-  font-size: 0.65rem; color: var(--text-dim);
+  font-size: 0.6rem; color: var(--text-dim);
   border: 1px solid var(--border); padding: 1px 6px;
 }
 
 .card-link {
   color: var(--accent); text-decoration: none; font-size: 0.75rem;
   margin-top: auto; display: inline-flex; align-items: center; gap: 0.25rem;
-  padding: 0.25rem 0.5rem; border: 1px solid transparent;
-  transition: border-color 0.15s, color 0.15s;
+  padding: 0.3rem 0.6rem; border: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 
 .card-link:hover { color: var(--bg); border-color: var(--accent); background: var(--accent) }
 
 .articles-intro {
   color: var(--text-dim); font-size: 0.85rem;
-  max-width: 52ch; margin: -1rem 0 2rem; line-height: 1.6;
+  max-width: 52ch; margin: -1rem 0 2rem; line-height: 1.65;
 }
 
 .article-card__date {
-  font-size: 0.65rem; color: var(--text-dim);
+  font-size: 0.6rem; color: var(--text-dim);
   margin-bottom: 0.4rem; letter-spacing: 0.02em;
 }
 
 /* Footer */
 .footer {
-  text-align: center; padding: 3rem 0 2rem;
-  font-size: 0.7rem; color: var(--text-dim);
+  text-align: center; padding: 2.5rem 0 2rem;
+  font-size: 0.65rem; color: var(--text-dim);
   border-top: 1px solid var(--border);
+  margin-top: 2rem;
 }
+
+.footer a {
+  color: var(--accent); text-decoration: none;
+}
+
+.footer a:hover { color: var(--accent2) }
 
 /* Article layout */
 .article-layout {
@@ -254,15 +272,18 @@ body {
 }
 
 .article-layout__back {
-  display: inline-flex; align-items: center; gap: 0.35rem;
-  font-size: 0.8rem; color: var(--accent);
-  text-decoration: none; margin-bottom: 1.25rem; transition: color 0.15s;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.78rem; color: var(--text-dim);
+  text-decoration: none; margin-bottom: 1.25rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--border);
+  transition: color 0.15s, border-color 0.15s;
 }
 
-.article-layout__back:hover { color: #e0f2fe }
+.article-layout__back:hover { color: var(--accent); border-color: var(--accent) }
 
 .article-layout__meta {
-  font-size: 0.75rem; color: var(--text-dim);
+  font-size: 0.7rem; color: var(--text-dim);
   letter-spacing: 0.02em; margin-bottom: 1rem;
 }
 
@@ -275,7 +296,7 @@ body {
 }
 
 .article-layout__description {
-  font-size: 1rem; line-height: 1.55;
+  font-size: 0.95rem; line-height: 1.55;
   color: #94adc0; margin-bottom: 1.25rem;
 }
 
@@ -284,22 +305,22 @@ body {
 }
 
 .article-layout__tags li {
-  font-size: 0.65rem; padding: 2px 8px;
+  font-size: 0.6rem; padding: 2px 8px;
   border: 1px solid rgba(56, 189, 248, 0.18);
   color: var(--accent2);
 }
 
 .article-layout__body {
-  color: #dce8f0; font-size: 1rem; line-height: 1.7;
+  color: #dce8f0; font-size: 0.95rem; line-height: 1.75;
 }
 
 .article-layout__body h2 {
-  font-size: 1.25rem; font-weight: 600; color: var(--text);
+  font-size: 1.2rem; font-weight: 600; color: var(--text);
   margin: 2rem 0 0.75rem; line-height: 1.3;
 }
 
 .article-layout__body h3 {
-  font-size: 1.05rem; font-weight: 600; color: #e2e8f0;
+  font-size: 1rem; font-weight: 600; color: #e2e8f0;
   margin: 1.5rem 0 0.5rem; line-height: 1.35;
 }
 
@@ -349,11 +370,11 @@ body {
 
 .article-shiki pre {
   margin: 0; padding: 1rem;
-  font-family: var(--font); font-size: 0.8rem;
+  font-family: var(--font); font-size: 0.78rem;
   line-height: 1.55; background: #0a0e1a !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 820px) {
   .navbar__inner {
     flex-direction: column; align-items: stretch;
     padding: 0.6rem; gap: 0.6rem;
@@ -362,7 +383,7 @@ body {
   .nav-links { flex-direction: column; align-items: stretch }
   .nav-links__group { flex-wrap: wrap; justify-content: center }
   .nav-github { justify-content: center }
-  .hero-section { min-height: auto; padding-top: 3rem }
+  .hero-section { min-height: auto; padding-top: 3.5rem }
   .article-layout { padding-top: 1.25rem }
-  .article-layout__body { font-size: 0.95rem }
+  .article-layout__body { font-size: 0.9rem }
 }
