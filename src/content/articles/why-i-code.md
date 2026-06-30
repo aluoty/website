@@ -3,8 +3,8 @@ title: Why I Code
 description: A short essay on why I code and suggestions.
 date: 2026-05-17
 tags:
-  - webdev
-  - typescript
+  - developing
+  - programming
   - learning
 ---
 
