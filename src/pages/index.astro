@@ -10,11 +10,11 @@ import { Planets } from '../components/Planets';
   <Planets />
 
   <div class="page" id="page-root">
-    <Navbar active="contact" />
+    <Navbar active="home" />
 
     <main class="content-view">
-      <section class="hero-section">
-        <div class="section-label">Alexander Luo</div>
+      <section class="hero-section landing-hero">
+        <p class="section-label">Alexander Luo</p>
         <h1 class="hero-title">Computer Science &amp; Applied Programming</h1>
         <p class="hero-subtitle">
           I build games, tools, and websites on my Linux machine. I like understanding how things work from the bottom up.
@@ -23,16 +23,33 @@ import { Planets } from '../components/Planets';
           <span class="skill-tag">TypeScript</span>
           <span class="skill-tag">Rust</span>
           <span class="skill-tag">Zig</span>
-          <span class="skill-tag">C</span>
+          <span class="skill-tag">Common Lisp</span>
           <span class="skill-tag">Linux</span>
           <span class="skill-tag">NixOS</span>
         </div>
-        <div class="cta-group">
-          <button id="copy-email" class="btn-primary">Contact me via Gmail</button>
-          <a href="https://wa.me/6583380910" class="btn-whatsapp" target="_blank" rel="noreferrer">
-            Contact me via WhatsApp
-          </a>
-        </div>
+      </section>
+
+      <section class="home-sections">
+        <a href="/projects" class="home-card">
+          <h3>Projects</h3>
+          <p>Games, tools, and experiments — from C to Rust to TypeScript.</p>
+          <span class="home-card__arrow">&rarr;</span>
+        </a>
+        <a href="/articles" class="home-card">
+          <h3>Articles</h3>
+          <p>Notes on code, graphics, and systems programming.</p>
+          <span class="home-card__arrow">&rarr;</span>
+        </a>
+        <a href="/values" class="home-card">
+          <h3>Values</h3>
+          <p>What I believe about software, learning, and building.</p>
+          <span class="home-card__arrow">&rarr;</span>
+        </a>
+        <a href="/contact" class="home-card">
+          <h3>Contact</h3>
+          <p>Email or WhatsApp — happy to chat.</p>
+          <span class="home-card__arrow">&rarr;</span>
+        </a>
       </section>
     </main>
 
@@ -40,14 +57,4 @@ import { Planets } from '../components/Planets';
       <p>Built with Astro + React + TypeScript // Hosted via Cloudflare Edge Network</p>
     </footer>
   </div>
-
-  <script is:inline>
-    document.getElementById('copy-email')?.addEventListener('click', function() {
-      navigator.clipboard.writeText('alexanderluo0910@gmail.com').then(function() {
-        var t = this;
-        t.textContent = 'Copied!';
-        setTimeout(function() { t.textContent = 'Contact me via Gmail'; }, 2000);
-      }.bind(this));
-    });
-  </script>
 </Layout>

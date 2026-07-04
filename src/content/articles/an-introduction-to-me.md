@@ -15,8 +15,6 @@ I am Alexander Luo, also known by:
 + Luo Tingyou
 + Alexander Luo Tingyou
 
-I am not very **normal** in a normal sense.
-
 I absolutely love these, not ranked in order:
 
 + Math
@@ -44,25 +42,11 @@ I absolutely love these, not ranked in order:
 
 I feel stupid sometimes, I question myself everytime.
 
-> Wherefore, wherfore me, wherefore thou?
-
-So, when did weird things happen?
-
-Sometimes I don't even know myself, whether to be classical or modern, to be forgiven or not to be.
-
 Sometimes it is just a "why".
 
-## At The Start or At The End
+But I still have faith in myself.
 
-Sometimes, it is just a wonder, have I experienced enough, is it not?
-
-Are we at the start or at the end.
-
-> Should today be the last day, what will you do for the final dance?
-
-Sometimes, do we squeeze ourselves out or rest?
-
-Stop Or Not yet.
+Believing that I can achieve more than I could think of.
 
 Bye!
 

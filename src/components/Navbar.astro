@@ -1,6 +1,6 @@
 ---
 interface Props {
-  active?: 'projects' | 'contact' | 'articles' | 'values';
+  active?: 'home' | 'projects' | 'contact' | 'articles' | 'values';
 }
 const { active } = Astro.props;
 ---
@@ -13,10 +13,11 @@ const { active } = Astro.props;
     </a>
     <div class="nav-links">
       <div class="nav-links__group" role="tablist" aria-label="Sections">
-        <a href="/" role="tab" class:list={{ 'nav-active': active === 'contact' || !active }}>Contact</a>
+        <a href="/" role="tab" class:list={{ 'nav-active': active === 'home' || !active }}>Home</a>
         <a href="/projects" role="tab" class:list={{ 'nav-active': active === 'projects' }}>Projects</a>
         <a href="/articles" role="tab" class:list={{ 'nav-active': active === 'articles' }}>Articles</a>
         <a href="/values" role="tab" class:list={{ 'nav-active': active === 'values' }}>Values</a>
+        <a href="/contact" role="tab" class:list={{ 'nav-active': active === 'contact' }}>Contact</a>
       </div>
       <a href="https://github.com/aluoty" class="nav-github" target="_blank" rel="noreferrer">GitHub</a>
     </div>

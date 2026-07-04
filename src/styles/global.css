@@ -20,6 +20,10 @@ body {
   overflow-x: hidden;
 }
 
+::view-transition-old(root), ::view-transition-new(root) {
+  animation-duration: 200ms;
+}
+
 ::-webkit-scrollbar { width: 5px }
 ::-webkit-scrollbar-track { background: var(--bg) }
 ::-webkit-scrollbar-thumb { background: var(--border) }
@@ -92,10 +96,11 @@ body {
   color: var(--text-dim);
   font-size: 0.7rem; font-family: var(--font);
   text-decoration: none; padding: 0.3rem 0.6rem;
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.1s, background 0.1s;
 }
 
 .nav-links__group a:hover { color: var(--text); background: rgba(56, 189, 248, 0.08) }
+.nav-links__group a:active { background: rgba(56, 189, 248, 0.15) }
 
 .nav-links__group .nav-active { color: var(--text); background: rgba(56, 189, 248, 0.12) }
 
@@ -105,10 +110,11 @@ body {
   font-size: 0.7rem; font-family: var(--font);
   color: var(--accent2); text-decoration: none;
   border: 1px solid rgba(45, 212, 191, 0.15);
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.1s, background 0.1s;
 }
 
 .nav-github:hover { color: #fff; background: rgba(56, 189, 248, 0.15) }
+.nav-github:active { background: rgba(56, 189, 248, 0.25) }
 
 /* Content */
 .content-view { flex: 1; display: flex; flex-direction: column; gap: 2.5rem }
@@ -156,13 +162,15 @@ body {
   cursor: pointer; background: transparent;
   border: 1px solid var(--accent); color: var(--accent);
   text-decoration: none; display: inline-flex; align-items: center;
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.1s, background 0.1s, transform 0.1s;
 }
 
 .btn-primary:hover { background: var(--accent); color: var(--bg) }
+.btn-primary:active { transform: scale(0.97) }
 
 .btn-whatsapp { color: #6ee7a8; border-color: rgba(37, 211, 102, 0.3) }
 .btn-whatsapp:hover { background: #25d366; color: #052e16 }
+.btn-whatsapp:active { transform: scale(0.97) }
 
 /* Sections */
 .projects-section, .articles-section, .values-section { padding: 3.5rem 0 4rem }
@@ -188,12 +196,16 @@ body {
 .project-card, .article-card, .value-card {
   border: 1px solid var(--border);
   padding: 1.5rem; display: flex; flex-direction: column;
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.1s, background 0.1s, transform 0.1s;
 }
 
 .project-card:hover, .article-card:hover, .value-card:hover {
   border-color: rgba(56, 189, 248, 0.25);
   background: rgba(56, 189, 248, 0.02);
+}
+
+.project-card:active, .article-card:active, .value-card:active {
+  transform: scale(0.99);
 }
 
 .project-card h3, .article-card h3, .value-card h3 {
@@ -232,10 +244,11 @@ body {
   color: var(--accent); text-decoration: none; font-size: 0.75rem;
   margin-top: auto; display: inline-flex; align-items: center; gap: 0.25rem;
   padding: 0.3rem 0.6rem; border: 1px solid transparent;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  transition: border-color 0.1s, color 0.1s, background 0.1s, gap 0.1s;
 }
 
-.card-link:hover { color: var(--bg); border-color: var(--accent); background: var(--accent) }
+.card-link:hover { color: var(--bg); border-color: var(--accent); background: var(--accent); gap: 0.45rem }
+.card-link:active { transform: scale(0.97) }
 
 .articles-intro {
   color: var(--text-dim); font-size: 0.85rem;
@@ -245,6 +258,62 @@ body {
 .article-card__date {
   font-size: 0.6rem; color: var(--text-dim);
   margin-bottom: 0.4rem; letter-spacing: 0.02em;
+}
+
+/* Home page */
+.landing-hero, .contact-hero {
+  padding-bottom: 2rem; min-height: auto;
+}
+
+.landing-hero .hero-title,
+.contact-hero .hero-title {
+  max-width: 540px;
+}
+
+.home-sections {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; padding-bottom: 4rem;
+}
+
+.home-card {
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  text-decoration: none; cursor: pointer;
+  transition: border-color 0.1s, background 0.1s, transform 0.1s;
+  position: relative;
+}
+
+.home-card:hover {
+  border-color: rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.02);
+}
+
+.home-card:active { transform: scale(0.98) }
+
+.home-card h3 {
+  font-size: 0.95rem; font-weight: 600; color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+.home-card p {
+  font-size: 0.78rem; color: var(--text-dim);
+  line-height: 1.55; margin: 0;
+}
+
+.home-card__arrow {
+  align-self: flex-end; font-size: 0.9rem;
+  color: var(--accent2);
+  transition: transform 0.1s;
+  line-height: 1;
+}
+
+.home-card:hover .home-card__arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 560px) {
+  .home-sections { grid-template-columns: 1fr }
 }
 
 /* Footer */
@@ -257,9 +326,11 @@ body {
 
 .footer a {
   color: var(--accent); text-decoration: none;
+  transition: color 0.1s;
 }
 
 .footer a:hover { color: var(--accent2) }
+.footer a:active { opacity: 0.7 }
 
 /* Article layout */
 .article-layout {
@@ -277,10 +348,11 @@ body {
   text-decoration: none; margin-bottom: 1.25rem;
   padding-left: 0.75rem;
   border-left: 1px solid var(--border);
-  transition: color 0.15s, border-color 0.15s;
+  transition: color 0.1s, border-color 0.1s, gap 0.1s;
 }
 
-.article-layout__back:hover { color: var(--accent); border-color: var(--accent) }
+.article-layout__back:hover { color: var(--accent); border-color: var(--accent); gap: 0.6rem }
+.article-layout__back:active { opacity: 0.7 }
 
 .article-layout__meta {
   font-size: 0.7rem; color: var(--text-dim);
@@ -333,7 +405,7 @@ body {
 
 .article-layout__body a {
   color: #7dd3fc; text-underline-offset: 3px;
-  text-decoration: underline; transition: color 0.15s;
+  text-decoration: underline; transition: color 0.1s;
 }
 
 .article-layout__body a:hover { color: #bae6fd }
