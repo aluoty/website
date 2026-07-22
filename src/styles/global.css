@@ -5,7 +5,7 @@
   --accent: #38bdf8;
   --accent2: #2dd4bf;
   --border: rgba(56, 189, 248, 0.1);
-  --font: 'JetBrains Mono', 'Fira Code', monospace;
+  --font: 'Fira Code', monospace;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0 }
