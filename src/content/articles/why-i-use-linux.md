@@ -94,18 +94,19 @@ But Linux is fun **if you try in a healthy way**:
 + But you have to know what you want from a distro:
   + If you want maximum power and benefits, go with NixOS.
   + If you want best reliability, go with Debian.
-  + If you want most and fastest updates(it might break your system), go with Arch.
+  + If you want most and fastest updates, go with Arch.
   + If you want maximum customization, go with Gentoo.
-  + If you want a balance between everything, go with Fedora.
+  + If you want a balance among everything, go with Fedora.
   + If you use Linux for work, go with Red Hat Enterprise Linux.
   + If you want something that just works, go with Ubuntu.
   + If you like MacOS, go with ElementaryOS or ZorinOS core.
   + If you want security, go with Tails.
   + If you like Windows and traditional OS, go with Linux Mint.
-  + If you want support for NVIDIA, go with Pop!_OS.
+  + If you want *easy out-of-the-box* support for NVIDIA, go with Pop!_OS.
 + Here are also some desktop environments:
   + If you want most customization, go with Hyprland.
-  + If you want keyboard-driven, go with Tiling Managers:
+  + If you want keyboard-driven, go with Tiling Managers and Compositors:
+    + DWM
     + Sway
     + I3
     + Hyprland
@@ -113,7 +114,7 @@ But Linux is fun **if you try in a healthy way**:
   + If you want lightweight, go with XCFE.
   + If you want something that is most modern go with these:
     + GNOME for its design
-    + ~Deepin~ I no longer recommend Deepin, you can do research, but mainly because it might contain spyware
+    + ~Deepin~ *Controversial*
     + Budgie for its lightweight design
 + However, these are just some examples of distros and desktop environments, and people's opinions differ.
 
