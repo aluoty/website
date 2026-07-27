@@ -39,15 +39,3 @@ I absolutely love these, not ranked in order:
     + France
     + England
     + China
-
-I feel stupid sometimes, I question myself everytime.
-
-Sometimes it is just a "why".
-
-But I still have faith in myself.
-
-Believing that I can achieve more than I could think of.
-
-Bye!
-
-
