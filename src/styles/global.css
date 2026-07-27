@@ -5,7 +5,7 @@
   --accent: #38bdf8;
   --accent2: #2dd4bf;
   --border: rgba(56, 189, 248, 0.1);
-  --font: 'Fira Code', monospace;
+  --font: 'JetBrainsMono Nerd Font', monospace;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0 }
