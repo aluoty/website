@@ -23,7 +23,7 @@ export function Planets() {
           <radialGradient key={i} id={`g${i}`} cx="34%" cy="28%" r="62%">
             <stop offset="0" stopColor="#94a3b8" stopOpacity={0.08} />
             <stop offset="35%" stopColor="#94a3b8" stopOpacity={0.02} />
-            <stop offset="100%" stopColor="#0f172a" stopOpacity={0.15} />
+            <stop offset="100%" stopColor="#94a3b8" stopOpacity={0} />
           </radialGradient>
         ))}
       </defs>
