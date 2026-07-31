@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Nix NixOS</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
+				<h1 id="nix-nixos">Nix NixOS</h1>
+<p>Nix and NixOS are 2 exceptional tools that I use daily. It allows declarative environments and reproducibility that most of the users praise, favour and want.</p>
+<p>Let me provide you with materials of them first: <a href="https://en.wikipedia.org/wiki/Nix_(package_manager)">Nix Wiki</a>, <a href="https://github.com/NixOS/nix">Nix Source</a>, <a href="https://nixos.org">Nix and NixOS website</a>, <a href="https://en.wikipedia.org/wiki/NixOS">NixOS Wiki</a>, <a href="https://github.com/NixOS/nixpkgs">NixOS Source</a>, <a href="https://github.com/NixOS">Nix and NixOS group on Github</a>, these are the websites you may be interested to visit.</p>
+<p>Let me introduce you to Nix and NixOS, Nix is both a programming language and a package manager. NixOS is an operating system based on Linux and Nix package manager and Nix language. However, Nix can also be installed on multiple OS and hosts, some notable exmaples are: Darwin-based(MacOS/OSX), other Linux-based operating systems, some BSD-based systems(OpenBSD and FreeBSD).</p>
+<h2 id="nix-introduction">Nix Introduction</h2>
+<p>Nix is a purely functional programming language which means that it is mostly based on functions, similar to OCaml and Haskell. Nix as the package manager uses Nixpkgs, and Nixpkgs offers a wide selection of packages, surpassing AUR(~80k), Homebrew. Nixpkgs package count is ~120k.</p>
+<h2 id="nixos-introduction">NixOS Introduction</h2>
+<p>NixOS is also exceptional operating system. Commonly paired with Btrfs filesystem that allow rollbacks. For example, when a package breaks, you can always rollback to the previous generation of the built system. It utilizes Nix, by having <code>/etc/nixos</code> folder, it contains <code>hardware-configuration.nix</code>, <code>configuration.nix</code>, <code>home.nix</code>(optional), <code>flake.nix</code>(optional), <code>flake.lock</code>(optional, used with <code>flake.nix</code>).</p>
+<p>NixOS and Nix are often considered hard to use, by with some ideas in mind, it will be easier.</p>
+<h2 id="pre-installation-guide">Pre-Installation Guide</h2>
+<p>Before installing NixOS, it is good to know some things:</p>
+<ul>
+<li>First, you usually do not install packages imperatively(through processes), you declare what your system is going to be</li>
+<li>You have a wide selection of tools, but do not overwhelm yourself with them first</li>
+<li>If you choose to erase a disk, backup things as the first experience for NixOS is best carried out on an empty drive</li>
+<li>Rollbacks are available!</li>
+<li>You have many packages available!</li>
+</ul>
+<h2 id="installation-guide">Installation Guide</h2>
+<h3 id="obtaining-image">Obtaining Image</h3>
+<p>Let's dive right into the installation now, without further ado. First, let's proceed to the <a href="https://nixos.org/download/">installation page</a> and head to the NixOS Graphical ISO Image section and install your with your CPU arch, whether ARM64(aarch64) or AMD64(x86_64).</p>
+<h3 id="flashing">Flashing</h3>
+<p>Before booting into the graphical installer for NixOS, you should flash the image onto the drive first.</p>
+<ul>
+<li>If you are on Linux, use:</li>
+</ul>
+<pre><code class="language-bash">lsblk
+<span class="hljs-comment"># find the correct drive, eg /dev/sda</span>
+sudo umount /dev/sdX* 
+<span class="hljs-comment"># unmount any mounted partitions, eg /dev/sda1</span>
+sudo <span class="hljs-built_in">dd</span> bs=4M conv=fsync oflag=direct status=progress <span class="hljs-keyword">if</span>=&lt;path-to-image&gt; of=/dev/sdX 
+<span class="hljs-comment"># flash the image onto the desired drive</span>
+</code></pre>
+<ul>
+<li>If you are on Windows, use Rufus, with DD mode, ISO mode will not work properly when I tested.</li>
+<li>If you are on MacOS(OSX), use:</li>
+</ul>
+<pre><code class="language-bash">diskutil list 
+<span class="hljs-comment"># find the correct drive, eg /dev/disk1</span>
+diskutil unmountDisk /dev/disk[number] 
+<span class="hljs-comment"># unmount any mounted partitions, eg /dev/disk1s1</span>
+sudo <span class="hljs-built_in">dd</span> bs=4M conv=fsync oflag=direct status=progress <span class="hljs-keyword">if</span>=&lt;path-to-image&gt; of=/dev/sdX 
+<span class="hljs-comment"># flash the image, hopefully works</span>
+</code></pre>
+<h3 id="booting-into-nixos">Booting into NixOS</h3>
+<p>Now that you have flashed the image and are ready to go. Check what your boot key is, often <code>F9-12</code>, <code>Del</code>, or <code>ESC</code>. Then reboot your system by either finding a button or via:</p>
+<pre><code class="language-bash">sudo reboot <span class="hljs-comment"># on Linux</span>
+</code></pre>
+<p>After that, smash your boot key like crazy, and you will be prompted with a screen that has input devices. Choose the desired drive that you flashed the image onto, and press the <em><code>Enter</code></em> key.</p>
+<p>Again, you will be prompted with a screen that probably displays the selection for interface and respective kernel versions. The ones are probably: GNOME with latest kernel, GNOME with LTS kernel, KDE with latest kernel, KDE with LTS kernel. And for whatever one you choose, it does not affect what your system is going to be. For this example, I am choosing GNOME, while you can choose any one of them.</p>
+<h3 id="testing-nixos">Testing NixOS</h3>
+<p>You are in NixOS probably by now. You should first be prompted with an Installer. It guides you through things, but do not interact with it just yet. First, you can inspect the environment, one thing that I like to do is to test something, for example(if you have a drive that has enough size, eg &gt;8GB):</p>
+<pre><code class="language-bash"><span class="hljs-comment"># Open your terminal first, whether GNOME terminal or Ptyxis in KDE</span>
+nix-shell -p fastfetch 
+<span class="hljs-comment"># This is nix-shell, it allows you to test tools that can be cleaned later</span>
+<span class="hljs-comment"># After some time waiting, you can do fastfetch</span>
+fastfetch
+<span class="hljs-comment"># Now you can exit the shell and the terminal</span>
+<span class="hljs-built_in">exit</span>
+<span class="hljs-comment"># Close the terminal</span>
+</code></pre>
+<p>And now once you try to open the terminal again and try fastfetch, it is not viable, as software are stored differently, I will explain that later on.
+Now, you can try to inspect some simple <code>/etc/nixos/configuration.nix</code> config that online users or AI have to consider for the final time. If yes, then proceed onto the installer and install. You will be guided through Timezone, Locales(Best to set US English as primary locale for system, excluding Dates, etc.).</p>
+<p>Then comes your Desktop Environment, the most supported two DEs are KDE Plasma and GNOME. You can also choose options like XFCE, or No Desktop for a minimal system or for Window Manager and Compositor setups. However, scripting configs for Window Managers like Sway and Hyprland are kind of tedious, you have to write every single keybind, features, etc. As there are no default config for Window Managers, usually. So I recommend KDE Plasma or GNOME.</p>
+<p>Later your users, and disk configuration(use entire disk) and in that choose BTRFS filesystem, it is crucial and you can have Swap. Then just proceed, and shortly, after ~10min, you can reboot.</p>
+<h2 id="closure">Closure</h2>
+<p>Now with a new system, you can try edit <code>/etc/nixos/configuration.nix</code> briefly, for more guides, please take a look at my <a href="./intermediate-nix-and-nixos.html">second article regarding NixOS</a>.</p>
+
+            
+            
+        </body>
+        </html>

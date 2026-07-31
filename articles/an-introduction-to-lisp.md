@@ -1,14 +1,4 @@
----
-title: An Introduction to Lisp
-description: A short essay on why Lisp is worth giving a try.
-date: 2026-06-30
-tags:
-  - lisp
-  - programming 
-  - learning
----
-
-# Introduction
+# Lisp
 
 Lisp, an abbreviation of "list processing", is both a family of programming languages and a programming language itself. It originated in the 1950s still in practice, after Fortran. It is very interesting. It often changes how a programmer look at programming ever after trying out Lisp dialects. 
 
@@ -16,7 +6,7 @@ Lisp, an abbreviation of "list processing", is both a family of programming lang
 
 I have some experiences with Lisp, I learnt Racket at first, and then Common Lisp. Both are great options for beginners.
 
-# Details
+## Details
 
 First, let's explain the main features of Lisp:
 + Functional first

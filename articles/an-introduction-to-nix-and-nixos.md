@@ -1,14 +1,4 @@
----
-title: An Introduction to Nix and NixOS
-description: A short essay on Nix and NixOS.
-date: 2026-06-21
-tags:
-  - linux
-  - nixos
-  - programming
----  
-
-# Introduction
+# Nix NixOS
 Nix and NixOS are 2 exceptional tools that I use daily. It allows declarative environments and reproducibility that most of the users praise, favour and want.
 
 Let me provide you with materials of them first: [Nix Wiki](https://en.wikipedia.org/wiki/Nix_(package_manager)), [Nix Source](https://github.com/NixOS/nix), [Nix and NixOS website](https://nixos.org), [NixOS Wiki](https://en.wikipedia.org/wiki/NixOS), [NixOS Source](https://github.com/NixOS/nixpkgs), [Nix and NixOS group on Github](https://github.com/NixOS), these are the websites you may be interested to visit. 
@@ -86,8 +76,8 @@ Then comes your Desktop Environment, the most supported two DEs are KDE Plasma a
 
 Later your users, and disk configuration(use entire disk) and in that choose BTRFS filesystem, it is crucial and you can have Swap. Then just proceed, and shortly, after ~10min, you can reboot.
 
-# Closure
-Now with a new system, you can try edit `/etc/nixos/configuration.nix` briefly, for more guides, please take a look at my [ second article regarding NixOS](https://alexanderluo.com/articles/intermediate-nix-and-nixos-skills).
+## Closure
+Now with a new system, you can try edit `/etc/nixos/configuration.nix` briefly, for more guides, please take a look at my [second article regarding NixOS](./intermediate-nix-and-nixos.html).
 
 
 

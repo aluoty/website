@@ -1,12 +1,4 @@
----
-title: Why I Use Linux
-description: A short essay on why I am a linux fan and suggestions.
-date: 2026-05-18
-tags:
-  - linux
-  - open source
-  - learning
----
+# Linux
 
 Linux, something extraordinary, but if you stay in the tech community, I am sure that you have heard this.
 
@@ -28,7 +20,7 @@ git commit -m "example"
 git push
 ```
 
-## Linux
+## Uses
 
 Linux is essential for powering our lives, many things that you can think of are powered by Linux, unknowingly.
 

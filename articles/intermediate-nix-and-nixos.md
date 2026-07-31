@@ -1,14 +1,4 @@
----
-title: Intermediate Nix and NixOS skills 
-description: A short essay on intermediate Nix and NixOS skills and usage.
-date: 2026-06-21
-tags:
-  - linux
-  - nixos
-  - programming
----  
-
-# Introduction
+# Nix NixOS
 Now that you have successfully driven a NixOS system, let's dive deeper in. 
 
 ## Table of Contents
@@ -251,5 +241,5 @@ This is the last part, which is channels. There are 2 types: Unstable(Rolling Re
 
 And switching channels are easy in `flake.nix`, you just need to update the URL, to unstable/master, that depends and are fairly easy to know.
 
-# Closure
+## Closure
 This is the end of the intermediate Nix and NixOS skills guide, hope you enjoyed it and learnt something!

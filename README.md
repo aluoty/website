@@ -1,12 +1,7 @@
-# website
+# Website
 
-Personal portfolio site built with [Astro](https://astro.build) + React @ [website](https://alexanderluo.com).
+Personal portfolio site of me built with vanilla HTML and few lines of CSS.
 
 ## Commands
 
-| Command | Action |
-|---------|--------|
-| `npm install` | Install dependencies |
-| `npm run dev` | Start dev server at `localhost:4321` |
-| `npm run build` | Build to `./dist/` |
-| `npm run preview` | Preview production build |
++ Run by opening [my website](https://alexanderluo.com) or [a local copy of the HTML files](./index.html).
