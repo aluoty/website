@@ -2,7 +2,7 @@
         <html>
         <head>
             <meta charset="UTF-8">
-            <title>Programming</title>
+            <title>Haskell</title>
             <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
@@ -139,29 +139,65 @@
         </head>
         <body class="vscode-body vscode-light">
             <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
-				<h1 id="programming">Programming</h1>
-<p>I started my programming journey just few years ago, around 2021. I started learning Scratch by then, it was the easiest programming language looking back from now. But at the point in my life, I had already realised the limitations that Scratch had, it does not offer continuous workflows, it is just designed for beginners.</p>
-<p>After some time, around 1 years after first learning Scratch, I quickly joined the Python community, started learning simple things back then.</p>
-<p>Just recently, I have been learning more advanced Python, which is dynamic programming(now becomes easy), it is one of the hardest fields for me back then, but once I mastered the basics, I started loving C++.
-As C++ is intuitive and feels closer to other languages, I picked that and some Java up before I finally found my suitable language -- Rust.</p>
-<h2 id="coding-is-addictive-to-me">Coding is addictive to me</h2>
-<p>I have tried a lot of things which I might have liked -- basketball, football, soccer, tennis, swimming even drawing and calligraphy. However, coding is still the most fulfilling thing I have done.</p>
+				<h1 id="haskell">Haskell</h1>
+<p>Haskell, named after logician Haskell Curry, is a purely functional programming language.</p>
+<h2 id="experience">Experience</h2>
+<p>Haskell is an enjoyable language, and will make you think differently in the programming world, alike to Lisp.</p>
+<h2 id="details">Details</h2>
+<p>Haskell is:</p>
 <ul>
-<li>At the start, just a simple 'Hello World!' input can be exciting for me.</li>
-<li>Now, my goals are harder to satisfy, so I was introduced to Github and opensource, and fell in love with opensource-ness.</li>
-<li>I wanted to receive help and get seen, I realised that building a website is perfect for me, I get attention, help from the community and more.</li>
+<li>Purely functional</li>
+<li>General-purpose</li>
+<li>Statically typed</li>
+<li>Lazy evaluated</li>
+<li>0 Side effects by default</li>
 </ul>
-<p>Although Python, Typescript, Java and other languages are great, my cup of tea is still low-level programming languages, like Golang, C, C++, Rust.</p>
-<h2 id="coding-helps">Coding helps</h2>
-<p>I sometimes have struggles with myself, especially the inner thoughts, but coding and literature helps me express my ideas perfectly, as coding is just a much more effecient way to express literature.</p>
-<p>It also does not take much time, just from a simple sorting project, you and I can learn many things, list manipulation, and more. Although big projects are much more rewarding, you and I can always start small.</p>
-<h2 id="coding-encourages-innovation">Coding encourages innovation</h2>
-<p>Many times in programming, there are a lot of ways to write a similar thing. For example, each programming language might have different syntax, different keywords.</p>
-<h2 id="to-those-who-do-not-code">To Those Who Do Not Code</h2>
-<p>If you do not know how to code, and stumbled upon me, you're lucky.</p>
-<p>Just do something small, even if they are suggested by others, starting small does not limit you, thinking small (thinking that you can only do small) will limit you.</p>
-<p>And do what you want to do, whether it is to make games, websites, tools, whatever and whichever. Just start.</p>
-<p>Dream big and start small to those of you out there!</p>
+<p>Haskell is used in both academia and the real world for reliable software.</p>
+<p>Haskell also have both interpreters and compilers that can be used.</p>
+<h2 id="code-example">Code Example</h2>
+<p>Let's see some Haskell code now:</p>
+<ul>
+<li>Hello World: (only the last line is strictly necessary)</li>
+</ul>
+<pre><code class="language-haskell"><span class="hljs-keyword">module</span> Main (<span class="hljs-title">main</span>) <span class="hljs-keyword">where</span>          <span class="hljs-comment">-- not needed in interpreter, is the default in a module file</span>
+
+<span class="hljs-title">main</span> :: <span class="hljs-type">IO</span> ()                     <span class="hljs-comment">-- the compiler can infer this type definition</span>
+<span class="hljs-title">main</span> = putStrLn <span class="hljs-string">&quot;Hello, World!&quot;</span>
+</code></pre>
+<ul>
+<li>Factorial:</li>
+</ul>
+<pre><code class="language-haskell"><span class="hljs-title">factorial</span> :: (<span class="hljs-type">Integral</span> a) =&gt; a -&gt; a
+
+<span class="hljs-comment">-- Using recursion (with the &quot;ifthenelse&quot; expression)</span>
+<span class="hljs-title">factorial</span> n = <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">2</span>
+              <span class="hljs-keyword">then</span> <span class="hljs-number">1</span>
+              <span class="hljs-keyword">else</span> n * factorial (n - <span class="hljs-number">1</span>)
+
+<span class="hljs-comment">-- Using recursion (with pattern matching)</span>
+<span class="hljs-title">factorial</span> <span class="hljs-number">0</span> = <span class="hljs-number">1</span>
+<span class="hljs-title">factorial</span> n = n * factorial (n - <span class="hljs-number">1</span>)
+
+<span class="hljs-comment">-- Using recursion (with guards)</span>
+<span class="hljs-title">factorial</span> n
+   | n &lt; <span class="hljs-number">2</span>     = <span class="hljs-number">1</span>
+   | otherwise = n * factorial (n - <span class="hljs-number">1</span>)
+
+<span class="hljs-comment">-- Using a list and the &quot;product&quot; function</span>
+<span class="hljs-title">factorial</span> n = product [<span class="hljs-number">1</span>..n]
+
+<span class="hljs-comment">-- Using fold (implements &quot;product&quot;)</span>
+<span class="hljs-title">factorial</span> n = foldl (*) <span class="hljs-number">1</span> [<span class="hljs-number">1</span>..n]
+
+<span class="hljs-comment">-- Point-free style</span>
+<span class="hljs-title">factorial</span> = foldr (*) <span class="hljs-number">1</span> . enumFromTo <span class="hljs-number">1</span>
+</code></pre>
+<h2 id="try-it-out">Try It Out</h2>
+<p>First, install GHC(Glasgow Haskell Compiler) via GHCup usually, available in many repos for package managers.</p>
+<p>You can write Haskell in many places, Neovim, Vim, Nano, VSCode.</p>
+<p>GHCup also has options for HLS(Haskell's LSP) and Cabal(Haskell's build tool).</p>
+<p>You can also try <code>ghci</code>, an interactive interpreter.</p>
+<p>That's it, write some Haskell code, see if you enjoy. Bye!</p>
 
             
             

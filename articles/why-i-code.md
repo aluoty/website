@@ -4,7 +4,7 @@ I started my programming journey just few years ago, around 2021. I started lear
 
 After some time, around 1 years after first learning Scratch, I quickly joined the Python community, started learning simple things back then.
 
-Just recently, I have been learning more advanced Python, which is dynamic programming, it is one of the hardest fields for me, but once I mastered the basics, I started loving C++.
+Just recently, I have been learning more advanced Python, which is dynamic programming(now becomes easy), it is one of the hardest fields for me back then, but once I mastered the basics, I started loving C++.
 As C++ is intuitive and feels closer to other languages, I picked that and some Java up before I finally found my suitable language -- Rust.
 
 ## Coding is addictive to me
@@ -23,10 +23,16 @@ I sometimes have struggles with myself, especially the inner thoughts, but codin
 
 It also does not take much time, just from a simple sorting project, you and I can learn many things, list manipulation, and more. Although big projects are much more rewarding, you and I can always start small.
 
+## Coding encourages innovation
+
+Many times in programming, there are a lot of ways to write a similar thing. For example, each programming language might have different syntax, different keywords.
+
 ## To Those Who Do Not Code
 
 If you do not know how to code, and stumbled upon me, you're lucky.
 
 Just do something small, even if they are suggested by others, starting small does not limit you, thinking small (thinking that you can only do small) will limit you.
+
+And do what you want to do, whether it is to make games, websites, tools, whatever and whichever. Just start.
 
 Dream big and start small to those of you out there!

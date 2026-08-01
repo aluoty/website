@@ -13,6 +13,8 @@ Nix and NixOS has a lot of features, I will be covering these for now:
 + flake
   + system-wide
 + channels
++ flake
+  + flake related tools
 
 All of these features together enables the user to create declarative environments with reproducibility that most of the users praise, favour and want.
 
@@ -91,7 +93,7 @@ And when in the same directory as where that `shell.nix` is located at, you can:
 nix-shell
 ```
 And nodejs, git, and all those features will be activated, but upon exiting, nodejs disappears(if not installed globally)
-However, `shell.nix` has recently been replaced by `flake.nix` with `flake.lock`.
+However, `shell.nix` has recently been replaced by `flake.nix` with `flake.lock` in most cases.
 
 ## Nix flake(Project-wide)
 Now, flake comes in, but not as system-wide, just like shell.nix but with more features.
@@ -123,6 +125,21 @@ Here, I will show you an example flake.nix that I use for Raylib:
     };
 }
 ```
+
+```bash
+# Enter the dev shell
+nix develop
+```
+
+Alternatively, you can install something called `direnv`, and add a `.envrc`, which looks like
+```envrc
+use flake
+# Uses flake.nix automatically
+
+use nix
+# Uses shell.nix or default.nix
+```
+And run `direnv allow` to enter the dev shell automatically each time you enter the directory.
 And this has a lot of features, and things to know. However, for now, I do not have to explain much, and channels are explained later on.
 
 ## Home manager
@@ -231,6 +248,8 @@ This is very minimal, and also uses nixvim to manage my Neovim. And you can rebu
 ```bash
 sudo nixos-rebuild switch --flake /etc/nixos 
 # if you do not have multiple hosts
+
+
 # with multiple hosts:
 sudo nixos-rebuild switch --flake /etc/nixos#hostname 
 ```
@@ -240,6 +259,46 @@ However, most of the people do not need to have an advanced `flake.nix` with pac
 This is the last part, which is channels. There are 2 types: Unstable(Rolling Release Cycle), and Stable(Point/Fixed-Release Cycle). I daily do use Unstable, but a lot of the times, people utilize how they use channels, eg, for project wide `flake.nix`, it is almost always on Unstable, while they can have a 26.05 channel system wide. And even more advanced, they can pin packages and allow both for system wide. 
 
 And switching channels are easy in `flake.nix`, you just need to update the URL, to unstable/master, that depends and are fairly easy to know.
+
+## Flake Tools
+### Nix Shell
+There are many other tools that are flake related. For example, we used `nix-shell` earlier, but there is also something as `nix shell`.
+Here's an example
+```bash
+nix-shell -p fastfetch # traditional, non-flake
+
+nix shell nixpkgs#fastfetch # new, flake based
+
+nix shell nixpkgs/23.11#neofetch # previous nix channels
+
+nix shell github:aluoty/speedfetch # custom software from github
+```
+### Nix Profile
+Although `nix profile` is discouraged to use, I will show you what it is. It is the successor of `nix-env`. Both are imperative tools and act as a traditional package manager. However, `nix profile` is flake based while `nix-env` is traditional. `nix profile` is also user specific.
+
+### Nix Search
+Nix search helps you search packages easily, for example search for Firefox:
+```bash
+nix search nixpkgs 'firefox'
+```
+
+### Nix Run
+Nix run allows running software easily, like:
+```bash
+nix run nixpkgs#fastfetch # runs the default fastfetch, install if not installed
+
+nix run github:aluoty/speedfetch # allows custom software from github
+```
+
+### Nix Build
+Nix build is a build tool for nix, for example if you are developing and hacking the nixpkgs repo, you can use nix build to test your builds:
+```bash
+nix build # local, requires flake.nix in the current directory
+
+nix build nixpkgs#fastfetch # builds fastfetch into ./result in current directory
+
+nix build nixpkgs#fastfetch -o fastfetch-dir # builds fastfetch into ./fastfetch-dir
+```
 
 ## Closure
 This is the end of the intermediate Nix and NixOS skills guide, hope you enjoyed it and learnt something!

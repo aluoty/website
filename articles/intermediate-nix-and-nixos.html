@@ -161,6 +161,11 @@
 </ul>
 </li>
 <li>channels</li>
+<li>flake
+<ul>
+<li>flake related tools</li>
+</ul>
+</li>
 </ul>
 <p>All of these features together enables the user to create declarative environments with reproducibility that most of the users praise, favour and want.</p>
 <h2 id="rebuilds-and-rollbacks">Rebuilds and Rollbacks</h2>
@@ -229,7 +234,7 @@ pkgs.mkShell {
 <pre><code class="language-bash">nix-shell
 </code></pre>
 <p>And nodejs, git, and all those features will be activated, but upon exiting, nodejs disappears(if not installed globally)
-However, <code>shell.nix</code> has recently been replaced by <code>flake.nix</code> with <code>flake.lock</code>.</p>
+However, <code>shell.nix</code> has recently been replaced by <code>flake.nix</code> with <code>flake.lock</code> in most cases.</p>
 <h2 id="nix-flakeproject-wide">Nix flake(Project-wide)</h2>
 <p>Now, flake comes in, but not as system-wide, just like shell.nix but with more features.
 Here, I will show you an example flake.nix that I use for Raylib:</p>
@@ -259,7 +264,18 @@ Here, I will show you an example flake.nix that I use for Raylib:</p>
     };
 }
 </code></pre>
-<p>And this has a lot of features, and things to know. However, for now, I do not have to explain much, and channels are explained later on.</p>
+<pre><code class="language-bash"><span class="hljs-comment"># Enter the dev shell</span>
+nix develop
+</code></pre>
+<p>Alternatively, you can install something called <code>direnv</code>, and add a <code>.envrc</code>, which looks like</p>
+<pre><code class="language-envrc">use flake
+# Uses flake.nix automatically
+
+use nix
+# Uses shell.nix or default.nix
+</code></pre>
+<p>And run <code>direnv allow</code> to enter the dev shell automatically each time you enter the directory.
+And this has a lot of features, and things to know. However, for now, I do not have to explain much, and channels are explained later on.</p>
 <h2 id="home-manager">Home manager</h2>
 <p>Now this is very interesting, it takes Nix even further. It utilizes how a user is defined, for example(<code>/etc/nixos/home.nix</code>):</p>
 <pre><code class="language-nix">{ config, pkgs, ... }:
@@ -361,6 +377,8 @@ And that is almost it for <code>configuration.nix</code>.</li>
 <p>This is very minimal, and also uses nixvim to manage my Neovim. And you can rebuild your system using:</p>
 <pre><code class="language-bash">sudo nixos-rebuild switch --flake /etc/nixos 
 <span class="hljs-comment"># if you do not have multiple hosts</span>
+
+
 <span class="hljs-comment"># with multiple hosts:</span>
 sudo nixos-rebuild switch --flake /etc/nixos<span class="hljs-comment">#hostname </span>
 </code></pre>
@@ -368,6 +386,38 @@ sudo nixos-rebuild switch --flake /etc/nixos<span class="hljs-comment">#hostname
 <h2 id="channels">Channels</h2>
 <p>This is the last part, which is channels. There are 2 types: Unstable(Rolling Release Cycle), and Stable(Point/Fixed-Release Cycle). I daily do use Unstable, but a lot of the times, people utilize how they use channels, eg, for project wide <code>flake.nix</code>, it is almost always on Unstable, while they can have a 26.05 channel system wide. And even more advanced, they can pin packages and allow both for system wide.</p>
 <p>And switching channels are easy in <code>flake.nix</code>, you just need to update the URL, to unstable/master, that depends and are fairly easy to know.</p>
+<h2 id="flake-tools">Flake Tools</h2>
+<h3 id="nix-shell-1">Nix Shell</h3>
+<p>There are many other tools that are flake related. For example, we used <code>nix-shell</code> earlier, but there is also something as <code>nix shell</code>.
+Here's an example</p>
+<pre><code class="language-bash">nix-shell -p fastfetch <span class="hljs-comment"># traditional, non-flake</span>
+
+nix shell nixpkgs<span class="hljs-comment">#fastfetch # new, flake based</span>
+
+nix shell nixpkgs/23.11<span class="hljs-comment">#neofetch # previous nix channels</span>
+
+nix shell github:aluoty/speedfetch <span class="hljs-comment"># custom software from github</span>
+</code></pre>
+<h3 id="nix-profile">Nix Profile</h3>
+<p>Although <code>nix profile</code> is discouraged to use, I will show you what it is. It is the successor of <code>nix-env</code>. Both are imperative tools and act as a traditional package manager. However, <code>nix profile</code> is flake based while <code>nix-env</code> is traditional. <code>nix profile</code> is also user specific.</p>
+<h3 id="nix-search">Nix Search</h3>
+<p>Nix search helps you search packages easily, for example search for Firefox:</p>
+<pre><code class="language-bash">nix search nixpkgs <span class="hljs-string">&#x27;firefox&#x27;</span>
+</code></pre>
+<h3 id="nix-run">Nix Run</h3>
+<p>Nix run allows running software easily, like:</p>
+<pre><code class="language-bash">nix run nixpkgs<span class="hljs-comment">#fastfetch # runs the default fastfetch, install if not installed</span>
+
+nix run github:aluoty/speedfetch <span class="hljs-comment"># allows custom software from github</span>
+</code></pre>
+<h3 id="nix-build">Nix Build</h3>
+<p>Nix build is a build tool for nix, for example if you are developing and hacking the nixpkgs repo, you can use nix build to test your builds:</p>
+<pre><code class="language-bash">nix build <span class="hljs-comment"># local, requires flake.nix in the current directory</span>
+
+nix build nixpkgs<span class="hljs-comment">#fastfetch # builds fastfetch into ./result in current directory</span>
+
+nix build nixpkgs<span class="hljs-comment">#fastfetch -o fastfetch-dir # builds fastfetch into ./fastfetch-dir</span>
+</code></pre>
 <h2 id="closure">Closure</h2>
 <p>This is the end of the intermediate Nix and NixOS skills guide, hope you enjoyed it and learnt something!</p>
 
