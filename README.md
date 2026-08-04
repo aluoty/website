@@ -1,6 +1,8 @@
 # Website
 
-Personal portfolio site of me built with vanilla HTML and few lines of CSS.
+Personal portfolio site of me built with vanilla HTML, CSS and some JS.
+
+Run `npm run build` to build the HTML files for the articles in Markdown.
 
 ## Commands
 
