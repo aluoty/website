@@ -1,0 +1,25 @@
+{
+  "name": "website-clone-test",
+  "version": "1.0.0",
+  "description": "Personal portfolio site of me built with vanilla HTML and few lines of CSS.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aluoty/website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aluoty/website/issues"
+  },
+  "homepage": "https://github.com/aluoty/website#readme",
+  "dependencies": {
+    "highlight.js": "^11.11.1",
+    "marked": "^18.0.9"
+  }
+}

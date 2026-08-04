@@ -1,203 +1,76 @@
 <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Nix NixOS</title>
-            <style>
-/* From extension vscode.github */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nix NixOS - Alexander Luo</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/hljs-github-dark.css">
+</head>
+<body>
 
-.vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only],
-.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
-.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
-	display: none;
-}
+    <nav class="navbar">
+        <a href="../index.html" class="logo">Alexander Luo</a>
 
-</style>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-<style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item {
-    list-style-type: none;
-}
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../articles.html">Articles</a></li>
+        </ul>
+    </nav>
 
-.task-list-item-checkbox {
-    margin-left: -20px;
-    vertical-align: middle;
-    pointer-events: none;
-}
-</style>
-<style>
-:root {
-  --color-note: #0969da;
-  --color-tip: #1a7f37;
-  --color-warning: #9a6700;
-  --color-severe: #bc4c00;
-  --color-caution: #d1242f;
-  --color-important: #8250df;
-}
-
-</style>
-<style>
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-note: #2f81f7;
-    --color-tip: #3fb950;
-    --color-warning: #d29922;
-    --color-severe: #db6d28;
-    --color-caution: #f85149;
-    --color-important: #a371f7;
-  }
-}
-
-</style>
-<style>
-.markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 16px;
-  color: inherit;
-  border-left: .25em solid #888;
-}
-
-.markdown-alert>:first-child {
-  margin-top: 0
-}
-
-.markdown-alert>:last-child {
-  margin-bottom: 0
-}
-
-.markdown-alert .markdown-alert-title {
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  line-height: 1
-}
-
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-alert.markdown-alert-note {
-  border-left-color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-important {
-  border-left-color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-warning {
-  border-left-color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-warning .markdown-alert-title {
-  color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-tip {
-  border-left-color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-caution {
-  border-left-color: var(--color-caution);
-}
-
-.markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: var(--color-caution);
-}
-
-</style>
-        
-        </head>
-        <body class="vscode-body vscode-light">
-            <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
-				<h1 id="nix-nixos">Nix NixOS</h1>
-<p>Now that you have successfully driven a NixOS system, let's dive deeper in.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+    <main>
+        <article class="markdown-body">
+<h1>Nix NixOS</h1>
+<p>Now that you have successfully driven a NixOS system, let&#39;s dive deeper in. </p>
+<h2>Table of Contents</h2>
 <p>Nix and NixOS has a lot of features, I will be covering these for now:</p>
 <ul>
 <li>rebuilds and rollbacks</li>
 <li>file strcture</li>
 <li>nix-shell</li>
-<li>flake
-<ul>
+<li>flake<ul>
 <li>project-wide</li>
 </ul>
 </li>
 <li>home manager</li>
 <li>configuration.nix</li>
-<li>flake
-<ul>
+<li>flake<ul>
 <li>system-wide</li>
 </ul>
 </li>
 <li>channels</li>
-<li>flake
-<ul>
+<li>flake<ul>
 <li>flake related tools</li>
 </ul>
 </li>
 </ul>
 <p>All of these features together enables the user to create declarative environments with reproducibility that most of the users praise, favour and want.</p>
-<h2 id="rebuilds-and-rollbacks">Rebuilds and Rollbacks</h2>
+<h2>Rebuilds and Rollbacks</h2>
 <p>These are probably very important, and life-changing for usual Linux users.
 First, let me tell you how to rebuild:</p>
-<pre><code class="language-bash">sudo nixos-rebuild switch 
+<pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> nixos-rebuild switch 
 <span class="hljs-comment"># switch to a newer rebuild based on configuration.nix</span>
 
-sudo nixos-rebuild switch --flake /etc/nixos 
-<span class="hljs-comment"># switch to a newer rebuild based on flake.nix</span>
-</code></pre>
-<p>And secondly, with BTRFS, you can boot into the NixOS systemd boot screen and see previous generations.
+<span class="hljs-built_in">sudo</span> nixos-rebuild switch --flake /etc/nixos 
+<span class="hljs-comment"># switch to a newer rebuild based on flake.nix</span></code></pre><p>And secondly, with BTRFS, you can boot into the NixOS systemd boot screen and see previous generations.
 Or alternatively rollback with:</p>
-<pre><code class="language-bash">sudo nixos-rebuild switch --rollback
-</code></pre>
-<p>You can clean generations and unspecified packages(like via nix-shell), with:</p>
-<pre><code class="language-bash">sudo nix-collect-garbage -d
-</code></pre>
-<p>And those can be very interesting and useful for even daily usage. As this means that when something breaks, you can instantly rollback to a previous version that did not break. And it does not consume <em>a lot</em> of disk space.</p>
-<h2 id="file-strcture">File Strcture</h2>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> nixos-rebuild switch --rollback</code></pre><p>You can clean generations and unspecified packages(like via nix-shell), with:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> nix-collect-garbage -d</code></pre><p>And those can be very interesting and useful for even daily usage. As this means that when something breaks, you can instantly rollback to a previous version that did not break. And it does not consume <em>a lot</em> of disk space.</p>
+<h2>File Strcture</h2>
 <p>By learning this, you already know most of the differences of NixOS and other traditional linux distros.</p>
 <p>First, you have <code>/etc/nixos/</code> which stores your system-wide configs
 And, <code>/nix/store/</code>, which stores most of your software</p>
 <p>Those are important to know, and NixOS looks at <code>/nix/store</code>, and create symlinks(via <em><code>ln</code></em>) to execute software.</p>
-<h2 id="nix-shell">Nix-shell</h2>
+<h2>Nix-shell</h2>
 <p>Nix-shell is a tool that you should know, it can be split into these usages via these 2 procedures:</p>
 <ul>
 <li><code>nix-shell -p example</code></li>
 <li><code>nix-shell # with shell.nix</code>
-First, let's try <code>nix-shell -p example</code>, I have covered this briefly in <a href="https://alexanderluo.com/articles/an-introduction-to-nix-and-nixos">the first guide</a> and I am going to reuse the example:</li>
+First, let&#39;s try <code>nix-shell -p example</code>, I have covered this briefly in <a href="https://alexanderluo.com/articles/an-introduction-to-nix-and-nixos">the first guide</a> and I am going to reuse the example:</li>
 </ul>
-<pre><code class="language-bash"><span class="hljs-comment"># Open your terminal first, whether GNOME terminal or Ptyxis in KDE</span>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Open your terminal first, whether GNOME terminal or Ptyxis in KDE</span>
 nix-shell -p fastfetch 
 <span class="hljs-comment"># This is nix-shell, it allows you to test tools that can be cleaned via garbage collection</span>
 <span class="hljs-comment"># After some time, you can do fastfetch</span>
@@ -207,94 +80,82 @@ fastfetch
 <span class="hljs-built_in">exit</span>
 
 <span class="hljs-comment"># And close the terminal</span>
-<span class="hljs-built_in">exit</span>
-</code></pre>
-<p>And when reopening the terminal, you will see that fastfetch is gone, which I have explained, NixOS no longer knows the path and forgets the software, although it is still installed in <code>/nix/store</code>.</p>
-<p>Secondly, let's try shell.nix. It is how you define a shell environment, here I will show you a basic example of <code>shell.nix</code>:</p>
-<pre><code class="language-nix">{ pkgs ? <span class="hljs-built_in">import</span> &lt;nixpkgs&gt; {} }:
+<span class="hljs-built_in">exit</span></code></pre><p>And when reopening the terminal, you will see that fastfetch is gone, which I have explained, NixOS no longer knows the path and forgets the software, although it is still installed in <code>/nix/store</code>.</p>
+<p>Secondly, let&#39;s try shell.nix. It is how you define a shell environment, here I will show you a basic example of <code>shell.nix</code>:</p>
+<pre><code class="hljs language-nix">{ pkgs <span class="hljs-operator">?</span> <span class="hljs-built_in">import</span> <span class="hljs-symbol">&lt;nixpkgs&gt;</span> {} }:
 
 pkgs.mkShell {
   <span class="hljs-comment"># Tools installed directly into the shell environment PATH</span>
-  <span class="hljs-attr">packages</span> = <span class="hljs-keyword">with</span> pkgs; [
+  <span class="hljs-attr">packages</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">with</span> pkgs; [
     nodejs
     git
   ];
 
   <span class="hljs-comment"># Environment variables accessible inside the session</span>
-  <span class="hljs-attr">ENV_VAR_EXAMPLE</span> = <span class="hljs-string">&quot;hello_world&quot;</span>;
+  <span class="hljs-attr">ENV_VAR_EXAMPLE</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello_world&quot;</span>;
 
   <span class="hljs-comment"># Commands executed automatically upon entering the shell</span>
-  <span class="hljs-attr">shellHook</span> = <span class="hljs-string">&#x27;&#x27;
+  <span class="hljs-attr">shellHook</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;&#x27;
     echo &quot;Welcome to your reproducible development environment!&quot;
     node --version
   &#x27;&#x27;</span>;
-}
-</code></pre>
-<p>And when in the same directory as where that <code>shell.nix</code> is located at, you can:</p>
-<pre><code class="language-bash">nix-shell
-</code></pre>
-<p>And nodejs, git, and all those features will be activated, but upon exiting, nodejs disappears(if not installed globally)
+}</code></pre><p>And when in the same directory as where that <code>shell.nix</code> is located at, you can:</p>
+<pre><code class="hljs language-bash">nix-shell</code></pre><p>And nodejs, git, and all those features will be activated, but upon exiting, nodejs disappears(if not installed globally)
 However, <code>shell.nix</code> has recently been replaced by <code>flake.nix</code> with <code>flake.lock</code> in most cases.</p>
-<h2 id="nix-flakeproject-wide">Nix flake(Project-wide)</h2>
+<h2>Nix flake(Project-wide)</h2>
 <p>Now, flake comes in, but not as system-wide, just like shell.nix but with more features.
 Here, I will show you an example flake.nix that I use for Raylib:</p>
-<pre><code class="language-nix">{
-  <span class="hljs-attr">description</span> = <span class="hljs-string">&quot;Raylib C project&quot;</span>;
+<pre><code class="hljs language-nix">{
+  <span class="hljs-attr">description</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Raylib C project&quot;</span>;
 
-  <span class="hljs-attr">inputs</span> = {
-    nixpkgs.<span class="hljs-attr">url</span> = <span class="hljs-string">&quot;github:NixOS/nixpkgs/nixos-unstable&quot;</span>; <span class="hljs-comment"># unstable channel for latest software</span>
+  <span class="hljs-attr">inputs</span> <span class="hljs-operator">=</span> {
+    <span class="hljs-attr">nixpkgs.url</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;github:NixOS/nixpkgs/nixos-unstable&quot;</span>; <span class="hljs-comment"># unstable channel for latest software</span>
   };
 
-  <span class="hljs-attr">outputs</span> = { self, nixpkgs }:
+  <span class="hljs-attr">outputs</span> <span class="hljs-operator">=</span> { self, nixpkgs }:
     <span class="hljs-keyword">let</span>
-      <span class="hljs-attr">system</span> = <span class="hljs-string">&quot;x86_64-linux&quot;</span>; <span class="hljs-comment"># CPU arch</span>
-      <span class="hljs-attr">pkgs</span> = <span class="hljs-built_in">import</span> nixpkgs { <span class="hljs-keyword">inherit</span> system; };
+      <span class="hljs-attr">system</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;x86_64-linux&quot;</span>; <span class="hljs-comment"># CPU arch</span>
+      <span class="hljs-attr">pkgs</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">import</span> nixpkgs { <span class="hljs-keyword">inherit</span> system; };
     <span class="hljs-keyword">in</span>
     {
-      devShells.${system}.<span class="hljs-attr">default</span> = pkgs.mkShell {
-        <span class="hljs-attr">packages</span> = [
+      devShells.${system}.default <span class="hljs-operator">=</span> pkgs.mkShell {
+        <span class="hljs-attr">packages</span> <span class="hljs-operator">=</span> [
           pkgs.raylib <span class="hljs-comment"># for raylib</span>
           pkgs.pkg-config
         ];
 
-        <span class="hljs-attr">shellHook</span> = <span class="hljs-string">&#x27;&#x27;
+        <span class="hljs-attr">shellHook</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;&#x27;
           echo &quot;Raylib dev shell ready&quot; 
         &#x27;&#x27;</span>; <span class="hljs-comment"># spawns when entering the environment</span>
       };
     };
-}
-</code></pre>
-<pre><code class="language-bash"><span class="hljs-comment"># Enter the dev shell</span>
-nix develop
-</code></pre>
-<p>Alternatively, you can install something called <code>direnv</code>, and add a <code>.envrc</code>, which looks like</p>
-<pre><code class="language-envrc">use flake
+}</code></pre><pre><code class="hljs language-bash"><span class="hljs-comment"># Enter the dev shell</span>
+nix develop</code></pre><p>Alternatively, you can install something called <code>direnv</code>, and add a <code>.envrc</code>, which looks like</p>
+<pre><code class="hljs language-plaintext">use flake
 # Uses flake.nix automatically
 
 use nix
-# Uses shell.nix or default.nix
-</code></pre>
-<p>And run <code>direnv allow</code> to enter the dev shell automatically each time you enter the directory.
+# Uses shell.nix or default.nix</code></pre><p>And run <code>direnv allow</code> to enter the dev shell automatically each time you enter the directory.
 And this has a lot of features, and things to know. However, for now, I do not have to explain much, and channels are explained later on.</p>
-<h2 id="home-manager">Home manager</h2>
+<h2>Home manager</h2>
 <p>Now this is very interesting, it takes Nix even further. It utilizes how a user is defined, for example(<code>/etc/nixos/home.nix</code>):</p>
-<pre><code class="language-nix">{ config, pkgs, ... }:
+<pre><code class="hljs language-nix">{ config, pkgs, ... }:
 
 {
   <span class="hljs-comment"># Home Manager needs a bit of information about you and the</span>
   <span class="hljs-comment"># paths it should manage.</span>
-  home.<span class="hljs-attr">username</span> = <span class="hljs-string">&quot;yourusername&quot;</span>;
-  home.<span class="hljs-attr">homeDirectory</span> = <span class="hljs-string">&quot;/home/yourusername&quot;</span>;
+  <span class="hljs-attr">home.username</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;yourusername&quot;</span>;
+  <span class="hljs-attr">home.homeDirectory</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;/home/yourusername&quot;</span>;
 
   <span class="hljs-comment"># This value determines the Home Manager release that your</span>
   <span class="hljs-comment"># configuration is compatible with. Do not change this value,</span>
   <span class="hljs-comment"># even if you update Home Manager.</span>
   <span class="hljs-comment"># This is the original version of installation</span>
-  home.<span class="hljs-attr">stateVersion</span> = <span class="hljs-string">&quot;26.05&quot;</span>;
+  <span class="hljs-attr">home.stateVersion</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;26.05&quot;</span>;
 
   <span class="hljs-comment"># The home.packages option allows you to install Nix packages into your</span>
   <span class="hljs-comment"># environment.</span>
-  home.<span class="hljs-attr">packages</span> = [
+  <span class="hljs-attr">home.packages</span> <span class="hljs-operator">=</span> [
     pkgs.htop
     pkgs.git
     pkgs.neovim
@@ -307,20 +168,16 @@ And this has a lot of features, and things to know. However, for now, I do not h
   <span class="hljs-comment"># programs.home-manager.enable = true;</span>
 
   <span class="hljs-comment"># Enable and configure your shell</span>
-  programs.<span class="hljs-attr">bash</span> = {
-    <span class="hljs-attr">enable</span> = <span class="hljs-literal">true</span>;
-    <span class="hljs-attr">shellAliases</span> = {
-      <span class="hljs-attr">ll</span> = <span class="hljs-string">&quot;ls -l&quot;</span>;
+  <span class="hljs-attr">programs.bash</span> <span class="hljs-operator">=</span> {
+    <span class="hljs-attr">enable</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-attr">shellAliases</span> <span class="hljs-operator">=</span> {
+      <span class="hljs-attr">ll</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;ls -l&quot;</span>;
     };
   };
-}
-</code></pre>
-<p>And that is a short and sweet example of <code>home.nix</code>, however to have functionality of it, you need channels but that will be solved easier with flake.nix system wide. For now I would show you how to add the channel, but do not run that command, if you plan to use <code>flake.nix</code>(with <code>flake.nix</code>, this becomes obsolete, and will likely affect nothing):</p>
-<pre><code class="language-bash">nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager <span class="hljs-comment"># unstable</span>
-nix-channel --update
-</code></pre>
-<p>However, it is recommended to use <code>flake.nix</code>, so let's forget that example just now, and move on.</p>
-<h2 id="system-configuration">System configuration</h2>
+}</code></pre><p>And that is a short and sweet example of <code>home.nix</code>, however to have functionality of it, you need channels but that will be solved easier with flake.nix system wide. For now I would show you how to add the channel, but do not run that command, if you plan to use <code>flake.nix</code>(with <code>flake.nix</code>, this becomes obsolete, and will likely affect nothing):</p>
+<pre><code class="hljs language-bash">nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager <span class="hljs-comment"># unstable</span>
+nix-channel --update</code></pre><p>However, it is recommended to use <code>flake.nix</code>, so let&#39;s forget that example just now, and move on.</p>
+<h2>System configuration</h2>
 <p>This is where you register most of your stuff for the system to work. There are only some things to note:</p>
 <ul>
 <li>If using home manager without <code>flake.nix</code>, you need to add imports in configuration.nix, but we are using <code>flake.nix</code> later</li>
@@ -329,99 +186,88 @@ nix-channel --update
 <li>Based on the comment, do not edit the stateVersion, even if changing channels
 And that is almost it for <code>configuration.nix</code>.</li>
 </ul>
-<h2 id="nix-flakesystem-wide">Nix flake(System-wide)</h2>
+<h2>Nix flake(System-wide)</h2>
 <p>Now comes the interesting part, flake can also manage a whole system, not only for project-wide, here is what I use in <code>/etc/nixos/flake.nix</code>:</p>
-<pre><code class="language-nix">{
-  <span class="hljs-attr">description</span> = <span class="hljs-string">&quot;Alexander&#x27;s NixOS Configuration&quot;</span>;
+<pre><code class="hljs language-nix">{
+  <span class="hljs-attr">description</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Alexander&#x27;s NixOS Configuration&quot;</span>;
 
-  <span class="hljs-attr">inputs</span> = {
-    nixpkgs.<span class="hljs-attr">url</span> = <span class="hljs-string">&quot;github:NixOS/nixpkgs/nixos-unstable&quot;</span>;
+  <span class="hljs-attr">inputs</span> <span class="hljs-operator">=</span> {
+    <span class="hljs-attr">nixpkgs.url</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;github:NixOS/nixpkgs/nixos-unstable&quot;</span>;
 
-    <span class="hljs-attr">home-manager</span> = {
-      <span class="hljs-attr">url</span> = <span class="hljs-string">&quot;github:nix-community/home-manager/master&quot;</span>;
-      inputs.nixpkgs.<span class="hljs-attr">follows</span> = <span class="hljs-string">&quot;nixpkgs&quot;</span>;
+    <span class="hljs-attr">home-manager</span> <span class="hljs-operator">=</span> {
+      <span class="hljs-attr">url</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;github:nix-community/home-manager/master&quot;</span>;
+      <span class="hljs-attr">inputs.nixpkgs.follows</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;nixpkgs&quot;</span>;
     };
 
-    <span class="hljs-attr">nixvim</span> = { <span class="hljs-comment"># includes NixVim for easy Neovim configuration in home.nix</span>
-      <span class="hljs-attr">url</span> = <span class="hljs-string">&quot;github:nix-community/nixvim&quot;</span>;
+    <span class="hljs-attr">nixvim</span> <span class="hljs-operator">=</span> { <span class="hljs-comment"># includes NixVim for easy Neovim configuration in home.nix</span>
+      <span class="hljs-attr">url</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;github:nix-community/nixvim&quot;</span>;
     };
   };
 
-  <span class="hljs-attr">outputs</span> = { nixpkgs, home-manager, nixvim, ... }:
+  <span class="hljs-attr">outputs</span> <span class="hljs-operator">=</span> { nixpkgs, home-manager, nixvim, ... }:
   {
-    nixosConfigurations.<span class="hljs-attr">nixos</span> = <span class="hljs-comment"># hostname</span>
+    <span class="hljs-attr">nixosConfigurations.nixos</span> <span class="hljs-operator">=</span> <span class="hljs-comment"># hostname</span>
       nixpkgs.lib.nixosSystem {
-        <span class="hljs-attr">system</span> = <span class="hljs-string">&quot;x86_64-linux&quot;</span>;
+        <span class="hljs-attr">system</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;x86_64-linux&quot;</span>;
 
-        <span class="hljs-attr">modules</span> = [
-          ./configuration.nix <span class="hljs-comment"># links `configuration.nix`</span>
+        <span class="hljs-attr">modules</span> <span class="hljs-operator">=</span> [
+          <span class="hljs-symbol">./configuration.nix</span> <span class="hljs-comment"># links `configuration.nix`</span>
 
           home-manager.nixosModules.home-manager
 
           {
-            home-manager.<span class="hljs-attr">useGlobalPkgs</span> = <span class="hljs-literal">true</span>;
-            home-manager.<span class="hljs-attr">useUserPackages</span> = <span class="hljs-literal">true</span>;
+            <span class="hljs-attr">home-manager.useGlobalPkgs</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
+            <span class="hljs-attr">home-manager.useUserPackages</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
 
-            home-manager.users.<span class="hljs-attr">alex</span> = {
-              <span class="hljs-attr">imports</span> = [
+            <span class="hljs-attr">home-manager.users.alex</span> <span class="hljs-operator">=</span> {
+              <span class="hljs-attr">imports</span> <span class="hljs-operator">=</span> [
                 nixvim.homeModules.nixvim <span class="hljs-comment"># links nixvim</span>
-                ./home.nix <span class="hljs-comment"># links `home.nix`</span>
+                <span class="hljs-symbol">./home.nix</span> <span class="hljs-comment"># links `home.nix`</span>
               ];
             };
           }
         ];
       };
   };
-}
-</code></pre>
-<p>This is very minimal, and also uses nixvim to manage my Neovim. And you can rebuild your system using:</p>
-<pre><code class="language-bash">sudo nixos-rebuild switch --flake /etc/nixos 
+}</code></pre><p>This is very minimal, and also uses nixvim to manage my Neovim. And you can rebuild your system using:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> nixos-rebuild switch --flake /etc/nixos 
 <span class="hljs-comment"># if you do not have multiple hosts</span>
 
 
 <span class="hljs-comment"># with multiple hosts:</span>
-sudo nixos-rebuild switch --flake /etc/nixos<span class="hljs-comment">#hostname </span>
-</code></pre>
-<p>However, most of the people do not need to have an advanced <code>flake.nix</code> with package tracking, channel tracking and such, but that will be learnt next time. So you can stick with something like this above.</p>
-<h2 id="channels">Channels</h2>
-<p>This is the last part, which is channels. There are 2 types: Unstable(Rolling Release Cycle), and Stable(Point/Fixed-Release Cycle). I daily do use Unstable, but a lot of the times, people utilize how they use channels, eg, for project wide <code>flake.nix</code>, it is almost always on Unstable, while they can have a 26.05 channel system wide. And even more advanced, they can pin packages and allow both for system wide.</p>
+<span class="hljs-built_in">sudo</span> nixos-rebuild switch --flake /etc/nixos#hostname </code></pre><p>However, most of the people do not need to have an advanced <code>flake.nix</code> with package tracking, channel tracking and such, but that will be learnt next time. So you can stick with something like this above.</p>
+<h2>Channels</h2>
+<p>This is the last part, which is channels. There are 2 types: Unstable(Rolling Release Cycle), and Stable(Point/Fixed-Release Cycle). I daily do use Unstable, but a lot of the times, people utilize how they use channels, eg, for project wide <code>flake.nix</code>, it is almost always on Unstable, while they can have a 26.05 channel system wide. And even more advanced, they can pin packages and allow both for system wide. </p>
 <p>And switching channels are easy in <code>flake.nix</code>, you just need to update the URL, to unstable/master, that depends and are fairly easy to know.</p>
-<h2 id="flake-tools">Flake Tools</h2>
-<h3 id="nix-shell-1">Nix Shell</h3>
+<h2>Flake Tools</h2>
+<h3>Nix Shell</h3>
 <p>There are many other tools that are flake related. For example, we used <code>nix-shell</code> earlier, but there is also something as <code>nix shell</code>.
-Here's an example</p>
-<pre><code class="language-bash">nix-shell -p fastfetch <span class="hljs-comment"># traditional, non-flake</span>
+Here&#39;s an example</p>
+<pre><code class="hljs language-bash">nix-shell -p fastfetch <span class="hljs-comment"># traditional, non-flake</span>
 
-nix shell nixpkgs<span class="hljs-comment">#fastfetch # new, flake based</span>
+nix shell nixpkgs#fastfetch <span class="hljs-comment"># new, flake based</span>
 
-nix shell nixpkgs/23.11<span class="hljs-comment">#neofetch # previous nix channels</span>
+nix shell nixpkgs/23.11#neofetch <span class="hljs-comment"># previous nix channels</span>
 
-nix shell github:aluoty/speedfetch <span class="hljs-comment"># custom software from github</span>
-</code></pre>
-<h3 id="nix-profile">Nix Profile</h3>
+nix shell github:aluoty/speedfetch <span class="hljs-comment"># custom software from github</span></code></pre><h3>Nix Profile</h3>
 <p>Although <code>nix profile</code> is discouraged to use, I will show you what it is. It is the successor of <code>nix-env</code>. Both are imperative tools and act as a traditional package manager. However, <code>nix profile</code> is flake based while <code>nix-env</code> is traditional. <code>nix profile</code> is also user specific.</p>
-<h3 id="nix-search">Nix Search</h3>
+<h3>Nix Search</h3>
 <p>Nix search helps you search packages easily, for example search for Firefox:</p>
-<pre><code class="language-bash">nix search nixpkgs <span class="hljs-string">&#x27;firefox&#x27;</span>
-</code></pre>
-<h3 id="nix-run">Nix Run</h3>
+<pre><code class="hljs language-bash">nix search nixpkgs <span class="hljs-string">&#x27;firefox&#x27;</span></code></pre><h3>Nix Run</h3>
 <p>Nix run allows running software easily, like:</p>
-<pre><code class="language-bash">nix run nixpkgs<span class="hljs-comment">#fastfetch # runs the default fastfetch, install if not installed</span>
+<pre><code class="hljs language-bash">nix run nixpkgs#fastfetch <span class="hljs-comment"># runs the default fastfetch, install if not installed</span>
 
-nix run github:aluoty/speedfetch <span class="hljs-comment"># allows custom software from github</span>
-</code></pre>
-<h3 id="nix-build">Nix Build</h3>
+nix run github:aluoty/speedfetch <span class="hljs-comment"># allows custom software from github</span></code></pre><h3>Nix Build</h3>
 <p>Nix build is a build tool for nix, for example if you are developing and hacking the nixpkgs repo, you can use nix build to test your builds:</p>
-<pre><code class="language-bash">nix build <span class="hljs-comment"># local, requires flake.nix in the current directory</span>
+<pre><code class="hljs language-bash">nix build <span class="hljs-comment"># local, requires flake.nix in the current directory</span>
 
-nix build nixpkgs<span class="hljs-comment">#fastfetch # builds fastfetch into ./result in current directory</span>
+nix build nixpkgs#fastfetch <span class="hljs-comment"># builds fastfetch into ./result in current directory</span>
 
-nix build nixpkgs<span class="hljs-comment">#fastfetch -o fastfetch-dir # builds fastfetch into ./fastfetch-dir</span>
-</code></pre>
-<h2 id="closure">Closure</h2>
+nix build nixpkgs#fastfetch -o fastfetch-dir <span class="hljs-comment"># builds fastfetch into ./fastfetch-dir</span></code></pre><h2>Closure</h2>
 <p>This is the end of the intermediate Nix and NixOS skills guide, hope you enjoyed it and learnt something!</p>
 
-            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
-            
-        </body>
-        </html>
+        </article>
+    </main>
+
+</body>
+</html>

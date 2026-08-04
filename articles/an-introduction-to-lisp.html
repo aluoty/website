@@ -1,165 +1,45 @@
 <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Lisp</title>
-            <style>
-/* From extension vscode.github */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisp - Alexander Luo</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/hljs-github-dark.css">
+</head>
+<body>
 
-.vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only],
-.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
-.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
-	display: none;
-}
+    <nav class="navbar">
+        <a href="../index.html" class="logo">Alexander Luo</a>
 
-</style>
-            
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-<style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item {
-    list-style-type: none;
-}
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../articles.html">Articles</a></li>
+        </ul>
+    </nav>
 
-.task-list-item-checkbox {
-    margin-left: -20px;
-    vertical-align: middle;
-    pointer-events: none;
-}
-</style>
-<style>
-:root {
-  --color-note: #0969da;
-  --color-tip: #1a7f37;
-  --color-warning: #9a6700;
-  --color-severe: #bc4c00;
-  --color-caution: #d1242f;
-  --color-important: #8250df;
-}
-
-</style>
-<style>
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-note: #2f81f7;
-    --color-tip: #3fb950;
-    --color-warning: #d29922;
-    --color-severe: #db6d28;
-    --color-caution: #f85149;
-    --color-important: #a371f7;
-  }
-}
-
-</style>
-<style>
-.markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 16px;
-  color: inherit;
-  border-left: .25em solid #888;
-}
-
-.markdown-alert>:first-child {
-  margin-top: 0
-}
-
-.markdown-alert>:last-child {
-  margin-bottom: 0
-}
-
-.markdown-alert .markdown-alert-title {
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  line-height: 1
-}
-
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-alert.markdown-alert-note {
-  border-left-color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-important {
-  border-left-color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-warning {
-  border-left-color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-warning .markdown-alert-title {
-  color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-tip {
-  border-left-color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-caution {
-  border-left-color: var(--color-caution);
-}
-
-.markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: var(--color-caution);
-}
-
-</style>
-        
-        </head>
-        <body class="vscode-body vscode-light">
-            <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
-				<h1 id="lisp">Lisp</h1>
-<p>Lisp, an abbreviation of &quot;list processing&quot;, is both a family of programming languages and a programming language itself. It originated in the 1950s still in practice, after Fortran. It is very interesting. It often changes how a programmer look at programming ever after trying out Lisp dialects.</p>
-<h2 id="experience">Experience</h2>
+    <main>
+        <article class="markdown-body">
+<h1>Lisp</h1>
+<p>Lisp, an abbreviation of &quot;list processing&quot;, is both a family of programming languages and a programming language itself. It originated in the 1950s still in practice, after Fortran. It is very interesting. It often changes how a programmer look at programming ever after trying out Lisp dialects. </p>
+<h2>Experience</h2>
 <p>I have some experiences with Lisp, I learnt Racket at first, and then Common Lisp. Both are great options for beginners.</p>
-<h2 id="details">Details</h2>
-<p>First, let's explain the main features of Lisp:</p>
+<h2>Details</h2>
+<p>First, let&#39;s explain the main features of Lisp:</p>
 <ul>
 <li>Functional first</li>
 <li>S-syntax:</li>
 </ul>
-<pre><code class="language-lisp">(<span class="hljs-name">+</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span>) <span class="hljs-comment">;; This evaluates to 3</span>
-</code></pre>
-<ul>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">+</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span>) <span class="hljs-comment">;; This evaluates to 3</span></code></pre><ul>
 <li>Dynamic typing</li>
 <li>Read-Eval-Print-Loop(REPL)</li>
 <li>Homoiconicity, Code and Data are same</li>
 </ul>
-<p>Now, let's discover Racket and Common Lisp, two Lisp dialects:</p>
+<p>Now, let&#39;s discover Racket and Common Lisp, two Lisp dialects:</p>
 <ul>
-<li>Racket:
-<ul>
+<li>Racket:<ul>
 <li>Language-Oriented-Programming, lang is built into language</li>
 <li>Built in IDE</li>
 <li>Educational</li>
@@ -167,8 +47,7 @@
 <li>Some libraries with langs</li>
 </ul>
 </li>
-<li>Common Lisp:
-<ul>
+<li>Common Lisp:<ul>
 <li>Multi-Paradigm: Functional, Procedural, OOP</li>
 <li>IDE are from 3rd parties</li>
 <li>Used in AI research and business</li>
@@ -177,19 +56,17 @@
 </ul>
 </li>
 </ul>
-<h2 id="code-example">Code Example</h2>
+<h2>Code Example</h2>
 <p>Now, before deciding whether to learn Lisp or not, and which dialect, let me show you some examples first:
 Racket:</p>
-<pre><code class="language-racket">#lang racket ;; define lang
+<pre><code class="hljs language-plaintext">#lang racket ;; define lang
 (define example-var 32)
 (define example-string &quot;Good Morning!&quot;)
 (define result (* 3 2 (- 3 2)))
 displayln example-var ;; prints
 (define (square x)
-  (* x x))
-</code></pre>
-<p>Common Lisp:</p>
-<pre><code class="language-lisp">(<span class="hljs-name">defparameter</span> *example* <span class="hljs-number">10</span>) <span class="hljs-comment">;; define *example*, ** are optional, not syntax</span>
+  (* x x))</code></pre><p>Common Lisp:</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">defparameter</span> *example* <span class="hljs-number">10</span>) <span class="hljs-comment">;; define *example*, ** are optional, not syntax</span>
 (<span class="hljs-name">defconst</span> +g+ <span class="hljs-number">10</span>) <span class="hljs-comment">;; const, ++ are optional, not syntax</span>
 (<span class="hljs-name">defun</span> square (<span class="hljs-name">x</span>)
   (<span class="hljs-name">*</span> x x))
@@ -197,25 +74,22 @@ displayln example-var ;; prints
 (<span class="hljs-name">defun</span> power (<span class="hljs-name">x</span> <span class="hljs-symbol">&amp;optional</span> (<span class="hljs-name">n</span> <span class="hljs-number">2</span>)) <span class="hljs-comment">;; &amp;optional --&gt; Optional, Default --&gt; 2</span>
   (<span class="hljs-name">expt</span> x n))
 
-(<span class="hljs-name">format</span> <span class="hljs-literal">t</span> <span class="hljs-string">&quot;Hello! ~A~%&quot;</span>) <span class="hljs-comment">;; ~A~% are optional and for better seeing</span>
-</code></pre>
-<h2 id="try-it-out">Try It Out</h2>
+(<span class="hljs-name">format</span> <span class="hljs-literal">t</span> <span class="hljs-string">&quot;Hello! ~A~%&quot;</span>) <span class="hljs-comment">;; ~A~% are optional and for better seeing</span></code></pre><h2>Try It Out</h2>
 <p>From these examples, you can see that Racket and Common Lisp are very different in syntax as well.</p>
 <p>You can choose either to start first.</p>
 <p>But for now, I am going to teach you how to start with Common Lisp.</p>
 <p>First, install SBCL, a compiler for Common Lisp, it is often called <code>sbcl</code> in the packages.
 Second, you can install Emacs on your system if you do not have one, the package name for Emacs is often just plainly <code>emacs</code>. After that, you can install SLIME, a powerful development plugin for Emacs, the package might be <code>emacsPackages.slime</code> or slime depending on the system.</p>
 <p>Then, after installing, change the init file for Emacs. Emacs also uses Emacs Lisp which is a Lisp dialect, here is the init.el:</p>
-<pre><code class="language-el">(require 'slime)
+<pre><code class="hljs language-plaintext">(require &#x27;slime)
 
 (setq inferior-lisp-program &quot;sbcl&quot;)
-(slime-setup '(slime-fancy))
-</code></pre>
-<p>Now fire up Emacs, and you will see an interface with a &quot;Open a File&quot; button, click that, and enter your file for testing, like <code>~/Projects/test/test.lisp</code>, then you will be launched into the coding interface.</p>
+(slime-setup &#x27;(slime-fancy))</code></pre><p>Now fire up Emacs, and you will see an interface with a &quot;Open a File&quot; button, click that, and enter your file for testing, like <code>~/Projects/test/test.lisp</code>, then you will be launched into the coding interface.</p>
 <p>Now, press M-x, which is often Alt+X, and then type <code>slime</code> and you will see the SLIME interface of REPL, you can write some code in the file, press C-c C-c, double Ctrl+C, which compiles it, and type the function in REPL SLIME and you will get the output.</p>
 <p>From now onwards, you can explore more of Common Lisp like Recursions, Higher Order Functions, Macros and more libraries. Enjoy!</p>
 
-            
-            
-        </body>
-        </html>
+        </article>
+    </main>
+
+</body>
+</html>
