@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to ASM - Alexander Luo</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/hljs-github-dark.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="logo">Alexander Luo</a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../articles.html">Articles</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article class="markdown-body">
+<h1>Introduction to ASM</h1>
+<p>Assembly, a low level language, used in many cases, including embedded programming, kernel development and low-level development.</p>
+<p>It is often considered a very &quot;hard&quot; language due to its explicit design.</p>
+<p>It first appeared in 1947. However, it still stands a ground in the modern days, mainly for learning and debugging.</p>
+<h2>Introduction</h2>
+<p>Now, we are going to try some Assembly, first let&#39;s take a look at the specs:</p>
+<ul>
+<li>Imperative</li>
+<li>Unstructured</li>
+<li>Sometimes Metaprogramming, Structured or Object Oriented</li>
+<li>No typing discipline</li>
+</ul>
+<h2>Details</h2>
+<p>Assembly also differs on different CPU arch, as it uses registers in CPUs that would not work the same in another CPU arch.</p>
+<p>It also often ran via <code>assembling via assembler</code>, <code>linking</code> and then <code>running</code>.</p>
+<p>However, on bare-metal setups, that differs.</p>
+<h2>Bare-Metal</h2>
+<p>Bare metal is often considered as writing code without a typical Operating System. No system and kernel calls, only <em>you</em> managing even where a label in the code lives. However, bare metal programming can be tedious if you are emulating it.</p>
+<p>For example, when emulating RISC-V on x86_64 via QEMU, you need to use UART, which is different from native hardware.</p>
+<p>Thus, it is more encouraged to either buy a real board, or to program with kernel.</p>
+<h2>Example</h2>
+<p>Let&#39;s see some examples, before deciding which CPU arch is best for you. </p>
+<p>x86_64 vs ARM vs RISC-V</p>
+<ul>
+<li><p>x86_64:</p>
+<ul>
+<li>CISC(Complex Instruction Set Computer)</li>
+<li>Max raw computing power</li>
+<li>Proprietary</li>
+</ul>
+</li>
+<li><p>ARM:</p>
+<ul>
+<li>RISC(Reduced Instruction Set Computer</li>
+<li>High energy efficiency, low heat</li>
+<li>Proprietary</li>
+</ul>
+</li>
+<li><p>RISC-V:</p>
+<ul>
+<li>RISC</li>
+<li>Modular, custom extensions, scaling from microcontrollers to high-performance systems</li>
+<li>Open</li>
+</ul>
+</li>
+</ul>
+<p>Although, x86_64 and ARM are still more used in the real programming world. For me, RISC-V is more elegant. </p>
+<p>Let&#39;s see some code examples now:</p>
+<ul>
+<li>x86_64:</li>
+</ul>
+<pre><code class="hljs language-plaintext">; hello_x86.s (Intel Syntax)
+global _start
+
+section .text
+_start:
+    ; sys_write(fd=1, buf=msg, count=14)
+    mov rax, 1          ; Linux sys_write syscall number
+    mov rdi, 1          ; 1 = stdout
+    mov rsi, msg        ; address of string
+    mov rdx, 14         ; string length
+    syscall             ; trigger system call
+
+    ; sys_exit(status=0)
+    mov rax, 60         ; Linux sys_exit syscall number
+    xor rdi, rdi        ; status code 0
+    syscall             ; trigger system call
+
+section .data
+msg: db &quot;Hello, World!&quot;, 10  ; 10 is the ASCII newline character</code></pre><ul>
+<li>arm:</li>
+</ul>
+<pre><code class="hljs language-plaintext">// hello_arm.s
+.global _start
+
+.text
+_start:
+    // sys_write(fd=1, buf=msg, count=13)
+    mov x0, #1          // 1 = stdout
+    ldr x1, =msg        // address of string
+    mov x2, #13         // string length
+    mov x8, #64         // Linux sys_write syscall number
+    svc #0              // trigger software interrupt
+
+    // sys_exit(status=0)
+    mov x0, #0          // status code 0
+    mov x8, #93         // Linux sys_exit syscall number
+    svc #0              // trigger software interrupt
+
+.data
+msg:
+    .ascii &quot;Hello, World!\n&quot;</code></pre><ul>
+<li>risc-v:</li>
+</ul>
+<pre><code class="hljs language-plaintext"># hello_riscv.s
+.global _start
+
+.text
+_start:
+    # sys_write(fd=1, buf=msg, count=14)
+    li a0, 1            # 1 = stdout
+    la a1, msg          # load address of string
+    li a2, 14           # string length
+    li a7, 64           # Linux sys_write syscall number
+    ecall               # trigger environment call
+
+    # sys_exit(status=0)
+    li a0, 0            # status code 0
+    li a7, 93           # Linux sys_exit syscall number
+    ecall               # trigger environment call
+
+.data
+msg:
+    .string &quot;Hello, World!\n&quot;</code></pre><h2>Closure</h2>
+<p>Now that you have decided your desired CPU arch for ASM, you can view <a href="./riscv-asm.html">the RISC-V asm article</a> if you think it will help you! Bye!</p>
+
+        </article>
+    </main>
+
+</body>
+</html>

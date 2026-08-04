@@ -1,4 +1,4 @@
-# Nix NixOS
+# Intermediate Nix and NixOS
 Now that you have successfully driven a NixOS system, let's dive deeper in. 
 
 ## Table of Contents
