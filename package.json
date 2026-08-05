@@ -1,10 +1,11 @@
 {
-  "name": "website-clone-test",
+  "name": "website",
   "version": "1.0.0",
-  "description": "Personal portfolio site of me built with vanilla HTML and few lines of CSS.",
+  "description": "Personal portfolio site of me.",
   "main": "index.js",
   "scripts": {
-    "build": "node build.js"
+    "build": "node build.js",
+    "dev": "vite --open"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/aluoty/website#readme",
   "dependencies": {
     "highlight.js": "^11.11.1",
-    "marked": "^18.0.9"
+    "marked": "^18.0.9",
+    "vite": "^8.2.0"
   }
 }
