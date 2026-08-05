@@ -145,6 +145,7 @@ body::before {
 
 .nav-links a:hover {
     color: var(--text);
+    text-decoration: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -213,7 +214,7 @@ a {
     color: var(--text);
     text-decoration: none;
     text-underline-offset: 3px;
-    transition: color 0.2s var(--ease), text-decoration-color 0.2s var(--ease);
+    transition: color 0.2s var(--ease);
 }
 
 a:hover {
