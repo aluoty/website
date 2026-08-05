@@ -23,6 +23,205 @@
     <main>
         <article class="markdown-body">
 <h1>RISC-V ASM</h1>
+<p>RISC-V Assembly is one of the cleanest Assembly you will find that can be used. It is clean for many reasons, mainly because it was designed in a clean-state approach, no historical baggage and decades of backward compatibility. </p>
+<p>It is also quite new, but its usage has been increasing for quite some time.</p>
+<h2>Details</h2>
+<p>For our practices, we are not going to do bare-metal, as emulation for bare-metal can be quite confusing and doing bare-metal on real hardware can also be challenging.</p>
+<p>We will be using an emulator called <a href="https://www.qemu.org/">QEMU</a>, you can download QEMU at its <a href="https://www.qemu.org/download/">download page</a>. If the package manager you are using is not listed, you can either compile it, or check for your package manager&#39;s page and search the package up.</p>
+<p>You will also need riscv64 compatible gcc, and other riscv64 compatible binutils and gdb for debugging.</p>
+<h2>Knowledge</h2>
+<p>Before writing any actual code, I will let you learn the basics of RISC-V ASM. </p>
+<h3>Registers</h3>
+<p>First, there are physical registers, in RISC-V, there are 32 general-purpose registers from <code>x0 to x31</code> by default.</p>
+<table>
+<thead>
+<tr>
+<th>Names</th>
+<th>Details</th>
+<th>Saver</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x0, zero</td>
+<td>Hard Wired 0</td>
+<td>---</td>
+</tr>
+<tr>
+<td>x1, ra</td>
+<td>Return Address</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x2, sp</td>
+<td>Stack Pointer</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x3, gp</td>
+<td>Global Pointer</td>
+<td>---</td>
+</tr>
+<tr>
+<td>x4, tp</td>
+<td>Thread Pointer</td>
+<td>---</td>
+</tr>
+<tr>
+<td>x5-7, t0-2</td>
+<td>Temporary Value</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x8, s0/fp</td>
+<td>Saved Register/Frame Pointer</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x9, s1</td>
+<td>Saved Register</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x10-11, a0-1</td>
+<td>Function Argument/Return Values</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x12-17, a2-7</td>
+<td>Function Argument</td>
+<td>Caller</td>
+</tr>
+<tr>
+<td>x18-27, s2-11</td>
+<td>Saved Register</td>
+<td>Callee</td>
+</tr>
+<tr>
+<td>x28-31, t3-6</td>
+<td>Temporary Value</td>
+<td>Caller</td>
+</tr>
+</tbody></table>
+<p>Don&#39;t be too worried about registers, the most used ones are probably <code>ra</code>, <code>sp</code>, <code>a0</code>, <code>t0</code>, <code>s0</code>.</p>
+<h3>Instructions</h3>
+<p>The syntax of RISC-V ASM follows <code>opcode rd, rs1, rs2</code>(dest, source, source2).
+Here are some common examples:</p>
+<pre><code class="hljs language-riscv"><span class="hljs-comment"># Note that these are just examples, not real programs</span>
+
+<span class="hljs-keyword">li</span> <span class="hljs-keyword">a0</span>, <span class="hljs-number">10</span> <span class="hljs-comment"># Load immediate value of 10 into a0</span>
+
+<span class="hljs-keyword">addi</span> <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">zero</span>, <span class="hljs-number">10</span> <span class="hljs-comment"># Another way to load a0 with 10</span>
+
+<span class="hljs-keyword">li</span> <span class="hljs-keyword">a1</span>, <span class="hljs-number">20</span>
+<span class="hljs-keyword">li</span> <span class="hljs-keyword">a2</span>, <span class="hljs-number">5</span>
+
+<span class="hljs-keyword">sub</span> <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">a1</span>, <span class="hljs-keyword">a2</span> <span class="hljs-comment"># a0 = a1 - a2</span>
+
+<span class="hljs-keyword">addi</span> <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">a0</span>, -<span class="hljs-number">5</span> <span class="hljs-comment"># a0 = a0 -5</span>
+
+<span class="hljs-keyword">addi</span> <span class="hljs-keyword">sp</span>, <span class="hljs-keyword">sp</span>, -<span class="hljs-number">16</span> <span class="hljs-comment"># Init stack of 16 bytes</span>
+<span class="hljs-keyword">sw</span> <span class="hljs-keyword">a0</span>, <span class="hljs-number">8</span>(<span class="hljs-keyword">sp</span>) <span class="hljs-comment"># Store a0 value into sp with offset 8, *(sp+8)</span>
+
+<span class="hljs-keyword">lw</span> <span class="hljs-keyword">a4</span>, <span class="hljs-number">8</span>(<span class="hljs-keyword">sp</span>) <span class="hljs-comment"># Loads the value of value stored in sp with offset 8 into a4</span>
+
+<span class="hljs-keyword">beq</span> <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">a1</span>, equal_label <span class="hljs-comment"># Check if equal, if equal, jump to equal_label, if not continue</span>
+
+<span class="hljs-keyword">blt</span> <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">a1</span>, less_label <span class="hljs-comment"># Check if a0 &lt; a1, if a0 &lt; a1, jump to less_label, if not continue</span>
+
+<span class="hljs-symbol">equal_label:</span> 
+    <span class="hljs-keyword">addi</span> <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">zero</span>, <span class="hljs-number">1</span> <span class="hljs-comment"># Set a0 to zero + 1 = 1</span>
+
+<span class="hljs-symbol">less_label:</span>
+    <span class="hljs-keyword">addi</span> <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">a0</span>, <span class="hljs-number">1</span> <span class="hljs-comment"># a0 = a0 + 1</span>
+
+<span class="hljs-comment"># Here are some pseudoinstructions and explanations</span>
+
+<span class="hljs-keyword">li</span> <span class="hljs-keyword">a0</span>, <span class="hljs-number">42</span> <span class="hljs-comment"># Translates to addi a0, zero, 42</span>
+
+<span class="hljs-keyword">mv</span> <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">a1</span> <span class="hljs-comment"># Copies value of a1 to a0, same as addi a0, a1, 0</span>
+
+<span class="hljs-keyword">addi</span> <span class="hljs-keyword">sp</span>, <span class="hljs-keyword">sp</span>, <span class="hljs-number">16</span> <span class="hljs-comment"># Restore stack</span>
+
+<span class="hljs-keyword">call</span> example_function <span class="hljs-comment"># calls function, take args from a0, a1, ...</span>
+
+<span class="hljs-symbol">example_function:</span>
+    <span class="hljs-keyword">addi</span> <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">a0</span>, <span class="hljs-number">10</span> <span class="hljs-comment"># Changes a0 globally</span>
+    <span class="hljs-keyword">ret</span> <span class="hljs-comment"># Does not return value of a0</span></code></pre><p>That&#39;s the basics. Honestly, that&#39;s enough to start off.</p>
+<h3>Calls</h3>
+<p>The type of kernel call that is used when not using libc functions is <code>ecall</code>.</p>
+<p>For example:</p>
+<pre><code class="hljs language-riscv"><span class="hljs-keyword">li</span> <span class="hljs-keyword">a7</span>, <span class="hljs-number">93</span>          <span class="hljs-comment"># Linux sys_exit system call number is 93</span>
+<span class="hljs-keyword">li</span> <span class="hljs-keyword">a0</span>, <span class="hljs-number">0</span>           <span class="hljs-comment"># Argument 1: Return status code (0 = success)</span>
+<span class="hljs-keyword">ecall</span>              <span class="hljs-comment"># Trigger the system call</span></code></pre><h2>Code</h2>
+<p>So, let&#39;s setup up the environment by first installing the packages listed, alternatively, I have a <code>flake.nix</code> here if you use nix:</p>
+<pre><code class="hljs language-nix">{
+  <span class="hljs-attr">description</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;RISC-V Development&quot;</span>;
+
+  <span class="hljs-attr">inputs</span> <span class="hljs-operator">=</span> {
+    <span class="hljs-attr">nixpkgs.url</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;github:NixOS/nixpkgs/nixos-unstable&quot;</span>;
+  };
+
+  <span class="hljs-attr">outputs</span> <span class="hljs-operator">=</span> { self, nixpkgs }:
+  <span class="hljs-keyword">let</span>
+    <span class="hljs-attr">system</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;x86_64-linux&quot;</span>;
+
+    <span class="hljs-attr">pkgs</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">import</span> nixpkgs {
+      <span class="hljs-keyword">inherit</span> system;
+    };
+  <span class="hljs-keyword">in</span>
+  {
+    devShells.${system}.default <span class="hljs-operator">=</span>
+      pkgs.mkShell {
+
+      <span class="hljs-attr">packages</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">with</span> pkgs; [
+        qemu
+        pkgsCross.riscv64.buildPackages.gcc
+        pkgsCross.riscv64.buildPackages.binutils
+        gdb
+      ];
+    };
+  };
+}</code></pre><p>Let&#39;s go, first, we can create a separate directory and touch a file, <code>touch hello.s</code> preferably.</p>
+<p>Let&#39;s read some real RISC-V ASM code now, here&#39;s the example of Hello World, run by <code>riscv64-unknown-linux-gnu-as hello.s -o hello.o</code>, then <code>riscv64-unknown-linux-gnu-ld hello.o -o hello</code>, finally <code>qemu-riscv64 ./hello</code>:</p>
+<pre><code class="hljs language-riscv"><span class="hljs-meta">.global</span> _start      <span class="hljs-comment"># Provide program entry point to the linker</span>
+
+<span class="hljs-meta">.text</span>               <span class="hljs-comment"># Section containing executable instructions</span>
+<span class="hljs-symbol">_start:</span>
+    <span class="hljs-comment"># --- Step 1: Write &quot;Hello, World!&quot; to stdout ---</span>
+    <span class="hljs-keyword">li</span> <span class="hljs-keyword">a0</span>, <span class="hljs-number">1</span>        <span class="hljs-comment"># Argument 1: File descriptor (1 = stdout)</span>
+    <span class="hljs-keyword">la</span> <span class="hljs-keyword">a1</span>, message  <span class="hljs-comment"># Argument 2: Pointer to the string</span>
+    <span class="hljs-keyword">li</span> <span class="hljs-keyword">a2</span>, <span class="hljs-number">14</span>       <span class="hljs-comment"># Argument 3: Length of the string (including \n)</span>
+    <span class="hljs-keyword">li</span> <span class="hljs-keyword">a7</span>, <span class="hljs-number">64</span>       <span class="hljs-comment"># Linux system call number for sys_write (64)</span>
+    <span class="hljs-keyword">ecall</span>           <span class="hljs-comment"># Invoke the environment system call</span>
+
+    <span class="hljs-comment"># --- Step 2: Exit the program safely ---</span>
+    <span class="hljs-keyword">li</span> <span class="hljs-keyword">a0</span>, <span class="hljs-number">0</span>        <span class="hljs-comment"># Argument 1: Exit status code (0 = success)</span>
+    <span class="hljs-keyword">li</span> <span class="hljs-keyword">a7</span>, <span class="hljs-number">93</span>       <span class="hljs-comment"># Linux system call number for sys_exit (93)</span>
+    <span class="hljs-keyword">ecall</span>           <span class="hljs-comment"># Invoke the environment system call</span>
+
+<span class="hljs-meta">.data</span>               <span class="hljs-comment"># Section containing initialized data</span>
+<span class="hljs-symbol">message:</span>
+    <span class="hljs-meta">.ascii</span> <span class="hljs-string">&quot;Hello, World!\n&quot;</span></code></pre><p>Here&#39;s another example that uses libc functions like <code>printf</code>, run by <code>riscv64-unknown-linux-gnu-gcc hello.s -o hello</code>, then <code>qemu-riscv64 ./hello</code>:</p>
+<pre><code class="hljs language-riscv"><span class="hljs-meta">.global</span> main
+<span class="hljs-meta">.text</span>
+
+<span class="hljs-symbol">main:</span>
+     <span class="hljs-keyword">addi</span> <span class="hljs-keyword">sp</span>, <span class="hljs-keyword">sp</span>, -<span class="hljs-number">16</span> <span class="hljs-comment"># Initialize stack</span>
+     sd   <span class="hljs-keyword">ra</span>, <span class="hljs-number">8</span>(<span class="hljs-keyword">sp</span>) <span class="hljs-comment"># Reserve ra for later</span>
+
+     <span class="hljs-keyword">la</span>   <span class="hljs-keyword">a0</span>, msg <span class="hljs-comment"># Load a0 = msg</span>
+     <span class="hljs-keyword">call</span> printf <span class="hljs-comment"># calls printf from libc</span>
+
+     ld   <span class="hljs-keyword">ra</span>, <span class="hljs-number">8</span>(<span class="hljs-keyword">sp</span>)
+     <span class="hljs-keyword">addi</span> <span class="hljs-keyword">sp</span>, <span class="hljs-keyword">sp</span>, <span class="hljs-number">16</span>
+     <span class="hljs-keyword">li</span>   <span class="hljs-keyword">a0</span>, <span class="hljs-number">0</span>
+     <span class="hljs-keyword">ret</span>
+
+<span class="hljs-meta">.data</span>
+<span class="hljs-symbol">msg:</span>
+    <span class="hljs-meta">.string</span> <span class="hljs-string">&quot;Hello World!\n&quot;</span></code></pre><h2>Closure</h2>
+<p>You have now learnt the basics of RISC-V ASM, you can try to write more code. Mainly in three ways, kernel calls, bare-metal, libc calls. For learning on a different CPU arch, kernel calls is the subjective best, and you can also try libc. If you have a RISC-V arch controller, definitely try all three.</p>
+<p>Hope you&#39;ve learnt something, bye!</p>
 
         </article>
     </main>
