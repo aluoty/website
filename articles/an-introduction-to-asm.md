@@ -55,7 +55,7 @@ Although, x86_64 and ARM are still more used in the real programming world. For 
 
 Let's see some code examples now:
 + x86_64:
-```assembly
+```asm
 ; hello_x86.s (Intel Syntax)
 global _start
 
@@ -78,7 +78,7 @@ msg: db "Hello, World!", 10  ; 10 is the ASCII newline character
 ```
 
 + arm:
-```assembly
+```arm
 // hello_arm.s
 .global _start
 
@@ -102,7 +102,7 @@ msg:
 ```
 
 + risc-v:
-```assembly
+```risc-v
 # hello_riscv.s
 .global _start
 

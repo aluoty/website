@@ -73,69 +73,69 @@
 <ul>
 <li>x86_64:</li>
 </ul>
-<pre><code class="hljs language-plaintext">; hello_x86.s (Intel Syntax)
-global _start
+<pre><code class="hljs language-x86asm"><span class="hljs-comment">; hello_x86.s (Intel Syntax)</span>
+<span class="hljs-meta">global</span> _start
 
-section .text
-_start:
-    ; sys_write(fd=1, buf=msg, count=14)
-    mov rax, 1          ; Linux sys_write syscall number
-    mov rdi, 1          ; 1 = stdout
-    mov rsi, msg        ; address of string
-    mov rdx, 14         ; string length
-    syscall             ; trigger system call
+<span class="hljs-meta">section</span> .text
+<span class="hljs-symbol">_start:</span>
+    <span class="hljs-comment">; sys_write(fd=1, buf=msg, count=14)</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rax</span>, <span class="hljs-number">1</span>          <span class="hljs-comment">; Linux sys_write syscall number</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rdi</span>, <span class="hljs-number">1</span>          <span class="hljs-comment">; 1 = stdout</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rsi</span>, msg        <span class="hljs-comment">; address of string</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rdx</span>, <span class="hljs-number">14</span>         <span class="hljs-comment">; string length</span>
+    <span class="hljs-keyword">syscall</span>             <span class="hljs-comment">; trigger system call</span>
 
-    ; sys_exit(status=0)
-    mov rax, 60         ; Linux sys_exit syscall number
-    xor rdi, rdi        ; status code 0
-    syscall             ; trigger system call
+    <span class="hljs-comment">; sys_exit(status=0)</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rax</span>, <span class="hljs-number">60</span>         <span class="hljs-comment">; Linux sys_exit syscall number</span>
+    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">rdi</span>, <span class="hljs-built_in">rdi</span>        <span class="hljs-comment">; status code 0</span>
+    <span class="hljs-keyword">syscall</span>             <span class="hljs-comment">; trigger system call</span>
 
-section .data
-msg: db &quot;Hello, World!&quot;, 10  ; 10 is the ASCII newline character</code></pre><ul>
+<span class="hljs-meta">section</span> .data
+<span class="hljs-symbol">msg:</span> <span class="hljs-built_in">db</span> <span class="hljs-string">&quot;Hello, World!&quot;</span>, <span class="hljs-number">10</span>  <span class="hljs-comment">; 10 is the ASCII newline character</span></code></pre><ul>
 <li>arm:</li>
 </ul>
-<pre><code class="hljs language-plaintext">// hello_arm.s
-.global _start
+<pre><code class="hljs language-arm"><span class="hljs-comment">// hello_arm.s</span>
+<span class="hljs-symbol">.global</span> _start
 
-.text
-_start:
-    // sys_write(fd=1, buf=msg, count=13)
-    mov x0, #1          // 1 = stdout
-    ldr x1, =msg        // address of string
-    mov x2, #13         // string length
-    mov x8, #64         // Linux sys_write syscall number
-    svc #0              // trigger software interrupt
+<span class="hljs-symbol">.text</span>
+<span class="hljs-symbol">_start:</span>
+    <span class="hljs-comment">// sys_write(fd=1, buf=msg, count=13)</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">x0</span>, <span class="hljs-number">#1</span>          <span class="hljs-comment">// 1 = stdout</span>
+    <span class="hljs-keyword">ldr</span> <span class="hljs-built_in">x1</span>, <span class="hljs-symbol">=msg</span>        <span class="hljs-comment">// address of string</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">x2</span>, <span class="hljs-number">#13</span>         <span class="hljs-comment">// string length</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">x8</span>, <span class="hljs-number">#64</span>         <span class="hljs-comment">// Linux sys_write syscall number</span>
+    <span class="hljs-keyword">svc</span> <span class="hljs-number">#0</span>              <span class="hljs-comment">// trigger software interrupt</span>
 
-    // sys_exit(status=0)
-    mov x0, #0          // status code 0
-    mov x8, #93         // Linux sys_exit syscall number
-    svc #0              // trigger software interrupt
+    <span class="hljs-comment">// sys_exit(status=0)</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">x0</span>, <span class="hljs-number">#0</span>          <span class="hljs-comment">// status code 0</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">x8</span>, <span class="hljs-number">#93</span>         <span class="hljs-comment">// Linux sys_exit syscall number</span>
+    <span class="hljs-keyword">svc</span> <span class="hljs-number">#0</span>              <span class="hljs-comment">// trigger software interrupt</span>
 
-.data
-msg:
-    .ascii &quot;Hello, World!\n&quot;</code></pre><ul>
+<span class="hljs-symbol">.data</span>
+<span class="hljs-symbol">msg:</span>
+    <span class="hljs-meta">.ascii</span> <span class="hljs-string">&quot;Hello, World!\n&quot;</span></code></pre><ul>
 <li>risc-v:</li>
 </ul>
-<pre><code class="hljs language-plaintext"># hello_riscv.s
-.global _start
+<pre><code class="hljs language-riscv"><span class="hljs-comment"># hello_riscv.s</span>
+<span class="hljs-meta">.global</span> _start
 
-.text
-_start:
-    # sys_write(fd=1, buf=msg, count=14)
-    li a0, 1            # 1 = stdout
-    la a1, msg          # load address of string
-    li a2, 14           # string length
-    li a7, 64           # Linux sys_write syscall number
-    ecall               # trigger environment call
+<span class="hljs-meta">.text</span>
+<span class="hljs-symbol">_start:</span>
+    <span class="hljs-comment"># sys_write(fd=1, buf=msg, count=14)</span>
+    <span class="hljs-keyword">li</span> <span class="hljs-keyword">a0</span>, <span class="hljs-number">1</span>            <span class="hljs-comment"># 1 = stdout</span>
+    <span class="hljs-keyword">la</span> <span class="hljs-keyword">a1</span>, msg          <span class="hljs-comment"># load address of string</span>
+    <span class="hljs-keyword">li</span> <span class="hljs-keyword">a2</span>, <span class="hljs-number">14</span>           <span class="hljs-comment"># string length</span>
+    <span class="hljs-keyword">li</span> <span class="hljs-keyword">a7</span>, <span class="hljs-number">64</span>           <span class="hljs-comment"># Linux sys_write syscall number</span>
+    <span class="hljs-keyword">ecall</span>               <span class="hljs-comment"># trigger environment call</span>
 
-    # sys_exit(status=0)
-    li a0, 0            # status code 0
-    li a7, 93           # Linux sys_exit syscall number
-    ecall               # trigger environment call
+    <span class="hljs-comment"># sys_exit(status=0)</span>
+    <span class="hljs-keyword">li</span> <span class="hljs-keyword">a0</span>, <span class="hljs-number">0</span>            <span class="hljs-comment"># status code 0</span>
+    <span class="hljs-keyword">li</span> <span class="hljs-keyword">a7</span>, <span class="hljs-number">93</span>           <span class="hljs-comment"># Linux sys_exit syscall number</span>
+    <span class="hljs-keyword">ecall</span>               <span class="hljs-comment"># trigger environment call</span>
 
-.data
-msg:
-    .string &quot;Hello, World!\n&quot;</code></pre><h2>Closure</h2>
+<span class="hljs-meta">.data</span>
+<span class="hljs-symbol">msg:</span>
+    <span class="hljs-meta">.string</span> <span class="hljs-string">&quot;Hello, World!\n&quot;</span></code></pre><h2>Closure</h2>
 <p>Now that you have decided your desired CPU arch for ASM, you can view <a href="./riscv-asm.html">the RISC-V asm article</a> if you think it will help you! Bye!</p>
 
         </article>
