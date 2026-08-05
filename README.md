@@ -1,13 +1,11 @@
 # Website
 
-Personal portfolio site of me built with vanilla HTML, CSS and some JS.
-
-Run `npm run build` to build the HTML files for the articles in Markdown.
+Personal portfolio site of me built with HTML, CSS and some JS.
 
 ## Commands
 
-+ Run by opening [my website](https://alexanderluo.com) or [a local copy of the HTML files](./index.html).
-
++ Build HTML articles from MarkDown articles by running `npm run build`
++ Ruun the site dynamically via `vite` by running `npm run dev`
 
 ## Disclaimer
 
