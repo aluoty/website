@@ -59,13 +59,13 @@
 <h2>Code Example</h2>
 <p>Now, before deciding whether to learn Lisp or not, and which dialect, let me show you some examples first:
 Racket:</p>
-<pre><code class="hljs language-plaintext">#lang racket ;; define lang
-(define example-var 32)
-(define example-string &quot;Good Morning!&quot;)
-(define result (* 3 2 (- 3 2)))
-displayln example-var ;; prints
-(define (square x)
-  (* x x))</code></pre><p>Common Lisp:</p>
+<pre><code class="hljs language-scheme">#lang racket <span class="hljs-comment">;; define lang</span>
+(<span class="hljs-name"><span class="hljs-built_in">define</span></span> example-var <span class="hljs-number">32</span>)
+(<span class="hljs-name"><span class="hljs-built_in">define</span></span> example-string <span class="hljs-string">&quot;Good Morning!&quot;</span>)
+(<span class="hljs-name"><span class="hljs-built_in">define</span></span> result (<span class="hljs-name"><span class="hljs-built_in">*</span></span> <span class="hljs-number">3</span> <span class="hljs-number">2</span> (<span class="hljs-name"><span class="hljs-built_in">-</span></span> <span class="hljs-number">3</span> <span class="hljs-number">2</span>)))
+displayln example-var <span class="hljs-comment">;; prints</span>
+(<span class="hljs-name"><span class="hljs-built_in">define</span></span> (<span class="hljs-name">square</span> x)
+  (<span class="hljs-name"><span class="hljs-built_in">*</span></span> x x))</code></pre><p>Common Lisp:</p>
 <pre><code class="hljs language-lisp">(<span class="hljs-name">defparameter</span> *example* <span class="hljs-number">10</span>) <span class="hljs-comment">;; define *example*, ** are optional, not syntax</span>
 (<span class="hljs-name">defconst</span> +g+ <span class="hljs-number">10</span>) <span class="hljs-comment">;; const, ++ are optional, not syntax</span>
 (<span class="hljs-name">defun</span> square (<span class="hljs-name">x</span>)

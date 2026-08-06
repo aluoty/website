@@ -73,7 +73,7 @@ First, install SBCL, a compiler for Common Lisp, it is often called `sbcl` in th
 Second, you can install Emacs on your system if you do not have one, the package name for Emacs is often just plainly `emacs`. After that, you can install SLIME, a powerful development plugin for Emacs, the package might be `emacsPackages.slime` or slime depending on the system.
 
 Then, after installing, change the init file for Emacs. Emacs also uses Emacs Lisp which is a Lisp dialect, here is the init.el:
-```el
+```elisp
 (require 'slime)
 
 (setq inferior-lisp-program "sbcl")

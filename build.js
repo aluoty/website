@@ -14,6 +14,7 @@ const LANGUAGE_ALIASES = {
     'x86': 'x86asm',
     'arm': 'arm',
     arm64: 'arm',
+    racket: 'scheme',
     riscv: 'riscv',
     riscv32: 'riscv',
     riscv64: 'riscv',
