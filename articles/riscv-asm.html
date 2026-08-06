@@ -219,7 +219,80 @@ Here are some common examples:</p>
 
 <span class="hljs-meta">.data</span>
 <span class="hljs-symbol">msg:</span>
-    <span class="hljs-meta">.string</span> <span class="hljs-string">&quot;Hello World!\n&quot;</span></code></pre><h2>Closure</h2>
+    <span class="hljs-meta">.string</span> <span class="hljs-string">&quot;Hello World!\n&quot;</span></code></pre><p>Here&#39;s another short program, a recursive factorial implementations using libc, run by <code>riscv64-unknown-linux-gnu-gcc factorial.s -o factorial</code>, and then <code>qemu-riscv64 ./factorial</code>:</p>
+<pre><code class="hljs language-riscv">        <span class="hljs-meta">.global</span> main
+        <span class="hljs-meta">.text</span>
+
+<span class="hljs-symbol">main:</span>
+        <span class="hljs-comment"># Prologue</span>
+        <span class="hljs-keyword">addi</span>    <span class="hljs-keyword">sp</span>, <span class="hljs-keyword">sp</span>, -<span class="hljs-number">16</span>
+        sd      <span class="hljs-keyword">ra</span>, <span class="hljs-number">8</span>(<span class="hljs-keyword">sp</span>)
+
+        <span class="hljs-comment"># printf(&quot;What number ...&quot;);</span>
+        <span class="hljs-keyword">la</span>      <span class="hljs-keyword">a0</span>, ask
+        <span class="hljs-keyword">call</span>    printf
+
+        <span class="hljs-comment"># scanf(&quot;%d&quot;, &amp;input);</span>
+        <span class="hljs-keyword">la</span>      <span class="hljs-keyword">a0</span>, fmt_in
+        <span class="hljs-keyword">la</span>      <span class="hljs-keyword">a1</span>, input
+        <span class="hljs-keyword">call</span>    scanf
+
+        <span class="hljs-comment"># factorial(input)</span>
+        <span class="hljs-keyword">lw</span>      <span class="hljs-keyword">a0</span>, input            <span class="hljs-comment"># load 32-bit int</span>
+        <span class="hljs-keyword">call</span>    factorial
+
+        <span class="hljs-comment"># printf(&quot;The result is %d\n&quot;, result);</span>
+        <span class="hljs-keyword">mv</span>      <span class="hljs-keyword">a1</span>, <span class="hljs-keyword">a0</span>
+        <span class="hljs-keyword">la</span>      <span class="hljs-keyword">a0</span>, msg
+        <span class="hljs-keyword">call</span>    printf
+
+        <span class="hljs-comment"># return 0;</span>
+        ld      <span class="hljs-keyword">ra</span>, <span class="hljs-number">8</span>(<span class="hljs-keyword">sp</span>)
+        <span class="hljs-keyword">addi</span>    <span class="hljs-keyword">sp</span>, <span class="hljs-keyword">sp</span>, <span class="hljs-number">16</span>
+        <span class="hljs-keyword">li</span>      <span class="hljs-keyword">a0</span>, <span class="hljs-number">0</span>
+        <span class="hljs-keyword">ret</span>
+
+
+<span class="hljs-comment"># int factorial(int n)</span>
+<span class="hljs-symbol">factorial:</span>
+        <span class="hljs-keyword">li</span>      <span class="hljs-keyword">t0</span>, <span class="hljs-number">1</span>
+        <span class="hljs-keyword">ble</span>     <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">t0</span>, base
+
+        <span class="hljs-comment"># Stack frame</span>
+        <span class="hljs-keyword">addi</span>    <span class="hljs-keyword">sp</span>, <span class="hljs-keyword">sp</span>, -<span class="hljs-number">16</span>
+        sd      <span class="hljs-keyword">ra</span>, <span class="hljs-number">8</span>(<span class="hljs-keyword">sp</span>)
+        <span class="hljs-keyword">sw</span>      <span class="hljs-keyword">a0</span>, <span class="hljs-number">4</span>(<span class="hljs-keyword">sp</span>)
+
+        <span class="hljs-keyword">addi</span>    <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">a0</span>, -<span class="hljs-number">1</span>
+        <span class="hljs-keyword">call</span>    factorial
+
+        <span class="hljs-keyword">lw</span>      <span class="hljs-keyword">t0</span>, <span class="hljs-number">4</span>(<span class="hljs-keyword">sp</span>)
+        mulw    <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">a0</span>, <span class="hljs-keyword">t0</span>
+
+        ld      <span class="hljs-keyword">ra</span>, <span class="hljs-number">8</span>(<span class="hljs-keyword">sp</span>)
+        <span class="hljs-keyword">addi</span>    <span class="hljs-keyword">sp</span>, <span class="hljs-keyword">sp</span>, <span class="hljs-number">16</span>
+        <span class="hljs-keyword">ret</span>
+
+<span class="hljs-symbol">base:</span>
+        <span class="hljs-keyword">li</span>      <span class="hljs-keyword">a0</span>, <span class="hljs-number">1</span>
+        <span class="hljs-keyword">ret</span>
+
+
+        <span class="hljs-meta">.section</span> <span class="hljs-meta">.rodata</span>
+<span class="hljs-symbol">ask:</span>
+        <span class="hljs-meta">.string</span> <span class="hljs-string">&quot;What number to pass as args for factorial n? &quot;</span>
+
+<span class="hljs-symbol">fmt_in:</span>
+        <span class="hljs-meta">.string</span> <span class="hljs-string">&quot;%d&quot;</span>
+
+<span class="hljs-symbol">msg:</span>
+        <span class="hljs-meta">.string</span> <span class="hljs-string">&quot;The result is %d\n&quot;</span>
+
+
+        <span class="hljs-meta">.section</span> <span class="hljs-meta">.bss</span>
+        <span class="hljs-meta">.balign</span> <span class="hljs-number">4</span>
+<span class="hljs-symbol">input:</span>
+        <span class="hljs-meta">.space</span> <span class="hljs-number">4</span></code></pre><h2>Closure</h2>
 <p>You have now learnt the basics of RISC-V ASM, you can try to write more code. Mainly in three ways, kernel calls, bare-metal, libc calls. For learning on a different CPU arch, kernel calls is the subjective best, and you can also try libc. If you have a RISC-V arch controller, definitely try all three.</p>
 <p>Hope you&#39;ve learnt something, bye!</p>
 

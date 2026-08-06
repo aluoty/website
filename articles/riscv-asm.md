@@ -181,6 +181,82 @@ msg:
     .string "Hello World!\n"
 ```
 
+Here's another short program, a recursive factorial implementations using libc, run by `riscv64-unknown-linux-gnu-gcc factorial.s -o factorial`, and then `qemu-riscv64 ./factorial`:
+```riscv
+        .global main
+        .text
+
+main:
+        # Prologue
+        addi    sp, sp, -16
+        sd      ra, 8(sp)
+
+        # printf("What number ...");
+        la      a0, ask
+        call    printf
+
+        # scanf("%d", &input);
+        la      a0, fmt_in
+        la      a1, input
+        call    scanf
+
+        # factorial(input)
+        lw      a0, input            # load 32-bit int
+        call    factorial
+
+        # printf("The result is %d\n", result);
+        mv      a1, a0
+        la      a0, msg
+        call    printf
+
+        # return 0;
+        ld      ra, 8(sp)
+        addi    sp, sp, 16
+        li      a0, 0
+        ret
+
+
+# int factorial(int n)
+factorial:
+        li      t0, 1
+        ble     a0, t0, base
+
+        # Stack frame
+        addi    sp, sp, -16
+        sd      ra, 8(sp)
+        sw      a0, 4(sp)
+
+        addi    a0, a0, -1
+        call    factorial
+
+        lw      t0, 4(sp)
+        mulw    a0, a0, t0
+
+        ld      ra, 8(sp)
+        addi    sp, sp, 16
+        ret
+
+base:
+        li      a0, 1
+        ret
+
+
+        .section .rodata
+ask:
+        .string "What number to pass as args for factorial n? "
+
+fmt_in:
+        .string "%d"
+
+msg:
+        .string "The result is %d\n"
+
+
+        .section .bss
+        .balign 4
+input:
+        .space 4
+```
 
 ## Closure
 
