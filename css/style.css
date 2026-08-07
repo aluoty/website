@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&display=swap");
 
 /* ==========================================================================
    Alexander Luo — site stylesheet
@@ -24,7 +24,7 @@
 
     --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
             Helvetica, Arial, sans-serif;
-    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "Cascadia Code",
+    --mono: "Fira Code", ui-monospace, SFMono-Regular, "Cascadia Code",
             "Fira Code", Menlo, Consolas, monospace;
 
     --ease: cubic-bezier(0.4, 0, 0.2, 1);
