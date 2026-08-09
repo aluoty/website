@@ -2,10 +2,13 @@
 
 Personal portfolio site of me built with HTML, CSS and some JS.
 [An official mirror](https://aluoty.github.io/website/) of my website is on Github pages.
+
+Install the `npm` dependencies if you want to test the code via `npm install`.
 ## Commands
 
 + Build HTML articles from MarkDown articles by running `npm run build`
-+ Ruun the site dynamically via `vite` by running `npm run dev`
++ Run the site dynamically via `vite` by running `npm run dev`
++ Run the site alternatively by opening the `index.html` file
 
 ## Disclaimer
 
