@@ -42,7 +42,7 @@ Racket:
 (define example-var 32)
 (define example-string "Good Morning!")
 (define result (* 3 2 (- 3 2)))
-displayln example-var ;; prints
+(displayln example-var);; prints
 (define (square x)
   (* x x))
 ```
