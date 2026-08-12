@@ -81,7 +81,7 @@ But Linux is fun **if you try in a healthy way**:
 ## Suggestions for Distros and Desktop Environments
 
 + Linus himself uses Fedora + GNOME as well.
-+ My recommendation is to start with Ubuntu for 1-6 weeks, and then switch to Fedora. 
++ My recommendation is to start with Ubuntu for 1-6 weeks, and then switch to whatever you prefer. 
 + You can try **'super hard distros'** like Arch, Gentoo, even Linux From Scratch.
 + But you have to know what you want from a distro:
   + If you want maximum power and benefits, go with NixOS.
@@ -90,11 +90,11 @@ But Linux is fun **if you try in a healthy way**:
   + If you want maximum customization, go with Gentoo.
   + If you want a balance among everything, go with Fedora.
   + If you use Linux for work, go with Red Hat Enterprise Linux.
-  + If you want something that just works, go with Ubuntu.
+  + If you want something that just works universally, go with Ubuntu.
   + If you like MacOS, go with ElementaryOS or ZorinOS core.
   + If you want security, go with Tails.
   + If you like Windows and traditional OS, go with Linux Mint.
-  + If you want *easy out-of-the-box* support for NVIDIA, go with Pop!_OS.
+  + If you want *easy out-of-the-box* support for NVIDIA graphic cards, go with Pop!_OS.
 + Here are also some desktop environments:
   + If you want most customization, go with Hyprland.
   + If you want keyboard-driven, go with Tiling Managers and Compositors:
@@ -108,7 +108,7 @@ But Linux is fun **if you try in a healthy way**:
     + GNOME for its design
     + ~Deepin~ *Controversial*
     + Budgie for its lightweight design
-+ However, these are just some examples of distros and desktop environments, and people's opinions differ.
++ However, these are just some examples of distros and desktop environments, and people's opinions differ **a lot**.
 
 Yea, try linux!
 
