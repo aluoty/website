@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emacs - Alexander Luo</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/hljs-github-dark.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="logo">Alexander Luo</a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../articles.html">Articles</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article class="markdown-body">
+<h1>Emacs</h1>
+<p>Emacs, originally named EMACS(Editor MACroS). With the most used variant being GNU Emacs, the development of EMACS began in the mid-1970s.</p>
+<h2>Details</h2>
+<p>Emacs is a powerful <em>&quot;editor&quot;</em> and has over 10000 built in commands, GNU Emacs also features Elisp.</p>
+<p>Elisp is a lisp dialect used to customize and build the editor.</p>
+<p>Emacs has also many features, like Magit(a powerful git interface), file managers, simple browsers and even games.</p>
+<h2>Experience</h2>
+<p>I first used Emacs while I was learning Common Lisp, as Emacs features SLIME and SLY, both are powerful common lisp IDEs for Emacs.</p>
+<p>Emacs is very easy to use, there are GUI and TUI versions. However, people mainly use GUI counterparts.</p>
+<h2>Installation</h2>
+<p>Let&#39;s install Emacs now, a comprehensive installation guide is on the official <a href="https://www.gnu.org/software/emacs/download.html">GNU Emacs website</a>.</p>
+<p>Here, I will summarize and show you some of the example commands used to install Emacs:</p>
+<ul>
+<li>Debian based: <code>sudo apt install emacs</code> or <code>sudo apt-get install emacs</code></li>
+<li>RHEL based: <code>sudo dnf install emacs</code> or <code>sudo yum install emacs</code></li>
+<li>Arch based: <code>sudo pacman install emacs</code></li>
+</ul>
+<h2>Distro</h2>
+<p>Looking at the section title &quot;Distro&quot;, you might be confused.</p>
+<blockquote>
+<p>&quot;What is an Emacs distro?&quot;</p>
+</blockquote>
+<p>Well, Emacs distro are just like Neovim distro, it provides a pre-set configuration.</p>
+<p>However, for the best learning and vanilla emacs, I recommend vanilla Emacs for a while, then Emacs Prelude.</p>
+<p>If you like Evil-Mode(Vim keybindings) or want hybrid of Emacs and Vim, use Doom Emacs or Spacemacs.</p>
+<p>First, and for now, we are going to use vanilla, then head to Prelude.</p>
+<h2>Configuration</h2>
+<p>Let&#39;s locate the configuration directory, we will use <code>~/.config/emacs</code> for this guide. If you have any configuration, consider moving them to another directory like <code>mv ~/.config/emacs ~/.config/myemacs</code>.</p>
+<p>Now that we have the environment, we can write some Elisp.</p>
+<p>Here&#39;s an extremely simple configuration(<code>~/.config/emacs/init.el</code>):</p>
+<pre><code class="hljs language-plaintext">;; setup the require-package tool
+(require &#x27;package)
+
+(setq package-archives
+      &#x27;((&quot;gnu&quot;    . &quot;https://elpa.gnu.org/packages/&quot;)
+	(&quot;nongnu&quot; . &quot;https://elpa.nongnu.org/nongnu/&quot;)
+	(&quot;melpa&quot;  . &quot;https://melpa.org/packages/&quot;)))
+(package-initialize)
+
+(unless (package-installed-p &#x27;use-package)
+  (package-refresh-contents)
+  (package-install &#x27;use-package))
+
+(require &#x27;use-package)
+
+(setq use-package-always-ensure t)
+
+;; vertical
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
+
+;; git interface
+(use-package magit
+  :ensure t)
+
+;; see key
+(use-package which-key
+  :ensure t)
+
+;; for lsp
+(use-package company
+  :ensure t
+  :init (global-company-mode))
+
+;; for rust
+(use-package rust-mode
+  :ensure t)
+
+;; for SLY
+(use-package sly
+  :ensure t
+  :init
+  (setq inferior-lisp-program &quot;sbcl&quot;))
+
+;; for terminal
+(use-package vterm
+  :ensure t)
+
+;; light theme
+(load-theme &#x27;modus-operandi t)
+
+;; lsp
+(use-package eglot
+  :hook ((c-mode . eglot-ensure)
+	 (rust-mode . eglot-ensure)
+	 (typescript-mode . eglot-ensure)))
+
+;; code suggestion interface
+(use-package corfu
+  :ensure t)</code></pre><p>After some configuration, if you enjoy configurating, you can continue using vanilla.</p>
+<h2>Prelude</h2>
+<p>But for now, we will be using Emacs Prelude. Here I will provide three methods to install, if you wish to see them in more detail, view the official <a href="https://prelude.emacsredux.com/en/latest/installation/">Emacs Prelude installation site</a>.</p>
+<ul>
+<li>Via curl: <code>curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh</code></li>
+<li>Via wget: <code>wget --no-check-certificate \ https://github.com/bbatsov/prelude/raw/master/utils/installer.sh \ -O - | sh</code></li>
+<li>Via git: <code>git clone https://github.com/bbatsov/prelude.git path/to/local/repo ln -s path/to/local/repo ~/.emacs.d cd ~/.emacs.d</code> or just <code>git clone https://github.com/bbatsov/prelude.git ~/.config/emacs/</code></li>
+</ul>
+<h3>Configuration</h3>
+<p>Let&#39;s see some custom configuration for Emacs Prelude now, for personal config use <code>personal/preload/*</code> or <code>personal/*</code> or <code>personal/prelude-modules.el</code> for prelude modules.</p>
+<p>Here&#39;s an example for <code>~/.config/emacs/personal/preload/config.el</code>:</p>
+<pre><code class="hljs language-plaintext">(use-package sly
+  :ensure t
+  :init
+  (setq inferior-lisp-program &quot;sbcl&quot;))</code></pre><p>And for prelude-modules, use <code>personal/prelude-modules.el</code>. You can do this to copy the example config: <code>cp ~/.config/emacs/sample/prelude-modules.el ~/.config/emacs/personal/prelude-modules.el</code>.</p>
+<h2>Closure</h2>
+<p>Have fun trying Emacs, fun programming and configurating!</p>
+
+        </article>
+    </main>
+
+</body>
+</html>
