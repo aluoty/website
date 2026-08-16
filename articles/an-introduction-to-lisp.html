@@ -74,7 +74,7 @@ Racket:</p>
 (<span class="hljs-name">defun</span> power (<span class="hljs-name">x</span> <span class="hljs-symbol">&amp;optional</span> (<span class="hljs-name">n</span> <span class="hljs-number">2</span>)) <span class="hljs-comment">;; &amp;optional --&gt; Optional, Default --&gt; 2</span>
   (<span class="hljs-name">expt</span> x n))
 
-(<span class="hljs-name">format</span> <span class="hljs-literal">t</span> <span class="hljs-string">&quot;Hello! ~A~%&quot;</span>) <span class="hljs-comment">;; ~A~% are optional and for better seeing</span></code></pre><h2>Try It Out</h2>
+(<span class="hljs-name">format</span> <span class="hljs-literal">t</span> <span class="hljs-string">&quot;Hello! ~%&quot;</span>) <span class="hljs-comment">;; ~% is optional</span></code></pre><h2>Try It Out</h2>
 <p>From these examples, you can see that Racket and Common Lisp are very different in syntax as well.</p>
 <p>You can choose either to start first.</p>
 <p>But for now, I am going to teach you how to start with Common Lisp.</p>
@@ -84,10 +84,31 @@ Second, you can install Emacs on your system if you do not have one, the package
 <pre><code class="hljs language-plaintext">(require &#x27;slime)
 
 (setq inferior-lisp-program &quot;sbcl&quot;)
-(slime-setup &#x27;(slime-fancy))</code></pre><p>Now fire up Emacs, and you will see an interface with a &quot;Open a File&quot; button, click that, and enter your file for testing, like <code>~/Projects/test/test.lisp</code>, then you will be launched into the coding interface.</p>
-<p>Now, press M-x, which is often Alt+X, and then type <code>slime</code> and you will see the SLIME interface of REPL, you can write some code in the file, press C-c C-c, double Ctrl+C, which compiles it, and type the function in REPL SLIME and you will get the output.</p>
-<p>From now onwards, you can explore more of Common Lisp like Recursions, Higher Order Functions, Macros and more libraries. Enjoy!</p>
+(slime-setup &#x27;(slime-fancy))</code></pre><p>Alternatively, you can use (use-package) macro if it is set up:</p>
+<p>``elisp
+(require &#39;package)</p>
+<p>(setq package-archives
+      &#39;((&quot;gnu&quot;    . &quot;<a href="https://elpa.gnu.org/packages/">https://elpa.gnu.org/packages/</a>&quot;)
+	(&quot;nongnu&quot; . &quot;<a href="https://elpa.nongnu.org/nongnu/">https://elpa.nongnu.org/nongnu/</a>&quot;)
+	(&quot;melpa&quot;  . &quot;<a href="https://melpa.org/packages/">https://melpa.org/packages/</a>&quot;)))</p>
+<p>(package-initialize)</p>
+<p>(unless package-archive-contents
+  (package-refresh-contents))</p>
+<p>(unless (package-installed-p &#39;use-package)
+  (package-install &#39;use-package))</p>
+<p>(require &#39;use-package)</p>
+<p>(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program &quot;sbcl&quot;))</p>
+<pre><code class="hljs language-plaintext">
+Now fire up Emacs, and you will see an interface with a &quot;Open a File&quot; button, click that, and enter your file for testing, like `~/Projects/test/test.lisp`, then you will be launched into the coding interface.
 
+Now, press M-x, which is often Alt+X, and then type `slime` and you will see the SLIME interface of REPL, you can write some code in the file, press C-c C-c, double Ctrl+C, which compiles it, and type the function in REPL SLIME and you will get the output.
+
+From now onwards, you can explore more of Common Lisp like Recursions, Higher Order Functions, Macros and more libraries. Enjoy!
+
+</code></pre>
         </article>
     </main>
 

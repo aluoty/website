@@ -58,7 +58,7 @@ Common Lisp:
 (defun power (x &optional (n 2)) ;; &optional --> Optional, Default --> 2
   (expt x n))
 
-(format t "Hello! ~A~%") ;; ~A~% are optional and for better seeing
+(format t "Hello! ~%") ;; ~% is optional
 ```
 
 ## Try It Out
@@ -78,6 +78,31 @@ Then, after installing, change the init file for Emacs. Emacs also uses Emacs Li
 
 (setq inferior-lisp-program "sbcl")
 (slime-setup '(slime-fancy))
+```
+Alternatively, you can use (use-package) macro if it is set up:
+
+``elisp
+(require 'package)
+
+(setq package-archives
+      '(("gnu"    . "https://elpa.gnu.org/packages/")
+	("nongnu" . "https://elpa.nongnu.org/nongnu/")
+	("melpa"  . "https://melpa.org/packages/")))
+
+(package-initialize)
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+
+(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program "sbcl"))
 ```
 
 Now fire up Emacs, and you will see an interface with a "Open a File" button, click that, and enter your file for testing, like `~/Projects/test/test.lisp`, then you will be launched into the coding interface.
