@@ -81,7 +81,7 @@ Then, after installing, change the init file for Emacs. Emacs also uses Emacs Li
 ```
 Alternatively, you can use (use-package) macro if it is set up:
 
-``elisp
+```elisp
 (require 'package)
 
 (setq package-archives
