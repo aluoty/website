@@ -52,68 +52,68 @@
 <p>Let&#39;s locate the configuration directory, we will use <code>~/.config/emacs</code> for this guide. If you have any configuration, consider moving them to another directory like <code>mv ~/.config/emacs ~/.config/myemacs</code>.</p>
 <p>Now that we have the environment, we can write some Elisp.</p>
 <p>Here&#39;s an extremely simple configuration(<code>~/.config/emacs/init.el</code>):</p>
-<pre><code class="hljs language-plaintext">;; setup the require-package tool
-(require &#x27;package)
+<pre><code class="hljs language-lisp"><span class="hljs-comment">;; setup the require-package tool</span>
+(<span class="hljs-name">require</span> &#x27;package)
 
-(setq package-archives
-      &#x27;((&quot;gnu&quot;    . &quot;https://elpa.gnu.org/packages/&quot;)
-	(&quot;nongnu&quot; . &quot;https://elpa.nongnu.org/nongnu/&quot;)
-	(&quot;melpa&quot;  . &quot;https://melpa.org/packages/&quot;)))
-(package-initialize)
+(<span class="hljs-name">setq</span> package-archives
+      &#x27;((<span class="hljs-string">&quot;gnu&quot;</span>    . <span class="hljs-string">&quot;https://elpa.gnu.org/packages/&quot;</span>)
+	(<span class="hljs-string">&quot;nongnu&quot;</span> . <span class="hljs-string">&quot;https://elpa.nongnu.org/nongnu/&quot;</span>)
+	(<span class="hljs-string">&quot;melpa&quot;</span>  . <span class="hljs-string">&quot;https://melpa.org/packages/&quot;</span>)))
+(<span class="hljs-name">package-initialize</span>)
 
-(unless (package-installed-p &#x27;use-package)
-  (package-refresh-contents)
-  (package-install &#x27;use-package))
+(<span class="hljs-name">unless</span> (<span class="hljs-name">package-installed-p</span> &#x27;use-package)
+  (<span class="hljs-name">package-refresh-contents</span>)
+  (<span class="hljs-name">package-install</span> &#x27;use-package))
 
-(require &#x27;use-package)
+(<span class="hljs-name">require</span> &#x27;use-package)
 
-(setq use-package-always-ensure t)
+(<span class="hljs-name">setq</span> use-package-always-ensure <span class="hljs-literal">t</span>)
 
-;; vertical
-(use-package vertico
-  :ensure t
-  :init
-  (vertico-mode))
+<span class="hljs-comment">;; vertical</span>
+(<span class="hljs-name">use-package</span> vertico
+  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>
+  <span class="hljs-symbol">:init</span>
+  (<span class="hljs-name">vertico-mode</span>))
 
-;; git interface
-(use-package magit
-  :ensure t)
+<span class="hljs-comment">;; git interface</span>
+(<span class="hljs-name">use-package</span> magit
+  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>)
 
-;; see key
-(use-package which-key
-  :ensure t)
+<span class="hljs-comment">;; see key</span>
+(<span class="hljs-name">use-package</span> which-key
+  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>)
 
-;; for lsp
-(use-package company
-  :ensure t
-  :init (global-company-mode))
+<span class="hljs-comment">;; for lsp</span>
+(<span class="hljs-name">use-package</span> company
+  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>
+  <span class="hljs-symbol">:init</span> (<span class="hljs-name">global-company-mode</span>))
 
-;; for rust
-(use-package rust-mode
-  :ensure t)
+<span class="hljs-comment">;; for rust</span>
+(<span class="hljs-name">use-package</span> rust-mode
+  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>)
 
-;; for SLY
-(use-package sly
-  :ensure t
-  :init
-  (setq inferior-lisp-program &quot;sbcl&quot;))
+<span class="hljs-comment">;; for SLY</span>
+(<span class="hljs-name">use-package</span> sly
+  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>
+  <span class="hljs-symbol">:init</span>
+  (<span class="hljs-name">setq</span> inferior-lisp-program <span class="hljs-string">&quot;sbcl&quot;</span>))
 
-;; for terminal
-(use-package vterm
-  :ensure t)
+<span class="hljs-comment">;; for terminal</span>
+(<span class="hljs-name">use-package</span> vterm
+  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>)
 
-;; light theme
-(load-theme &#x27;modus-operandi t)
+<span class="hljs-comment">;; light theme</span>
+(<span class="hljs-name">load-theme</span> &#x27;modus-operandi <span class="hljs-literal">t</span>)
 
-;; lsp
-(use-package eglot
-  :hook ((c-mode . eglot-ensure)
-	 (rust-mode . eglot-ensure)
-	 (typescript-mode . eglot-ensure)))
+<span class="hljs-comment">;; lsp</span>
+(<span class="hljs-name">use-package</span> eglot
+  <span class="hljs-symbol">:hook</span> ((<span class="hljs-name">c-mode</span> . eglot-ensure)
+	 (<span class="hljs-name">rust-mode</span> . eglot-ensure)
+	 (<span class="hljs-name">typescript-mode</span> . eglot-ensure)))
 
-;; code suggestion interface
-(use-package corfu
-  :ensure t)</code></pre><p>After some configuration, if you enjoy configurating, you can continue using vanilla.</p>
+<span class="hljs-comment">;; code suggestion interface</span>
+(<span class="hljs-name">use-package</span> corfu
+  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>)</code></pre><p>After some configuration, if you enjoy configurating, you can continue using vanilla.</p>
 <h2>Prelude</h2>
 <p>But for now, we will be using Emacs Prelude. Here I will provide three methods to install, if you wish to see them in more detail, view the official <a href="https://prelude.emacsredux.com/en/latest/installation/">Emacs Prelude installation site</a>.</p>
 <ul>
@@ -124,10 +124,10 @@
 <h3>Configuration</h3>
 <p>Let&#39;s see some custom configuration for Emacs Prelude now, for personal config use <code>personal/preload/*</code> or <code>personal/*</code> or <code>personal/prelude-modules.el</code> for prelude modules.</p>
 <p>Here&#39;s an example for <code>~/.config/emacs/personal/preload/config.el</code>:</p>
-<pre><code class="hljs language-plaintext">(use-package sly
-  :ensure t
-  :init
-  (setq inferior-lisp-program &quot;sbcl&quot;))</code></pre><p>And for prelude-modules, use <code>personal/prelude-modules.el</code>. You can do this to copy the example config: <code>cp ~/.config/emacs/sample/prelude-modules.el ~/.config/emacs/personal/prelude-modules.el</code>.</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">use-package</span> sly
+  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>
+  <span class="hljs-symbol">:init</span>
+  (<span class="hljs-name">setq</span> inferior-lisp-program <span class="hljs-string">&quot;sbcl&quot;</span>))</code></pre><p>And for prelude-modules, use <code>personal/prelude-modules.el</code>. You can do this to copy the example config: <code>cp ~/.config/emacs/sample/prelude-modules.el ~/.config/emacs/personal/prelude-modules.el</code>.</p>
 <h2>Closure</h2>
 <p>Have fun trying Emacs, fun programming and configurating!</p>
 

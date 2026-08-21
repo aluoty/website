@@ -81,31 +81,31 @@ Racket:</p>
 <p>First, install SBCL, a compiler for Common Lisp, it is often called <code>sbcl</code> in the packages.
 Second, you can install Emacs on your system if you do not have one, the package name for Emacs is often just plainly <code>emacs</code>. After that, you can install SLIME, a powerful development plugin for Emacs, the package might be <code>emacsPackages.slime</code> or slime depending on the system.</p>
 <p>Then, after installing, change the init file for Emacs. Emacs also uses Emacs Lisp which is a Lisp dialect, here is the init.el:</p>
-<pre><code class="hljs language-plaintext">(require &#x27;slime)
+<pre><code class="hljs language-lisp">(<span class="hljs-name">require</span> &#x27;slime)
 
-(setq inferior-lisp-program &quot;sbcl&quot;)
-(slime-setup &#x27;(slime-fancy))</code></pre><p>Alternatively, you can use (use-package) macro if it is set up:</p>
-<pre><code class="hljs language-plaintext">(require &#x27;package)
+(<span class="hljs-name">setq</span> inferior-lisp-program <span class="hljs-string">&quot;sbcl&quot;</span>)
+(<span class="hljs-name">slime-setup</span> &#x27;(slime-fancy))</code></pre><p>Alternatively, you can use (use-package) macro if it is set up:</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">require</span> &#x27;package)
 
-(setq package-archives
-      &#x27;((&quot;gnu&quot;    . &quot;https://elpa.gnu.org/packages/&quot;)
-	(&quot;nongnu&quot; . &quot;https://elpa.nongnu.org/nongnu/&quot;)
-	(&quot;melpa&quot;  . &quot;https://melpa.org/packages/&quot;)))
+(<span class="hljs-name">setq</span> package-archives
+      &#x27;((<span class="hljs-string">&quot;gnu&quot;</span>    . <span class="hljs-string">&quot;https://elpa.gnu.org/packages/&quot;</span>)
+	(<span class="hljs-string">&quot;nongnu&quot;</span> . <span class="hljs-string">&quot;https://elpa.nongnu.org/nongnu/&quot;</span>)
+	(<span class="hljs-string">&quot;melpa&quot;</span>  . <span class="hljs-string">&quot;https://melpa.org/packages/&quot;</span>)))
 
-(package-initialize)
+(<span class="hljs-name">package-initialize</span>)
 
-(unless package-archive-contents
-  (package-refresh-contents))
+(<span class="hljs-name">unless</span> package-archive-contents
+  (<span class="hljs-name">package-refresh-contents</span>))
 
-(unless (package-installed-p &#x27;use-package)
-  (package-install &#x27;use-package))
+(<span class="hljs-name">unless</span> (<span class="hljs-name">package-installed-p</span> &#x27;use-package)
+  (<span class="hljs-name">package-install</span> &#x27;use-package))
 
-(require &#x27;use-package)
+(<span class="hljs-name">require</span> &#x27;use-package)
 
-(use-package slime
-  :ensure t
-  :init
-  (setq inferior-lisp-program &quot;sbcl&quot;))</code></pre><p>Now fire up Emacs, and you will see an interface with a &quot;Open a File&quot; button, click that, and enter your file for testing, like <code>~/Projects/test/test.lisp</code>, then you will be launched into the coding interface.</p>
+(<span class="hljs-name">use-package</span> slime
+  <span class="hljs-symbol">:ensure</span> <span class="hljs-literal">t</span>
+  <span class="hljs-symbol">:init</span>
+  (<span class="hljs-name">setq</span> inferior-lisp-program <span class="hljs-string">&quot;sbcl&quot;</span>))</code></pre><p>Now fire up Emacs, and you will see an interface with a &quot;Open a File&quot; button, click that, and enter your file for testing, like <code>~/Projects/test/test.lisp</code>, then you will be launched into the coding interface.</p>
 <p>Now, press M-x, which is often Alt+X, and then type <code>slime</code> and you will see the SLIME interface of REPL, you can write some code in the file, press C-c C-c, double Ctrl+C, which compiles it, and type the function in REPL SLIME and you will get the output.</p>
 <p>From now onwards, you can explore more of Common Lisp like Recursions, Higher Order Functions, Macros and more libraries. Enjoy!</p>
 

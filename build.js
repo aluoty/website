@@ -15,6 +15,9 @@ const LANGUAGE_ALIASES = {
     'arm': 'arm',
     arm64: 'arm',
     racket: 'scheme',
+    elisp: 'lisp',
+    'emacs-lisp': 'lisp',
+    emacs: 'lisp',
     riscv: 'riscv',
     riscv32: 'riscv',
     riscv64: 'riscv',
@@ -76,6 +79,7 @@ function riscvGrammar(hljs) {
     };
 }
 hljs.registerLanguage('riscv', riscvGrammar);
+hljs.registerLanguage('lisp', require('highlight.js/lib/languages/lisp'));
 
 function resolveLanguage(lang) {
     if (!lang) return null;
