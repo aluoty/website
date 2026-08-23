@@ -134,6 +134,20 @@ So, let's setup up the environment by first installing the packages listed, alte
 }
 ```
 
+Alternatively, another great way is to use containers, such as podman or docker.
+
+Here are the commands(QEMU is required):
+```bash
+podman run -it --name alpine-riscv64 --arch riscv64 alpine:latest sh # creating for podman 
+docker run -it --name alpine-riscv64 --platform linux/riscv64 alpine:latest sh # creating for docker
+
+podman start alpine-riscv64 -ai # run/resume for docker
+docker start -ai alpine-riscv64 # run/resume for docker
+
+# After entering the container, you can create a user, and install "build-base"
+```
+```
+```
 Let's go, first, we can create a separate directory and touch a file, `touch hello.s` preferably.
 
 Let's read some real RISC-V ASM code now, here's the example of Hello World, run by `riscv64-unknown-linux-gnu-as hello.s -o hello.o`, then `riscv64-unknown-linux-gnu-ld hello.o -o hello`, finally `qemu-riscv64 ./hello`:

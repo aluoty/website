@@ -181,7 +181,15 @@ Here are some common examples:</p>
       ];
     };
   };
-}</code></pre><p>Let&#39;s go, first, we can create a separate directory and touch a file, <code>touch hello.s</code> preferably.</p>
+}</code></pre><p>Alternatively, another great way is to use containers, such as podman or docker.</p>
+<p>Here are the commands(QEMU is required):</p>
+<pre><code class="hljs language-bash">podman run -it --name alpine-riscv64 --<span class="hljs-built_in">arch</span> riscv64 alpine:latest sh <span class="hljs-comment"># creating for podman </span>
+docker run -it --name alpine-riscv64 --platform linux/riscv64 alpine:latest sh <span class="hljs-comment"># creating for docker</span>
+
+podman start alpine-riscv64 -ai <span class="hljs-comment"># run/resume for docker</span>
+docker start -ai alpine-riscv64 <span class="hljs-comment"># run/resume for docker</span>
+
+<span class="hljs-comment"># After entering the container, you can create a user, and install &quot;build-base&quot;</span></code></pre><pre><code class="hljs language-plaintext"></code></pre><p>Let&#39;s go, first, we can create a separate directory and touch a file, <code>touch hello.s</code> preferably.</p>
 <p>Let&#39;s read some real RISC-V ASM code now, here&#39;s the example of Hello World, run by <code>riscv64-unknown-linux-gnu-as hello.s -o hello.o</code>, then <code>riscv64-unknown-linux-gnu-ld hello.o -o hello</code>, finally <code>qemu-riscv64 ./hello</code>:</p>
 <pre><code class="hljs language-riscv"><span class="hljs-meta">.global</span> _start      <span class="hljs-comment"># Provide program entry point to the linker</span>
 
