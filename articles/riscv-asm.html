@@ -189,7 +189,21 @@ docker run -it --name alpine-riscv64 --platform linux/riscv64 alpine:latest sh <
 podman start alpine-riscv64 -ai <span class="hljs-comment"># run/resume for docker</span>
 docker start -ai alpine-riscv64 <span class="hljs-comment"># run/resume for docker</span>
 
-<span class="hljs-comment"># After entering the container, you can create a user, and install &quot;build-base&quot;</span></code></pre><pre><code class="hljs language-plaintext"></code></pre><p>Let&#39;s go, first, we can create a separate directory and touch a file, <code>touch hello.s</code> preferably.</p>
+<span class="hljs-comment"># After entering the container, you can create a user, and install &quot;build-base&quot;</span></code></pre><p>Alternatively, you can use a <code>Dockerfile</code>, like this:</p>
+<pre><code class="hljs language-Docker"><span class="hljs-keyword">FROM</span> riscv64/alpine:latest
+
+<span class="hljs-comment"># Update repositories and install build tools + RISC-V cross-compiler</span>
+<span class="hljs-keyword">RUN</span><span class="language-bash"> apk update &amp;&amp; apk add build-base fastfetch </span>
+
+<span class="hljs-keyword">RUN</span><span class="language-bash"> adduser dev -h /home/dev -D</span>
+
+<span class="hljs-keyword">USER</span> dev 
+
+<span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /home/dev</span>
+
+<span class="hljs-comment"># Default command</span>
+<span class="hljs-keyword">CMD</span><span class="language-bash"> [<span class="hljs-string">&quot;/bin/sh&quot;</span>]</span></code></pre><p>Then, build the image <code>podman build --platform linux/riscv64 -t riscv-alpine-dev .</code>, and run <code>podman run -it --rm riscv-alpine-dev</code>.</p>
+<p>Let&#39;s go, first, we can create a separate directory and touch a file, <code>touch hello.s</code> preferably.</p>
 <p>Let&#39;s read some real RISC-V ASM code now, here&#39;s the example of Hello World, run by <code>riscv64-unknown-linux-gnu-as hello.s -o hello.o</code>, then <code>riscv64-unknown-linux-gnu-ld hello.o -o hello</code>, finally <code>qemu-riscv64 ./hello</code>:</p>
 <pre><code class="hljs language-riscv"><span class="hljs-meta">.global</span> _start      <span class="hljs-comment"># Provide program entry point to the linker</span>
 

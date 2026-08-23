@@ -146,8 +146,25 @@ docker start -ai alpine-riscv64 # run/resume for docker
 
 # After entering the container, you can create a user, and install "build-base"
 ```
+
+Alternatively, you can use a `Dockerfile`, like this:
+```Docker
+FROM riscv64/alpine:latest
+
+# Update repositories and install build tools + RISC-V cross-compiler
+RUN apk update && apk add build-base fastfetch 
+
+RUN adduser dev -h /home/dev -D
+
+USER dev 
+
+WORKDIR /home/dev
+
+# Default command
+CMD ["/bin/sh"]
 ```
-```
+Then, build the image `podman build --platform linux/riscv64 -t riscv-alpine-dev .`, and run `podman run -it --rm riscv-alpine-dev`.
+
 Let's go, first, we can create a separate directory and touch a file, `touch hello.s` preferably.
 
 Let's read some real RISC-V ASM code now, here's the example of Hello World, run by `riscv64-unknown-linux-gnu-as hello.s -o hello.o`, then `riscv64-unknown-linux-gnu-ld hello.o -o hello`, finally `qemu-riscv64 ./hello`:
